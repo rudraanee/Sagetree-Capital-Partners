@@ -38,14 +38,14 @@
     /* ── HERO (VIDEO) ──────────────────────────────── */
     .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8rem 4rem 5rem; position: relative; overflow: hidden; }
     .hero-video-wrap { position: absolute; inset: 0; z-index: 0; }
-    .hero-video-wrap video { width: 100%; height: 100%; object-fit: cover; opacity: 0.22; }
-    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(8,40,40,0.82) 0%, rgba(6,28,28,0.75) 60%, rgba(8,40,40,0.9) 100%); z-index: 1; }
+    .hero-video-wrap video { width: 100%; height: 100%; object-fit: cover; opacity: 0.75; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(8,40,40,0.55) 0%, rgba(6,28,28,0.45) 50%, rgba(8,40,40,0.65) 100%); z-index: 1; }
     .hero-content { position: relative; z-index: 2; max-width: 760px; }
     .hero-label { font-family: var(--heading); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.38em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.6rem; display: flex; align-items: center; gap: 1rem; }
     .hero-label::before { content: ''; display: block; width: 36px; height: 1px; background: var(--gold); }
-    .hero-title { font-family: var(--heading); font-size: clamp(2.2rem, 4.5vw, 4rem); font-weight: 300; line-height: 1.18; color: var(--white); margin-bottom: 1rem; letter-spacing: -0.01em; }
+    .hero-title { font-family: var(--heading); font-size: clamp(2.2rem, 4.5vw, 4rem); font-weight: 300; line-height: 1.18; color: var(--white); margin-bottom: 1rem; letter-spacing: -0.01em; text-shadow: 0 2px 20px rgba(6,28,28,0.7); }
     .hero-title strong { font-weight: 600; color: var(--gold); }
-    .hero-tagline { font-family: var(--heading); font-size: 0.75rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); opacity: 0.75; margin-bottom: 1.8rem; }
+    .hero-tagline { font-family: var(--heading); font-size: 0.75rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); opacity: 0.9; margin-bottom: 2.5rem; text-shadow: 0 1px 8px rgba(6,28,28,0.8); }
     .hero-subtitle { font-size: 0.95rem; font-weight: 300; line-height: 1.85; color: var(--muted); max-width: 580px; margin-bottom: 1.6rem; }
     .hero-bullets { list-style: none; margin-bottom: 2.8rem; }
     .hero-bullets li { font-size: 0.82rem; font-weight: 300; color: var(--muted); padding: 0.35rem 0; display: flex; align-items: flex-start; gap: 0.75rem; }
@@ -254,17 +254,11 @@
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-label">Dubai International Financial Centre &nbsp;·&nbsp; DFSA Regulated</div>
-    <h1 class="hero-title">Independent External Asset Manager<br />for <strong>Enterprising Families</strong></h1>
+    <h1 class="hero-title">Rooted in values,<br />invested in <strong>your legacy.</strong></h1>
     <p class="hero-tagline">Thinking in generations, not quarters</p>
-    <p class="hero-subtitle">We are an owner-managed external asset management firm that acts as a dedicated family office for a select group of affluent and ultra-high-net-worth families — combining institutional-grade investment discipline with the discretion and alignment of a private family office.</p>
-    <ul class="hero-bullets">
-      <li>Independent advice, free from product and distribution conflicts</li>
-      <li>Bespoke portfolios across global public and private markets</li>
-      <li>Dedicated relationship team and direct access to decision makers</li>
-    </ul>
     <div class="hero-actions">
       <a href="#" class="btn-primary open-modal"><span>Begin the Conversation</span><div class="arrow-icon">→</div></a>
-      <a href="#services" class="btn-ghost">Explore Our Services →</a>
+      <a href="#who" class="btn-ghost">Discover Sagetree →</a>
     </div>
   </div>
   <div class="hero-pillars">
@@ -537,7 +531,7 @@
       <div class="footer-col-title">Contact</div>
       <ul class="footer-links">
         <li><a href="#">Dubai International Financial Centre</a></li>
-        <li><a href="mailto:info@sagetreepartners.com">info@sagetreepartners.com</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#c2abaca4ad82b1a3a5a7b6b0a7a7b2a3b0b6aca7b0b1eca1adaf"><span class="__cf_email__" data-cfemail="7c15121a133c0f1d1b19080e19190c1d0e0812190e0f521f1311">[email&#160;protected]</span></a></li>
         <li><a href="#">LinkedIn</a></li>
       </ul>
     </div>
@@ -582,7 +576,7 @@
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Nav
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
@@ -590,10 +584,15 @@
   // Reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), 80); observer.unobserve(entry.target); }
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Fallback: if anything is still hidden after 2s, force-show everything
+  setTimeout(() => {
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
+  }, 2000);
 
   // Stagger
   document.querySelectorAll('.stats-grid, .services-grid, .process-grid').forEach(grid => {
@@ -636,11 +635,4 @@
     const name = document.getElementById('f-name');
     const email = document.getElementById('f-email');
     let valid = true;
-    [name, email].forEach(el => { el.classList.remove('input-error'); if (!el.value.trim()) { el.classList.add('input-error'); valid = false; } });
-    if (!valid) return;
-    formArea.style.display = 'none'; successArea.classList.add('show');
-    setTimeout(closeModal, 3500);
-  });
-</script>
-</body>
-</html>
+    [name, email].forEach(el => { el.classList.remove('
