@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sagetree Capital Partners — Independent Wealth Management for Enterprising Families | DIFC, Dubai</title>
+  <meta name="description" content="Sagetree Capital Partners is a DIFC-authorised external asset manager managing multi-family offices — independent, conflict-free wealth management for enterprising families with USD 5M+ in investable assets." />
+  <link rel="canonical" href="https://sagetreepartners.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sagetree Capital Partners" />
+  <meta property="og:title" content="Sagetree Capital Partners — Independent Wealth Management" />
+  <meta property="og:description" content="An external asset manager managing multi-family offices. Independent, conflict-free wealth management for enterprising families. DIFC Category 3C, regulated by the DFSA." />
+  <meta property="og:url" content="https://sagetreepartners.com/" />
+  <meta property="og:image" content="https://sagetreepartners.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sagetree Capital Partners — Independent Wealth Management" />
+  <meta name="twitter:description" content="Independent, conflict-free wealth management for enterprising families. DIFC Category 3C, regulated by the DFSA." />
+  <meta name="twitter:image" content="https://sagetreepartners.com/og-image.png" />
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta name="theme-color" content="#071d1c" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Prata&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Plausible Analytics — privacy-first, no cookies, no consent banner needed.
+       Requires a Plausible account for sagetreepartners.com; data records once the account exists. -->
+  <script defer data-domain="sagetreepartners.com" src="https://plausible.io/js/script.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialService",
+    "name": "Sagetree Capital Partners",
+    "url": "https://sagetreepartners.com/",
+    "email": "info@sagetreepartners.com",
+    "description": "An external asset manager managing multi-family offices, providing independent, conflict-free wealth management for enterprising families.",
+    "address": { "@type": "PostalAddress", "addressLocality": "Dubai International Financial Centre", "addressRegion": "Dubai", "addressCountry": "AE" }
+  }
+  </script>
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+       ═══════════════════════════════════════════════════════════ */
+    :root {
+      /* Ground — near-black teal; deeper than the old #082828 so gold and glass have room to sit above it */
+      --ground-0: #06181780;
+      --ground:   #071d1c;   /* page background */
+      --ground-1: #0a2523;   /* raised section background */
+      --ground-2: #0e2f2c;   /* highest solid surface */
+      --ground-deep: #04100f;/* footer / lowest */
+
+      /* Gold — kept from the logo; one accent, used sparingly so it stays precious */
+      --gold:       #c9a96e;
+      --gold-bright:#dfc290; /* hover / focus only */
+      --gold-faint: rgba(201,169,110,0.14); /* hairlines */
+      --gold-line:  rgba(201,169,110,0.28); /* borders that must be seen */
+
+      /* Ink — warm ivory, not white; three fixed steps instead of ad-hoc opacities */
+      --ink:      #f3efe6;   /* headlines */
+      --ink-body: #cfd6cf;   /* body copy — passes AA on all grounds */
+      --ink-dim:  #9fadA5;   /* metadata, captions — AA at small sizes on --ground */
+
+      /* Glass — frosted, not plastic: low fill, real blur, hairline light edge */
+      --glass-fill:   rgba(14,47,44,0.42);
+      --glass-edge:   rgba(243,239,230,0.10);
+      --glass-blur:   18px;
+
+      /* Type */
+      --serif: 'Prata', 'Georgia', serif;         /* display only */
+      --sans:  'Hanken Grotesk', 'Helvetica Neue', Arial, sans-serif;
+
+      /* Rhythm */
+      --pad-x: clamp(1.5rem, 6vw, 6rem);
+      --section-y: clamp(4.5rem, 10vw, 8.5rem);
+      --measure: 62ch;
+
+      /* Motion — one duration, one easing, everywhere */
+      --dur: 0.55s;
+      --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      background: var(--ground);
+      color: var(--ink-body);
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.75;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: var(--gold); color: var(--ground-deep); }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--ground-deep); }
+    ::-webkit-scrollbar-thumb { background: rgba(201,169,110,0.5); border-radius: 3px; }
+
+    /* Accessibility */
+    .skip-link {
+      position: absolute; left: 1rem; top: -100px; z-index: 3000;
+      background: var(--gold); color: var(--ground-deep);
+      padding: 0.7rem 1.4rem; font-weight: 600; font-size: 0.85rem;
+      text-decoration: none; border-radius: 2px; transition: top 0.2s;
+    }
+    .skip-link:focus { top: 1rem; }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--gold-bright); outline-offset: 3px; border-radius: 2px;
+    }
+    .visually-hidden {
+      position: absolute; width: 1px; height: 1px; margin: -1px;
+      clip: rect(0 0 0 0); overflow: hidden; white-space: nowrap;
+    }
+
+    /* ═══ Reveal — safe pattern: content is visible by default.
+       JS adds .pre-reveal only when IntersectionObserver exists,
+       and a failsafe reveals everything after 2.5s regardless. ═══ */
+    .pre-reveal { opacity: 0; transform: translateY(16px); }
+    .revealed   { opacity: 1; transform: none; transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .pre-reveal { opacity: 1; transform: none; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       NAV
+       ═══════════════════════════════════════════════════════════ */
+    header.site-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.15rem var(--pad-x);
+      background: rgba(7,29,28,0.55);
+      -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+      backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+      border-bottom: 1px solid var(--glass-edge);
+      transition: padding var(--dur) var(--ease), background var(--dur) var(--ease);
+    }
+    header.site-nav.scrolled { padding: 0.7rem var(--pad-x); background: rgba(7,29,28,0.82); }
+    .nav-logo { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; }
+    .nav-logo img { height: 42px; width: 42px; object-fit: cover; border-radius: 50%; }
+    .nav-logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .nav-logo-text .wordmark { font-family: var(--serif); font-size: 1.02rem; letter-spacing: 0.14em; color: var(--ink); }
+    .nav-logo-text .subline  { font-size: 0.56rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a:not(.nav-cta) {
+      text-decoration: none; font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-body);
+      padding: 0.3rem 0; position: relative; transition: color var(--dur);
+    }
+    .nav-links a:not(.nav-cta)::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+      background: var(--gold); transform: scaleX(0); transform-origin: left;
+      transition: transform var(--dur) var(--ease);
+    }
+    .nav-links a:not(.nav-cta):hover { color: var(--gold-bright); }
+    .nav-links a:not(.nav-cta):hover::after { transform: scaleX(1); }
+    .nav-cta {
+      display: inline-block; padding: 0.55rem 1.4rem; border: 1px solid var(--gold-line);
+      color: var(--gold); text-decoration: none; font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase; border-radius: 2px;
+      background: rgba(201,169,110,0.06);
+      transition: background var(--dur), color var(--dur), border-color var(--dur);
+    }
+    .nav-cta:hover { background: var(--gold); color: var(--ground-deep); border-color: var(--gold); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; z-index: 1101; }
+    .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--gold); transition: all 0.3s; }
+    .hamburger[aria-expanded="true"] span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+    .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .hamburger[aria-expanded="true"] span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 1100;
+      background: rgba(6,24,23,0.96);
+      -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px);
+      flex-direction: column; align-items: center; justify-content: center; gap: 2.1rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: var(--serif); font-size: 1.35rem; color: var(--ink); text-decoration: none; }
+    .mobile-menu a:hover { color: var(--gold-bright); }
+    .mobile-menu .mobile-cta { font-family: var(--sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; border: 1px solid var(--gold-line); color: var(--gold); padding: 0.9rem 2.2rem; margin-top: 0.5rem; }
+
+    /* ═══════════════════════════════════════════════════════════
+       HERO — layered engraving: sky / skyline / haze / tree
+       ═══════════════════════════════════════════════════════════ */
+    .hero {
+      position: relative; min-height: 100svh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 7rem var(--pad-x) 4.5rem; overflow: hidden;
+    }
+    .hero-art { position: absolute; inset: 0; z-index: 0; }
+    .hero-art svg { width: 100%; height: 100%; display: block; }
+    .hero-scrim {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(to top, rgba(7,29,28,0.92) 0%, rgba(7,29,28,0.35) 38%, rgba(7,29,28,0.05) 70%);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 880px; }
+    .eyebrow {
+      display: flex; align-items: center; gap: 0.9rem;
+      font-size: 0.66rem; font-weight: 600; letter-spacing: 0.34em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 1.6rem;
+    }
+    .eyebrow::before { content: ''; width: 38px; height: 1px; background: var(--gold); flex-shrink: 0; }
+    .hero h1 {
+      font-family: var(--serif); font-weight: 400;
+      font-size: clamp(2.5rem, 5.6vw, 4.6rem);
+      line-height: 1.14; letter-spacing: 0.005em; color: var(--ink);
+      margin-bottom: 1.2rem; max-width: 15ch;
+      text-shadow: 0 2px 30px rgba(4,16,15,0.6);
+    }
+    .hero h1 em { font-style: italic; color: var(--gold-bright); }
+    .hero-tagline {
+      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem;
+    }
+    .hero-sub { max-width: 44ch; font-size: 1.02rem; font-weight: 300; line-height: 1.8; color: var(--ink-body); margin-bottom: 2.4rem; }
+    .hero-actions { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 3rem; }
+
+    /* Independent-risk strip — frosted glass over the artwork */
+    .hero-strip {
+      position: relative; z-index: 2;
+      display: flex; gap: 0; flex-wrap: wrap;
+      background: var(--glass-fill);
+      -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.25);
+      backdrop-filter: blur(var(--glass-blur)) saturate(1.25);
+      border: 1px solid var(--glass-edge);
+      border-radius: 3px;
+      max-width: 880px;
+    }
+    .hero-strip-item { flex: 1 1 200px; padding: 1.1rem 1.6rem; }
+    .hero-strip-item + .hero-strip-item { border-left: 1px solid var(--glass-edge); }
+    .hero-strip-item .k { display: block; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.25rem; }
+    .hero-strip-item .v { display: block; font-size: 0.82rem; font-weight: 300; color: var(--ink-body); line-height: 1.55; }
+
+    /* ═══════════════════════════════════════════════════════════
+       BUTTONS
+       ═══════════════════════════════════════════════════════════ */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.8rem;
+      padding: 0.95rem 2.1rem; text-decoration: none; cursor: pointer;
+      font-family: var(--sans); font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase; border-radius: 2px;
+      transition: background var(--dur) var(--ease), color var(--dur) var(--ease),
+                  border-color var(--dur) var(--ease), transform var(--dur) var(--ease),
+                  box-shadow var(--dur) var(--ease);
+    }
+    .btn-solid { background: var(--gold); color: var(--ground-deep); border: 1px solid var(--gold); }
+    .btn-solid:hover { background: var(--gold-bright); border-color: var(--gold-bright); transform: translateY(-1px); box-shadow: 0 12px 30px -12px rgba(201,169,110,0.45); }
+    .btn-outline { background: rgba(201,169,110,0.05); color: var(--gold); border: 1px solid var(--gold-line); }
+    .btn-outline:hover { background: var(--gold); color: var(--ground-deep); border-color: var(--gold); transform: translateY(-1px); }
+    .btn-ghost {
+      background: none; border: none; padding: 0.4rem 0;
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--ink-body); text-decoration: none; display: inline-flex; gap: 0.5rem; align-items: center;
+      transition: color var(--dur); cursor: pointer;
+    }
+    .btn-ghost:hover { color: var(--gold-bright); }
+
+    /* ═══════════════════════════════════════════════════════════
+       SECTION COMMONS
+       ═══════════════════════════════════════════════════════════ */
+    section { padding: var(--section-y) var(--pad-x); position: relative; }
+    .label {
+      font-size: 0.64rem; font-weight: 600; letter-spacing: 0.34em;
+      text-transform: uppercase; color: var(--gold);
+      display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.1rem;
+    }
+    .label::before { content: ''; width: 26px; height: 1px; background: var(--gold); flex-shrink: 0; }
+    h2 {
+      font-family: var(--serif); font-weight: 400;
+      font-size: clamp(1.9rem, 3.4vw, 3rem);
+      line-height: 1.2; color: var(--ink); letter-spacing: 0.004em;
+      margin-bottom: 1rem; max-width: 24ch;
+    }
+    h2 em { font-style: italic; color: var(--gold-bright); }
+    .tagline { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); opacity: 0.85; margin-bottom: 1.4rem; }
+    .lede { max-width: var(--measure); font-size: 0.98rem; font-weight: 300; line-height: 1.85; color: var(--ink-body); }
+    .rule { width: 54px; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); margin: 2rem 0; border: none; }
+
+    /* ═══ STATS ═══ */
+    .stats { background: var(--ground-1); border-top: 1px solid var(--gold-faint); border-bottom: 1px solid var(--gold-faint); padding: 3.4rem var(--pad-x); }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem; max-width: 1200px; margin: 0 auto; }
+    .stat { text-align: left; border-left: 1px solid var(--gold-faint); padding-left: 1.6rem; }
+    .stat .num { font-family: var(--serif); font-size: clamp(1.9rem, 3vw, 2.7rem); color: var(--gold); line-height: 1.1; display: block; margin-bottom: 0.45rem; }
+    .stat .lab { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-dim); line-height: 1.6; display: block; }
+
+    /* ═══ WHO WE ARE ═══ */
+    .who { max-width: 1200px; margin: 0 auto; }
+    .who-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(2.5rem, 6vw, 6rem); align-items: start; }
+    .who-body p { max-width: var(--measure); font-size: 0.96rem; font-weight: 300; line-height: 1.9; color: var(--ink-body); }
+    .who-body p + p { margin-top: 1.3rem; }
+    .who-quote {
+      margin-top: 2.4rem; padding: 1.8rem 2.2rem;
+      background: var(--glass-fill);
+      -webkit-backdrop-filter: blur(var(--glass-blur)); backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--glass-edge); border-left: 2px solid var(--gold);
+      border-radius: 3px;
+      font-family: var(--serif); font-size: 1.08rem; line-height: 1.65; color: var(--ink);
+    }
+    .pillars { display: flex; flex-direction: column; gap: 1rem; }
+    .pillars-title { font-size: 0.64rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+    .pillar {
+      padding: 1.7rem 1.9rem;
+      background: var(--glass-fill);
+      -webkit-backdrop-filter: blur(var(--glass-blur)); backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--glass-edge); border-radius: 3px;
+      transition: border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+    }
+    .pillar:hover { border-color: var(--gold-line); transform: translateY(-2px); }
+    .pillar h3 { font-family: var(--serif); font-weight: 400; font-size: 1.12rem; color: var(--ink); margin-bottom: 0.5rem; }
+    .pillar .n { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; color: var(--gold); opacity: 0.7; display: block; margin-bottom: 0.7rem; }
+    .pillar p { font-size: 0.86rem; font-weight: 300; line-height: 1.75; color: var(--ink-body); }
+
+    /* ═══ WHO WE SERVE ═══ */
+    .serve { background: var(--ground-1); border-top: 1px solid var(--gold-faint); }
+    .serve-inner { max-width: 1200px; margin: 0 auto; }
+    .serve-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--gold-faint); border: 1px solid var(--gold-faint); margin-top: 3rem; }
+    .serve-cell { background: var(--ground-1); padding: 2rem 1.9rem; transition: background var(--dur) var(--ease); }
+    .serve-cell:hover { background: var(--ground-2); }
+    .serve-cell .idx { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; color: var(--gold); opacity: 0.6; display: block; margin-bottom: 0.9rem; }
+    .serve-cell h3 { font-family: var(--serif); font-weight: 400; font-size: 1.06rem; line-height: 1.4; color: var(--ink); margin-bottom: 0.55rem; }
+    .serve-cell p { font-size: 0.84rem; font-weight: 300; line-height: 1.7; color: var(--ink-body); }
+    .serve-callout {
+      margin-top: 3rem; padding: 2.2rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+      background: var(--glass-fill);
+      -webkit-backdrop-filter: blur(var(--glass-blur)); backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--gold-line); border-radius: 3px;
+    }
+    .serve-callout .big { font-family: var(--serif); font-size: clamp(1.15rem, 2vw, 1.5rem); line-height: 1.5; color: var(--ink); max-width: 34ch; }
+    .serve-callout .big em { color: var(--gold-bright); font-style: italic; }
+    .serve-callout .fit { font-size: 0.8rem; font-weight: 300; color: var(--ink-dim); max-width: 34ch; line-height: 1.7; }
+
+    /* ═══ SERVICES ═══ */
+    .services-head { max-width: 1200px; margin: 0 auto 1rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end; }
+    .service-rows { max-width: 1200px; margin: 3.5rem auto 0; }
+    .service-row {
+      display: grid; grid-template-columns: 120px 1fr 1.1fr; gap: clamp(1.5rem, 4vw, 4rem);
+      padding: 3.2rem 0; border-top: 1px solid var(--gold-faint); align-items: start;
+    }
+    .service-row:last-of-type { border-bottom: 1px solid var(--gold-faint); }
+    .service-num { font-family: var(--serif); font-size: 2rem; color: var(--gold); opacity: 0.45; line-height: 1; }
+    .service-main h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.3rem, 2vw, 1.65rem); line-height: 1.35; color: var(--ink); margin-bottom: 0.8rem; max-width: 18ch; }
+    .service-main p { font-size: 0.92rem; font-weight: 300; line-height: 1.8; color: var(--ink-body); max-width: 40ch; }
+    .service-detail ul { list-style: none; }
+    .service-detail li {
+      font-size: 0.88rem; font-weight: 300; color: var(--ink-body); line-height: 1.7;
+      padding: 0.55rem 0; display: flex; gap: 0.9rem; align-items: flex-start;
+      border-bottom: 1px solid rgba(201,169,110,0.07);
+    }
+    .service-detail li:last-child { border-bottom: none; }
+    .service-detail li::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+    .risk-flag {
+      display: inline-block; margin-top: 1.1rem; padding: 0.45rem 0.9rem;
+      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid var(--gold-line); border-radius: 2px;
+      background: rgba(201,169,110,0.06);
+    }
+
+    /* Engagement path */
+    .path { max-width: 1200px; margin: 4rem auto 0; }
+    .path-title { font-size: 0.64rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.6rem; }
+    .path-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; }
+    .path-step { padding: 0 1.4rem 0 0; }
+    .path-step + .path-step { border-left: 1px solid var(--gold-faint); padding-left: 1.4rem; }
+    .path-step .n { font-family: var(--serif); font-size: 0.95rem; color: var(--gold); opacity: 0.7; display: block; margin-bottom: 0.4rem; }
+    .path-step h4 { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); margin-bottom: 0.4rem; }
+    .path-step p { font-size: 0.78rem; font-weight: 300; line-height: 1.65; color: var(--ink-dim); }
+
+    /* ═══ MANDATE ═══ */
+    .mandate { background: linear-gradient(180deg, var(--ground-deep) 0%, var(--ground-1) 100%); border-top: 1px solid var(--gold-faint); }
+    .mandate-inner { max-width: 1200px; margin: 0 auto; }
+    .mandate-head { max-width: 720px; }
+    .mandate-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; margin-top: 3.2rem; }
+    .mandate-card {
+      padding: 2.2rem 2.3rem;
+      background: var(--glass-fill);
+      -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.2); backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+      border: 1px solid var(--glass-edge); border-radius: 3px;
+      transition: border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+    }
+    .mandate-card:hover { border-color: var(--gold-line); transform: translateY(-2px); }
+    .mandate-card h3 { font-family: var(--serif); font-weight: 400; font-size: 1.25rem; color: var(--ink); margin-bottom: 0.7rem; }
+    .mandate-card p { font-size: 0.9rem; font-weight: 300; line-height: 1.8; color: var(--ink-body); }
+    .mandate-card .glyph { display: block; width: 26px; height: 1px; background: var(--gold); margin-bottom: 1.3rem; }
+
+    /* ═══ KNOWLEDGE BANK ═══ */
+    .knowledge-inner { max-width: 1200px; margin: 0 auto; }
+    .kb-featured { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 3rem; }
+    .kb-card {
+      display: flex; flex-direction: column; min-height: 300px;
+      padding: 2.1rem 2.1rem 1.8rem; text-decoration: none;
+      background: var(--ground-1); border: 1px solid var(--gold-faint); border-radius: 3px;
+      transition: border-color var(--dur) var(--ease), transform var(--dur) var(--ease), background var(--dur) var(--ease);
+    }
+    .kb-card:hover { border-color: var(--gold-line); background: var(--ground-2); transform: translateY(-3px); }
+    .kb-card .meta { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem; display: flex; justify-content: space-between; gap: 1rem; }
+    .kb-card .meta .state { color: var(--ink-dim); font-weight: 500; }
+    .kb-card h3 { font-family: var(--serif); font-weight: 400; font-size: 1.4rem; line-height: 1.3; color: var(--ink); margin-bottom: 0.8rem; }
+    .kb-card p { font-size: 0.86rem; font-weight: 300; line-height: 1.75; color: var(--ink-body); flex-grow: 1; }
+    .kb-card .cta { margin-top: 1.6rem; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+    .kb-pillars { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 2.6rem; align-items: center; }
+    .kb-pillars .t { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-dim); margin-right: 0.6rem; }
+    .kb-pill { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; color: var(--ink-body); border: 1px solid var(--gold-faint); border-radius: 20px; padding: 0.45rem 1.1rem; background: rgba(201,169,110,0.04); }
+    .kb-subscribe { margin-top: 3.5rem; max-width: 560px; }
+    .kb-subscribe .st { font-family: var(--serif); font-size: 1.15rem; color: var(--ink); margin-bottom: 1.2rem; }
+    .kb-form { display: flex; gap: 0; border: 1px solid var(--gold-line); border-radius: 3px; overflow: hidden; background: rgba(201,169,110,0.04); }
+    .kb-form input {
+      flex: 1; background: transparent; border: none; padding: 0.95rem 1.2rem;
+      color: var(--ink); font-family: var(--sans); font-size: 0.9rem; font-weight: 300; outline: none; min-width: 0;
+    }
+    .kb-form input::placeholder { color: var(--ink-dim); }
+    .kb-form button {
+      background: var(--gold); color: var(--ground-deep); border: none; cursor: pointer;
+      padding: 0 1.6rem; font-family: var(--sans); font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase; transition: background var(--dur);
+      flex-shrink: 0;
+    }
+    .kb-form button:hover { background: var(--gold-bright); }
+    .kb-note { font-size: 0.72rem; font-weight: 300; color: var(--ink-dim); margin-top: 0.8rem; }
+    .kb-msg { font-size: 0.8rem; margin-top: 0.8rem; color: var(--gold-bright); display: none; }
+    .kb-msg.show { display: block; }
+
+    /* ═══ GOVERNANCE ═══ */
+    .governance { background: var(--ground-1); border-top: 1px solid var(--gold-faint); }
+    .gov-inner { max-width: 1200px; margin: 0 auto; }
+    .gov-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 3rem; }
+    .gov-card {
+      display: flex; flex-direction: column;
+      padding: 2rem 2rem 1.7rem; background: var(--ground);
+      border: 1px solid var(--gold-faint); border-radius: 3px;
+      transition: border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+    }
+    .gov-card:hover { border-color: var(--gold-line); transform: translateY(-2px); }
+    .gov-card h3 { font-family: var(--serif); font-weight: 400; font-size: 1.08rem; line-height: 1.4; color: var(--ink); margin-bottom: 0.6rem; }
+    .gov-card p { font-size: 0.83rem; font-weight: 300; line-height: 1.7; color: var(--ink-body); flex-grow: 1; }
+    .gov-foot { margin-top: 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .gov-tag { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-dim); border: 1px solid var(--gold-faint); border-radius: 2px; padding: 0.3rem 0.7rem; }
+    .gov-req { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); text-decoration: none; background: none; border: none; cursor: pointer; font-family: var(--sans); transition: color var(--dur); }
+    .gov-req:hover { color: var(--gold-bright); }
+
+    /* ═══ CONTACT ═══ */
+    .contact { background: linear-gradient(180deg, var(--ground) 0%, var(--ground-deep) 100%); border-top: 1px solid var(--gold-faint); }
+    .contact-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 6vw, 6rem); align-items: start; }
+    .contact-left .lede { margin-bottom: 2.2rem; }
+    .contact-details { list-style: none; margin-bottom: 2.4rem; }
+    .contact-details li { padding: 0.85rem 0; border-bottom: 1px solid var(--gold-faint); display: flex; gap: 1.2rem; font-size: 0.9rem; font-weight: 300; color: var(--ink-body); }
+    .contact-details li:first-child { border-top: 1px solid var(--gold-faint); }
+    .contact-details .k { font-size: 0.64rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); min-width: 90px; padding-top: 0.25rem; }
+    .contact-details a { color: var(--ink-body); text-decoration: none; border-bottom: 1px solid var(--gold-line); transition: color var(--dur); }
+    .contact-details a:hover { color: var(--gold-bright); }
+    .contact-min { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-dim); line-height: 2; }
+
+    .contact-form {
+      padding: 2.6rem 2.5rem;
+      background: var(--glass-fill);
+      -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.2); backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+      border: 1px solid var(--glass-edge); border-radius: 3px;
+    }
+    .contact-form .ft { font-size: 0.64rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.8rem; }
+    .field { margin-bottom: 1.4rem; }
+    .field label { display: block; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-dim); margin-bottom: 0.45rem; }
+    .field input, .field textarea, .field select {
+      width: 100%; background: rgba(7,29,28,0.5); border: 1px solid var(--gold-faint);
+      border-radius: 2px; padding: 0.8rem 1rem; color: var(--ink);
+      font-family: var(--sans); font-size: 0.9rem; font-weight: 300; outline: none;
+      transition: border-color var(--dur);
+    }
+    .field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23c9a96e' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; }
+    .field input::placeholder, .field textarea::placeholder { color: rgba(159,173,165,0.6); }
+    .field input:focus, .field textarea:focus, .field select:focus { border-color: var(--gold); }
+    .field textarea { resize: vertical; min-height: 100px; }
+    .field .err-note { display: none; font-size: 0.72rem; color: #e0a9a0; margin-top: 0.35rem; }
+    .field.invalid input { border-color: rgba(224,169,160,0.7); }
+    .field.invalid .err-note { display: block; }
+    .form-submit-btn { width: 100%; justify-content: center; }
+    .form-note { font-size: 0.68rem; font-weight: 300; color: var(--ink-dim); margin-top: 1rem; line-height: 1.7; }
+    .form-status { display: none; margin-top: 1.2rem; padding: 1rem 1.2rem; border-radius: 2px; font-size: 0.85rem; line-height: 1.6; }
+    .form-status.ok { display: block; border: 1px solid var(--gold-line); color: var(--gold-bright); background: rgba(201,169,110,0.07); }
+    .form-status.fail { display: block; border: 1px solid rgba(224,169,160,0.4); color: #e0c0b9; background: rgba(224,169,160,0.06); }
+    .form-status a { color: var(--gold-bright); }
+
+    /* ═══ FOOTER ═══ */
+    footer { background: var(--ground-deep); border-top: 1px solid var(--gold-faint); padding: 4rem var(--pad-x) 2rem; }
+    .footer-grid { max-width: 1200px; margin: 0 auto 3rem; display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 3rem; }
+    .footer-brand p.tag { font-size: 0.85rem; font-weight: 300; color: var(--ink-body); line-height: 1.8; margin: 1.2rem 0; max-width: 38ch; }
+    .footer-reg { font-size: 0.68rem; font-weight: 300; color: var(--ink-dim); line-height: 1.8; max-width: 44ch; }
+    .footer-col h4 { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.6rem; }
+    .footer-col a { font-size: 0.83rem; font-weight: 300; color: var(--ink-body); text-decoration: none; transition: color var(--dur); }
+    .footer-col a:hover { color: var(--gold-bright); }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--gold-faint); padding-top: 1.8rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .footer-bottom span { font-size: 0.68rem; font-weight: 300; color: var(--ink-dim); letter-spacing: 0.04em; }
+    .footer-bottom .difc { font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); opacity: 0.7; }
+
+    /* ═══════════════════════════════════════════════════════════
+       HERO ART MOTION — one moving element: slow haze drift
+       ═══════════════════════════════════════════════════════════ */
+    @keyframes haze-drift { from { transform: translateX(-30px); } to { transform: translateX(30px); } }
+    .haze-a { animation: haze-drift 46s ease-in-out infinite alternate; }
+    .haze-b { animation: haze-drift 64s ease-in-out infinite alternate-reverse; }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width: 1060px) {
+      .service-row { grid-template-columns: 70px 1fr; }
+      .service-detail { grid-column: 2; margin-top: 1.2rem; }
+      .kb-featured, .gov-grid, .serve-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero { padding-bottom: 3rem; }
+      .hero h1 { max-width: 12ch; }
+      .hero-strip-item + .hero-strip-item { border-left: none; border-top: 1px solid var(--glass-edge); }
+      .hero-strip { flex-direction: column; }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 1.8rem; }
+      .who-grid, .contact-inner, .services-head, .mandate-grid { grid-template-columns: 1fr; }
+      .serve-grid, .kb-featured, .gov-grid { grid-template-columns: 1fr; }
+      .path-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+      .path-step + .path-step { border-left: none; border-top: 1px solid var(--gold-faint); padding: 1.4rem 0 0; }
+      .path-step { padding: 0; }
+      .serve-callout { flex-direction: column; align-items: flex-start; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .contact-form { padding: 2rem 1.5rem; }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .kb-form { flex-direction: column; }
+      .kb-form button { padding: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ══════ NAV ══════ -->
+<header class="site-nav" id="siteNav">
+  <a href="#top" class="nav-logo" aria-label="Sagetree Capital Partners — home">
+    <img src="00_Sage_Tree_Logo.jpeg" alt="" width="42" height="42" />
+    <span class="nav-logo-text">
+      <span class="wordmark">Sagetree</span>
+      <span class="subline">Capital Partners</span>
+    </span>
+  </a>
+  <nav aria-label="Primary">
+    <ul class="nav-links">
+      <li><a href="#who-we-are">Who We Are</a></li>
+      <li><a href="#who-we-serve">Who We Serve</a></li>
+      <li><a href="#services">What We Do</a></li>
+      <li><a href="#mandate">Our Mandate</a></li>
+      <li><a href="#knowledge">Knowledge Bank</a></li>
+      <li><a href="#governance">Governance</a></li>
+      <li><a href="#contact" class="nav-cta">Begin the Conversation</a></li>
+    </ul>
+  </nav>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu">
+  <a href="#who-we-are" class="m-link">Who We Are</a>
+  <a href="#who-we-serve" class="m-link">Who We Serve</a>
+  <a href="#services" class="m-link">What We Do</a>
+  <a href="#mandate" class="m-link">Our Mandate</a>
+  <a href="#knowledge" class="m-link">Knowledge Bank</a>
+  <a href="#governance" class="m-link">Governance</a>
+  <a href="#contact" class="m-link mobile-cta">Begin the Conversation</a>
+</div>
+
+<main id="main">
+
+<!-- ══════ HERO ══════ -->
+<section class="hero" id="top" aria-label="Introduction">
+  <div class="hero-art" aria-hidden="true">
+    <!-- Layered engraving: sky → skyline → haze → tree. Drawn, not stock. -->
+    <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" role="img" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0"   stop-color="#04100f"/>
+          <stop offset="0.45" stop-color="#0a2a28"/>
+          <stop offset="0.78" stop-color="#14413c"/>
+          <stop offset="1"   stop-color="#1c4f47"/>
+        </linearGradient>
+        <radialGradient id="glow" cx="0.66" cy="0.86" r="0.55">
+          <stop offset="0" stop-color="#c9a96e" stop-opacity="0.28"/>
+          <stop offset="0.5" stop-color="#c9a96e" stop-opacity="0.08"/>
+          <stop offset="1" stop-color="#c9a96e" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="hazeg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#1c4f47" stop-opacity="0"/>
+          <stop offset="1" stop-color="#245a50" stop-opacity="0.55"/>
+        </linearGradient>
+      </defs>
+
+      <rect width="1600" height="900" fill="url(#sky)"/>
+      <rect width="1600" height="900" fill="url(#glow)"/>
+
+      <!-- distant skyline -->
+      <g id="skyline" fill="#0d332f" opacity="0.9">
+        <!-- left cluster -->
+        <rect x="470" y="700" width="34" height="110"/>
+        <rect x="512" y="672" width="26" height="138"/>
+        <rect x="546" y="692" width="40" height="118"/>
+        <rect x="594" y="650" width="24" height="160"/>
+        <polygon points="618,810 618,640 630,624 642,640 642,810"/>
+        <rect x="652" y="676" width="30" height="134"/>
+        <rect x="690" y="702" width="44" height="108"/>
+        <!-- Emirates Towers pair -->
+        <polygon points="748,810 748,626 776,596 776,810"/>
+        <polygon points="788,810 788,652 812,628 812,810"/>
+        <rect x="822" y="688" width="30" height="122"/>
+        <rect x="858" y="662" width="22" height="148"/>
+        <!-- Burj Khalifa -->
+        <polygon points="960,810 960,560 972,548 972,470 981,460 981,392 988,384 988,318 993,312 993,252 996,248 996,196 999,140 1002,196 1002,250 1005,254 1005,314 1010,320 1010,386 1017,394 1017,462 1026,472 1026,550 1038,562 1038,810"/>
+        <rect x="1052" y="642" width="28" height="168"/>
+        <rect x="1088" y="676" width="36" height="134"/>
+        <polygon points="1132,810 1132,636 1146,616 1160,636 1160,810"/>
+        <rect x="1170" y="694" width="30" height="116"/>
+        <rect x="1208" y="660" width="24" height="150"/>
+        <rect x="1240" y="700" width="42" height="110"/>
+        <!-- Burj Al Arab sail -->
+        <path d="M1298 810 L1298 700 Q1298 606 1344 570 Q1326 660 1330 810 Z"/>
+        <rect x="1344" y="726" width="26" height="84"/>
+        <rect x="1380" y="748" width="36" height="62"/>
+        <rect x="1424" y="720" width="30" height="90"/>
+        <rect x="1462" y="742" width="40" height="68"/>
+        <!-- far-left low cluster for balance -->
+        <rect x="120" y="740" width="34" height="70"/>
+        <rect x="162" y="718" width="26" height="92"/>
+        <rect x="196" y="752" width="40" height="58"/>
+        <rect x="300" y="730" width="28" height="80"/>
+        <rect x="336" y="756" width="44" height="54"/>
+      </g>
+
+      <!-- drifting haze — the single moving element -->
+      <g class="haze-a" opacity="0.5">
+        <ellipse cx="1050" cy="700" rx="520" ry="60" fill="#1c4f47" opacity="0.55"/>
+      </g>
+      <g class="haze-b" opacity="0.4">
+        <ellipse cx="700" cy="760" rx="640" ry="52" fill="#245a50" opacity="0.5"/>
+      </g>
+      <rect y="640" width="1600" height="260" fill="url(#hazeg)"/>
+
+      <!-- ground — gentle rise at right where the tree stands -->
+      <path d="M0 900 L0 828 Q300 816 640 822 Q980 828 1160 812 Q1330 796 1600 806 L1600 900 Z" fill="#051413"/>
+
+      <!-- the tree — foreground right, standing in front of the city -->
+      <g id="tree">
+        <g fill="#031010">
+          <!-- trunk with root flare, forking into the canopy -->
+          <path d="M1252 818 Q1274 812 1288 804 Q1298 744 1300 690 Q1301 648 1297 606 L1272 578 Q1264 568 1258 554 L1288 574 Q1296 582 1301 592 Q1300 566 1294 540 L1316 560 Q1324 574 1327 594 Q1332 570 1330 540 L1348 566 Q1352 582 1350 604 Q1360 588 1376 576 L1362 604 Q1354 618 1345 626 Q1341 660 1342 690 Q1343 748 1350 804 Q1366 812 1388 818 Q1352 828 1318 827 Q1284 828 1252 818 Z"/>
+          <!-- lower limbs reaching out of the canopy line -->
+          <path d="M1295 640 Q1246 606 1204 594 Q1170 584 1140 588 L1178 566 Q1218 566 1252 588 Q1280 606 1296 628 Z"/>
+          <path d="M1344 636 Q1392 600 1436 590 Q1470 582 1500 588 L1462 564 Q1422 564 1388 586 Q1360 604 1342 626 Z"/>
+        </g>
+        <!-- canopy — three offset masses so it reads as foliage, not cloud -->
+        <g fill="#041312">
+          <path d="M1076 560 Q1050 540 1062 508 Q1040 484 1064 456 Q1054 420 1092 404 Q1094 366 1136 360 Q1148 324 1194 326 Q1216 296 1262 306 Q1296 282 1338 300 Q1382 286 1412 316 Q1456 314 1470 352 Q1510 362 1506 400 Q1536 422 1520 456 Q1544 486 1520 512 Q1532 542 1500 558 Q1500 584 1466 588 Q1450 610 1414 600 Q1392 618 1358 606 Q1330 622 1298 608 Q1266 622 1238 606 Q1204 616 1180 598 Q1144 602 1130 578 Q1094 578 1076 560 Z"/>
+          <!-- crown lobes above the main mass -->
+          <path d="M1180 352 Q1176 318 1210 306 Q1224 276 1262 282 Q1288 260 1322 274 Q1352 262 1376 284 Q1360 302 1330 300 Q1306 314 1280 308 Q1256 322 1230 320 Q1206 336 1180 352 Z" opacity="0.9"/>
+        </g>
+        <!-- faint light filtering through the canopy — depth, not cut-outs -->
+        <g fill="#123c34">
+          <path d="M1188 470 Q1218 456 1252 462 Q1232 478 1200 480 Z" opacity="0.28"/>
+          <path d="M1360 452 Q1394 440 1424 450 Q1402 466 1370 464 Z" opacity="0.24"/>
+          <path d="M1272 398 Q1304 388 1332 396 Q1310 410 1282 408 Z" opacity="0.18"/>
+          <path d="M1136 512 Q1158 502 1180 508 Q1162 522 1140 520 Z" opacity="0.2"/>
+        </g>
+        <!-- loose foliage clumps at the canopy edge -->
+        <g fill="#041312">
+          <ellipse cx="1062" cy="492" rx="26" ry="14" opacity="0.85"/>
+          <ellipse cx="1530" cy="470" rx="24" ry="13" opacity="0.85"/>
+          <ellipse cx="1120" cy="386" rx="22" ry="12" opacity="0.8"/>
+          <ellipse cx="1462" cy="330" rx="20" ry="11" opacity="0.8"/>
+          <ellipse cx="1300" cy="250" rx="24" ry="12" opacity="0.75"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div class="hero-scrim" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <p class="eyebrow">Dubai International Financial Centre · DFSA Regulated</p>
+    <h1>Rooted in values, invested in <em>your legacy.</em></h1>
+    <p class="hero-tagline">Thinking in generations, not quarters</p>
+    <p class="hero-sub">An external asset manager managing multi-family offices — independent, conflict-free wealth management for enterprising families.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-solid">Begin the Conversation</a>
+      <a href="#who-we-are" class="btn-ghost">Explore the firm ↓</a>
+    </div>
+  </div>
+
+  <div class="hero-strip" role="list" aria-label="What defines Sagetree">
+    <div class="hero-strip-item" role="listitem">
+      <span class="k">Independent Risk Oversight</span>
+      <span class="v">Portfolios reviewed against your risk parameters — not a bank's product targets.</span>
+    </div>
+    <div class="hero-strip-item" role="listitem">
+      <span class="k">Custody in Your Name</span>
+      <span class="v">Assets in segregated accounts at leading international custodian banks. Always.</span>
+    </div>
+    <div class="hero-strip-item" role="listitem">
+      <span class="k">A Capped Number of Families</span>
+      <span class="v">Depth, responsiveness and true partnership — by design, not by promise.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ STATS ══════ -->
+<div class="stats" role="region" aria-label="Key facts">
+  <div class="stats-grid">
+    <div class="stat" data-reveal><span class="num" data-count="20" data-suffix="+">20+</span><span class="lab">Years of global private banking experience</span></div>
+    <div class="stat" data-reveal><span class="num">DIFC</span><span class="lab">Category 3C authorised &amp; regulated by the DFSA</span></div>
+    <div class="stat" data-reveal><span class="num">USD 5M+</span><span class="lab">Minimum investable assets for partnership</span></div>
+    <div class="stat" data-reveal><span class="num">Multi-Family</span><span class="lab">Managing multi-family offices — boutique model, institutional capability</span></div>
+  </div>
+</div>
+
+<!-- ══════ WHO WE ARE ══════ -->
+<section id="who-we-are" aria-labelledby="who-title">
+  <div class="who">
+    <div class="who-grid">
+      <div data-reveal>
+        <p class="label">Who We Are</p>
+        <h2 id="who-title">We sit exclusively on <em>your side of the table.</em></h2>
+        <p class="tagline">Built on principle. Grown with purpose.</p>
+        <hr class="rule" />
+        <div class="who-body">
+          <p>Sagetree Capital Partners is a regulated external asset manager managing multi-family offices — a boutique platform that serves a deliberately limited number of families with the depth and continuity of a single-family office, and shared infrastructure and investment capability across families.</p>
+          <p>We do not manufacture products. Our role is to design and oversee your family's total investment architecture, coordinate best-in-class specialists, and ensure the agreed strategy is implemented consistently across banks, custodians and jurisdictions.</p>
+          <p>The team behind Sagetree brings more than twenty years of experience at global private banks — experience now applied on one side of the table only: yours.</p>
+        </div>
+        <blockquote class="who-quote">"We cap the number of client relationships to maintain depth, responsiveness and true partnership."</blockquote>
+      </div>
+      <div data-reveal>
+        <p class="pillars-title">How We Invest — Three Commitments</p>
+        <div class="pillars">
+          <article class="pillar">
+            <span class="n">I</span>
+            <h3>Capital Preservation First</h3>
+            <p>Long-term wealth creation comes from a clear plan, disciplined risk management and avoiding permanent capital loss. Real returns after inflation and fees. Transparent, understandable strategies over opaque complexity. Diversification by asset class, geography, currency and manager style — never concentration, excessive leverage, or illiquidity without a premium.</p>
+          </article>
+          <article class="pillar">
+            <span class="n">II</span>
+            <h3>Independent Risk Oversight</h3>
+            <p>Our independence extends to our risk function. Portfolios are reviewed against risk parameters set with you — not sold against product targets set by a bank. Risk is measured for your family, and reported to your family.</p>
+          </article>
+          <article class="pillar">
+            <span class="n">III</span>
+            <h3>Bespoke by Risk Appetite</h3>
+            <p>Every mandate is designed around your specific risk tolerance, liquidity needs and generational horizon. No model portfolios. No house-view templates.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ WHO WE SERVE ══════ -->
+<section class="serve" id="who-we-serve" aria-labelledby="serve-title">
+  <div class="serve-inner">
+    <div data-reveal>
+      <p class="label">Who We Serve</p>
+      <h2 id="serve-title">Families and institutions who value <em>independence.</em></h2>
+      <p class="lede">We typically work with enterprising families and their structures — and with the institutions that share their standards.</p>
+    </div>
+    <div class="serve-grid" data-reveal>
+      <article class="serve-cell"><span class="idx">01</span><h3>First-Generation Founders</h3><p>After a liquidity event — a clear, conflict-free framework for newly crystallised wealth.</p></article>
+      <article class="serve-cell"><span class="idx">02</span><h3>Business-Owning Families</h3><p>Professionalising their wealth management with institutional-grade oversight and governance.</p></article>
+      <article class="serve-cell"><span class="idx">03</span><h3>Multi-Jurisdiction Families</h3><p>Seeking coordination across banks, advisors and legal structures in multiple countries.</p></article>
+      <article class="serve-cell"><span class="idx">04</span><h3>Family Offices</h3><p>Outsourcing CIO functions, manager selection or independent oversight to a regulated partner.</p></article>
+      <article class="serve-cell"><span class="idx">05</span><h3>Institutional &amp; Sovereign Funds</h3><p>Independent portfolio oversight, manager selection and consolidated reporting for institutional mandates.</p></article>
+      <article class="serve-cell"><span class="idx">06</span><h3>Corporates &amp; Treasuries</h3><p>Disciplined management of corporate liquidity and long-term reserves within a documented framework.</p></article>
+    </div>
+    <div class="serve-callout" data-reveal>
+      <p class="big">Every mandate is designed around <em>your specific risk appetite.</em></p>
+      <p class="fit">We are best suited to families with investable financial assets from approximately USD 5 million upwards, who value independent, conflict-free advice and direct access to senior decision-makers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ SERVICES ══════ -->
+<section id="services" aria-labelledby="services-title">
+  <div class="services-head" data-reveal>
+    <div>
+      <p class="label">What We Do</p>
+      <h2 id="services-title">Five disciplines. <em>One framework.</em></h2>
+    </div>
+    <div>
+      <p class="lede">Our services are not products off a shelf. They are five coordinated capabilities, designed around the entirety of your family's financial life — now and for the generations that follow.</p>
+      <p class="tagline" style="margin-top:1.2rem; margin-bottom:0;">Your values invested in your legacy</p>
+    </div>
+  </div>
+
+  <div class="service-rows">
+    <article class="service-row" data-reveal>
+      <span class="service-num" aria-hidden="true">01</span>
+      <div class="service-main">
+        <h3>Investment Governance &amp; Strategy</h3>
+        <p>From ad-hoc decisions to a clear, documented framework — the constitution for your family's capital.</p>
+      </div>
+      <div class="service-detail">
+        <ul>
+          <li>Definition of investment objectives, risk budget and liquidity needs</li>
+          <li>Written Investment Policy Statement (IPS)</li>
+          <li>Strategic and dynamic asset allocation across public and private markets</li>
+          <li>Scenario analysis and stress-testing around key risks — rates, inflation, currency, drawdowns</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="service-row" data-reveal>
+      <span class="service-num" aria-hidden="true">02</span>
+      <div class="service-main">
+        <h3>Discretionary &amp; Advisory Portfolio Management</h3>
+        <p>Managed on a fully discretionary basis, or with you at every key decision — the mandate is yours to define.</p>
+      </div>
+      <div class="service-detail">
+        <ul>
+          <li>Multi-asset portfolios across equities, fixed income, alternatives and cash</li>
+          <li>Open-architecture manager selection and ETF / active fund implementation</li>
+          <li>Direct equity and bond portfolios where appropriate</li>
+          <li>Currency and interest-rate risk management</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="service-row" data-reveal>
+      <span class="service-num" aria-hidden="true">03</span>
+      <div class="service-main">
+        <h3>Consolidated Reporting &amp; Risk Oversight</h3>
+        <p>A single, independent view of your total wealth — and an independent check on the risk within it.</p>
+        <span class="risk-flag">Independent Risk Oversight</span>
+      </div>
+      <div class="service-detail">
+        <ul>
+          <li>Aggregated reporting across custodians, currencies and legal structures</li>
+          <li>Performance attribution by asset class, manager and strategy</li>
+          <li>Independent risk reporting — portfolios reviewed against the parameters agreed with you, not against a product target</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="service-row" data-reveal>
+      <span class="service-num" aria-hidden="true">04</span>
+      <div class="service-main">
+        <h3>Coordination with Your Existing Advisors</h3>
+        <p>We do not replace your trusted advisors. We ensure they work together — the CIO function your family has never had.</p>
+      </div>
+      <div class="service-detail">
+        <ul>
+          <li>Collaboration with your tax, legal and estate-planning counsel</li>
+          <li>Support on holding-company and trust structures from an investment perspective</li>
+          <li>Input on liquidity planning for distributions, philanthropy and major projects</li>
+          <li>Participation in family council or investment committee meetings</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="service-row" data-reveal>
+      <span class="service-num" aria-hidden="true">05</span>
+      <div class="service-main">
+        <h3>Family Governance &amp; Education</h3>
+        <p>For multi-generational families, we support the human side of capital.</p>
+      </div>
+      <div class="service-detail">
+        <ul>
+          <li>Design of family investment principles and governance forums</li>
+          <li>Next-generation education on investing, risk and capital allocation</li>
+          <li>Neutral facilitation between generations on objectives and risk appetite</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+
+  <div class="path" data-reveal>
+    <p class="path-title">How an Engagement Unfolds</p>
+    <div class="path-grid">
+      <div class="path-step"><span class="n">i.</span><h4>Discovery</h4><p>Your family's balance sheet, objectives, constraints, governance and preferences.</p></div>
+      <div class="path-step"><span class="n">ii.</span><h4>Design</h4><p>Investment Policy Statement and target allocation, including liquidity and risk parameters.</p></div>
+      <div class="path-step"><span class="n">iii.</span><h4>Implementation</h4><p>Custodian, manager and instrument selection across public and private markets.</p></div>
+      <div class="path-step"><span class="n">iv.</span><h4>Monitoring</h4><p>Ongoing risk and performance monitoring, rebalancing and opportunistic adjustments.</p></div>
+      <div class="path-step"><span class="n">v.</span><h4>Review</h4><p>Periodic strategic reviews — life events, changed objectives, shifting markets.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ OUR MANDATE ══════ -->
+<section class="mandate" id="mandate" aria-labelledby="mandate-title">
+  <div class="mandate-inner">
+    <div class="mandate-head" data-reveal>
+      <p class="label">Security &amp; Structure</p>
+      <h2 id="mandate-title">Our Mandate as <em>Your Investment Manager</em></h2>
+      <p class="lede">The strongest protection we offer is structural. Sagetree operates under DIFC Category 3C authorisation — portfolio management and investment advisory for professional and qualified clients — and the mandate is built so that control of your assets never leaves your family.</p>
+    </div>
+    <div class="mandate-grid">
+      <article class="mandate-card" data-reveal>
+        <span class="glyph" aria-hidden="true"></span>
+        <h3>Your assets. Your name.</h3>
+        <p>Client assets remain in segregated accounts in the client's own name, at leading international custodian banks. Sagetree never holds your capital.</p>
+      </article>
+      <article class="mandate-card" data-reveal>
+        <span class="glyph" aria-hidden="true"></span>
+        <h3>Limited power of attorney.</h3>
+        <p>We operate under a limited power of attorney — management and viewing rights only. The authority you grant is defined, documented and revocable.</p>
+      </article>
+      <article class="mandate-card" data-reveal>
+        <span class="glyph" aria-hidden="true"></span>
+        <h3>No withdrawal rights.</h3>
+        <p>We cannot move funds out of your accounts for non-investment purposes. Not partially. Not temporarily. Not at all.</p>
+      </article>
+      <article class="mandate-card" data-reveal>
+        <span class="glyph" aria-hidden="true"></span>
+        <h3>Dismiss us at any time.</h3>
+        <p>You can end the mandate without moving a single asset — the custody relationship is with your bank, not with Sagetree. Independence works both ways.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ KNOWLEDGE BANK ══════ -->
+<section id="knowledge" aria-labelledby="kb-title">
+  <div class="knowledge-inner">
+    <div data-reveal>
+      <p class="label">STCP Knowledge Bank</p>
+      <h2 id="kb-title">The published perspective of an <em>independent desk.</em></h2>
+      <p class="lede">Research and educational material from our investment desk — written for families, not for distribution targets.</p>
+    </div>
+
+    <div class="kb-featured" data-reveal>
+      <a class="kb-card" href="#kb-subscribe" aria-describedby="kb-note">
+        <span class="meta"><span>Markets &amp; Outlook</span><span class="state">In preparation</span></span>
+        <h3>Quarterly Outlook</h3>
+        <p>The firm's rolling view on macro conditions and markets — what has changed, what has not, and what it means for long-horizon portfolios.</p>
+        <span class="cta">Notified on release →</span>
+      </a>
+      <a class="kb-card" href="#kb-subscribe" aria-describedby="kb-note">
+        <span class="meta"><span>Wealth Planning &amp; Structuring</span><span class="state">In preparation</span></span>
+        <h3>The IPS Guide</h3>
+        <p>An educational primer on Investment Policy Statements — how a family documents its objectives, risk budget and rules of engagement before a single dollar is invested.</p>
+        <span class="cta">Notified on release →</span>
+      </a>
+      <a class="kb-card" href="#kb-subscribe" aria-describedby="kb-note">
+        <span class="meta"><span>Risk &amp; Governance</span><span class="state">In preparation</span></span>
+        <h3>Independent Risk Whitepaper</h3>
+        <p>The firm's published position on why risk oversight must be independent of the institutions selling the products — and how that independence is structured in practice.</p>
+        <span class="cta">Notified on release →</span>
+      </a>
+    </div>
+
+    <div class="kb-pillars" data-reveal aria-label="Content pillars">
+      <span class="t">Pillars</span>
+      <span class="kb-pill">Markets &amp; Outlook</span>
+      <span class="kb-pill">Wealth Planning &amp; Structuring</span>
+      <span class="kb-pill">Risk &amp; Governance</span>
+      <span class="kb-pill">Family Legacy</span>
+    </div>
+
+    <div class="kb-subscribe" id="kb-subscribe" data-reveal>
+      <p class="st">Receive quarterly perspectives from our investment desk.</p>
+      <form class="kb-form" id="subscribeForm" method="POST" action="https://formspree.io/f/YOUR_FORM_ID" novalidate>
+        <label class="visually-hidden" for="sub-email">Email address</label>
+        <input type="email" id="sub-email" name="email" placeholder="Your email address" autocomplete="email" required />
+        <input type="hidden" name="form_type" value="Knowledge Bank subscription" />
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="kb-note" id="kb-note">Quarterly. No marketing. Unsubscribe at any time.</p>
+      <p class="kb-msg" id="kbMsg" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ GOVERNANCE & POLICIES ══════ -->
+<section class="governance" id="governance" aria-labelledby="gov-title">
+  <div class="gov-inner">
+    <div data-reveal>
+      <p class="label">Governance &amp; Policies</p>
+      <h2 id="gov-title">Documented. Audited. <em>Available on request.</em></h2>
+      <p class="lede">The firm operates under six documented frameworks. Each is available to clients and prospective clients on request.</p>
+    </div>
+    <div class="gov-grid" data-reveal>
+      <article class="gov-card">
+        <h3>Investment Policy Statement (IPS)</h3>
+        <p>How client mandates are documented and governed.</p>
+        <div class="gov-foot"><span class="gov-tag">Available on request</span><button class="gov-req" data-policy="Investment Policy Statement (IPS)">Request →</button></div>
+      </article>
+      <article class="gov-card">
+        <h3>Risk Management Framework</h3>
+        <p>The firm's independent risk methodology.</p>
+        <div class="gov-foot"><span class="gov-tag">Available on request</span><button class="gov-req" data-policy="Risk Management Framework">Request →</button></div>
+      </article>
+      <article class="gov-card">
+        <h3>Conflicts of Interest Policy</h3>
+        <p>How conflicts are identified, disclosed and managed.</p>
+        <div class="gov-foot"><span class="gov-tag">Available on request</span><button class="gov-req" data-policy="Conflicts of Interest Policy">Request →</button></div>
+      </article>
+      <article class="gov-card">
+        <h3>Best Execution Policy</h3>
+        <p>How trades are executed to obtain the best possible result for clients.</p>
+        <div class="gov-foot"><span class="gov-tag">Available on request</span><button class="gov-req" data-policy="Best Execution Policy">Request →</button></div>
+      </article>
+      <article class="gov-card">
+        <h3>Client Classification &amp; Suitability Policy</h3>
+        <p>How clients are categorised and how suitability is assessed.</p>
+        <div class="gov-foot"><span class="gov-tag">Available on request</span><button class="gov-req" data-policy="Client Classification &amp; Suitability Policy">Request →</button></div>
+      </article>
+      <article class="gov-card">
+        <h3>Data Privacy Policy</h3>
+        <p>How client data is handled and protected.</p>
+        <div class="gov-foot"><span class="gov-tag">Available on request</span><button class="gov-req" data-policy="Data Privacy Policy">Request →</button></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ CONTACT ══════ -->
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <div class="contact-inner">
+    <div class="contact-left" data-reveal>
+      <p class="label">Begin the Conversation</p>
+      <h2 id="contact-title">The clarity your family <em>has always deserved.</em></h2>
+      <hr class="rule" />
+      <p class="lede">Whether you are structuring post-liquidity wealth, coordinating across jurisdictions, or preparing the next generation — the conversation begins discreetly, and entirely on your terms.</p>
+      <ul class="contact-details">
+        <li><span class="k">Office</span><span>Dubai International Financial Centre, Dubai, UAE</span></li>
+        <li><span class="k">Email</span><span><a href="mailto:info@sagetreepartners.com">info@sagetreepartners.com</a></span></li>
+        <li><span class="k">LinkedIn</span><span><a href="https://www.linkedin.com/company/sagetree-capital-partners" rel="noopener">Sagetree Capital Partners</a></span></li>
+      </ul>
+      <p class="contact-min">Clients with investable assets from USD 5M<br />DIFC Category 3C · Regulated by the DFSA</p>
+    </div>
+
+    <form class="contact-form" id="contactForm" method="POST" action="https://formspree.io/f/YOUR_FORM_ID" novalidate data-reveal>
+      <p class="ft">Share Your Details</p>
+      <div class="field" id="fld-name">
+        <label for="c-name">Full name</label>
+        <input type="text" id="c-name" name="name" autocomplete="name" required />
+        <p class="err-note">Please enter your name.</p>
+      </div>
+      <div class="field" id="fld-email">
+        <label for="c-email">Email address</label>
+        <input type="email" id="c-email" name="email" autocomplete="email" required />
+        <p class="err-note">Please enter a valid email address.</p>
+      </div>
+      <div class="field">
+        <label for="c-phone">Phone <span style="text-transform:none;letter-spacing:0;">(optional)</span></label>
+        <input type="tel" id="c-phone" name="phone" autocomplete="tel" />
+      </div>
+      <div class="field">
+        <label for="c-subject">Subject</label>
+        <select id="c-subject" name="subject">
+          <option>A private consultation</option>
+          <option>General enquiry</option>
+          <option>Request: Investment Policy Statement (IPS)</option>
+          <option>Request: Risk Management Framework</option>
+          <option>Request: Conflicts of Interest Policy</option>
+          <option>Request: Best Execution Policy</option>
+          <option>Request: Client Classification &amp; Suitability Policy</option>
+          <option>Request: Data Privacy Policy</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="c-message">How can we help? <span style="text-transform:none;letter-spacing:0;">(optional)</span></label>
+        <textarea id="c-message" name="message"></textarea>
+      </div>
+      <button type="submit" class="btn btn-solid form-submit-btn" id="contactSubmit">Request a Private Consultation</button>
+      <p class="form-note">Your details are treated with complete discretion, in accordance with our privacy policy and DFSA regulations.</p>
+      <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════ FOOTER ══════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#top" class="nav-logo" aria-label="Sagetree Capital Partners — top of page">
+        <img src="00_Sage_Tree_Logo.jpeg" alt="" width="42" height="42" />
+        <span class="nav-logo-text">
+          <span class="wordmark">Sagetree</span>
+          <span class="subline">Capital Partners</span>
+        </span>
+      </a>
+      <p class="tag">An external asset manager managing multi-family offices, providing independent, conflict-free wealth management for enterprising families.</p>
+      <p class="footer-reg">Sagetree Capital Partners is authorised and regulated by the Dubai Financial Services Authority (DFSA) under DIFC Category 3C. Client assets are held in segregated accounts at leading international custodian banks, in the client's own name.</p>
+    </div>
+    <div class="footer-col">
+      <h4>The Firm</h4>
+      <ul>
+        <li><a href="#who-we-are">Who We Are</a></li>
+        <li><a href="#who-we-serve">Who We Serve</a></li>
+        <li><a href="#services">What We Do</a></li>
+        <li><a href="#mandate">Our Mandate</a></li>
+        <li><a href="#governance">Governance &amp; Policies</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Knowledge Bank</h4>
+      <ul>
+        <li><a href="#knowledge">Markets &amp; Outlook</a></li>
+        <li><a href="#knowledge">Wealth Planning &amp; Structuring</a></li>
+        <li><a href="#knowledge">Risk &amp; Governance</a></li>
+        <li><a href="#knowledge">Family Legacy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Use</a></li>
+        <li><a href="disclosures.html">DFSA Disclosures</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Sagetree Capital Partners. All rights reserved.</span>
+    <span class="difc">DFSA Regulated · DIFC, Dubai</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ══ CONFIG — paste your Formspree form ID here (e.g. 'xkgwabcd') ══ */
+  var FORMSPREE_ID = 'YOUR_FORM_ID';
+  var FORMSPREE_URL = 'https://formspree.io/f/' + FORMSPREE_ID;
+  document.querySelectorAll('form[action*="YOUR_FORM_ID"]').forEach(function (f) { f.action = FORMSPREE_URL; });
+
+  /* ══ Nav shrink ══ */
+  var nav = document.getElementById('siteNav');
+  var onScroll = function () { nav.classList.toggle('scrolled', window.scrollY > 60); };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ══ Mobile menu ══ */
+  var burger = document.getElementById('hamburger');
+  var menu = document.getElementById('mobileMenu');
+  function setMenu(open) {
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    menu.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  burger.addEventListener('click', function () { setMenu(burger.getAttribute('aria-expanded') !== 'true'); });
+  menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  /* ══ Reveal on scroll — content visible by default; JS opts elements IN,
+        with a failsafe that reveals everything after 2.5s no matter what. ══ */
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if ('IntersectionObserver' in window && !reduced) {
+    var els = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+    // Anything already on screen stays untouched; only below-fold elements animate in.
+    var fold = window.innerHeight * 1.1;
+    els = els.filter(function (el) { return el.getBoundingClientRect().top > fold; });
+    els.forEach(function (el) { el.classList.add('pre-reveal'); });
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('revealed'); obs.unobserve(en.target); }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px 8% 0px' });
+    els.forEach(function (el) { obs.observe(el); });
+    // Failsafe: nothing stays hidden for longer than 1.8s under any circumstances.
+    setTimeout(function () { els.forEach(function (el) { el.classList.add('revealed'); }); }, 1800);
+  }
+
+  /* ══ Stat counter ══ */
+  var counters = document.querySelectorAll('[data-count]');
+  if ('IntersectionObserver' in window && counters.length && !reduced) {
+    var cObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var el = en.target, target = parseInt(el.getAttribute('data-count'), 10),
+            suffix = el.getAttribute('data-suffix') || '', start = null;
+        function tick(ts) {
+          if (!start) start = ts;
+          var p = Math.min((ts - start) / 1400, 1);
+          el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        cObs.unobserve(el);
+      });
+    }, { threshold: 0.6 });
+    counters.forEach(function (el) { cObs.observe(el); });
+  }
+
+  /* ══ Hero art crop — desktop centers the scene; mobile keeps the tree in frame ══ */
+  var heroSvg = document.querySelector('.hero-art svg');
+  function setCrop() {
+    heroSvg.setAttribute('preserveAspectRatio',
+      window.matchMedia('(max-width: 760px)').matches ? 'xMaxYMax slice' : 'xMidYMax slice');
+  }
+  if (heroSvg) { setCrop(); window.addEventListener('resize', setCrop, { passive: true }); }
+
+  /* ══ Hero parallax — subtle, rAF-throttled, desktop only ══ */
+  var tree = document.getElementById('tree'), skyline = document.getElementById('skyline');
+  if (tree && skyline && !reduced && window.matchMedia('(min-width: 761px)').matches) {
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        var y = Math.min(window.scrollY, 900);
+        skyline.style.transform = 'translateY(' + (y * 0.045) + 'px)';
+        tree.style.transform = 'translateY(' + (y * 0.015) + 'px)';
+        ticking = false;
+      });
+    }, { passive: true });
+  }
+
+  /* ══ Governance → prefill contact subject ══ */
+  document.querySelectorAll('.gov-req').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var sel = document.getElementById('c-subject');
+      var want = 'Request: ' + btn.getAttribute('data-policy');
+      for (var i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].text === want) { sel.selectedIndex = i; break; }
+      }
+      document.getElementById('contact').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+      setTimeout(function () { document.getElementById('c-name').focus({ preventScroll: true }); }, reduced ? 0 : 700);
+    });
+  });
+
+  /* ══ Forms → Formspree (AJAX with graceful fallback) ══ */
+  function submitForm(form, onOk, onFail) {
+    var data = new FormData(form);
+    fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+      .then(function (r) { if (r.ok) onOk(); else return r.json().then(function () { onFail(); }); })
+      .catch(onFail);
+  }
+
+  var contactForm = document.getElementById('contactForm');
+  var formStatus = document.getElementById('formStatus');
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var okFields = true;
+    var nameF = document.getElementById('fld-name'), emailF = document.getElementById('fld-email');
+    var nameI = document.getElementById('c-name'), emailI = document.getElementById('c-email');
+    nameF.classList.toggle('invalid', !nameI.value.trim()); if (!nameI.value.trim()) okFields = false;
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailI.value.trim());
+    emailF.classList.toggle('invalid', !emailOk); if (!emailOk) okFields = false;
+    if (!okFields) return;
+    var btn = document.getElementById('contactSubmit');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    formStatus.className = 'form-status';
+    submitForm(contactForm,
+      function () {
+        formStatus.className = 'form-status ok';
+        formStatus.textContent = 'Thank you. A member of our team will be in touch with you shortly, in complete discretion.';
+        contactForm.reset();
+        btn.disabled = false; btn.textContent = 'Request a Private Consultation';
+      },
+      function () {
+        formStatus.className = 'form-status fail';
+        formStatus.innerHTML = 'Something went wrong sending your message. Please email us directly at <a href="mailto:info@sagetreepartners.com">info@sagetreepartners.com</a>.';
+        btn.disabled = false; btn.textContent = 'Request a Private Consultation';
+      });
+  });
+
+  var subForm = document.getElementById('subscribeForm');
+  var kbMsg = document.getElementById('kbMsg');
+  subForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var em = document.getElementById('sub-email');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim())) {
+      kbMsg.textContent = 'Please enter a valid email address.';
+      kbMsg.classList.add('show'); return;
+    }
+    submitForm(subForm,
+      function () { kbMsg.textContent = 'Thank you — you will receive our next quarterly perspective.'; kbMsg.classList.add('show'); subForm.reset(); },
+      function () { kbMsg.textContent = 'Something went wrong. Please email info@sagetreepartners.com to subscribe.'; kbMsg.classList.add('show'); });
+  });
+})();
+</script>
+</body>
+</html>
