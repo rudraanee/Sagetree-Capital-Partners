@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sagetree Capital Partners: Independent External Asset Manager</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
@@ -14,6 +18,7 @@
       --gold: #c9a96e; --gold-light: #e2c98a; --gold-glow: rgba(201,169,110,0.25);
       --cream: #f5f0e8; --white: #ffffff; --muted: rgba(245,240,232,0.74);
       --heading: 'Montserrat', sans-serif; --body: 'DM Sans', sans-serif;
+      --hdr: 90px;
     }
     html { scroll-behavior: smooth; background: #05201e; }
     /* ── AMBIENT BACKGROUND GLOW ──────────────────── */
@@ -53,10 +58,10 @@
     .nav-cta::after { display: none !important; }
 
     /* ── HERO (VIDEO) ──────────────────────────────── */
-    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 4rem 5rem; position: relative; overflow: hidden; }
-    .hero-video-wrap { position: absolute; inset: 0; z-index: 0; }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: var(--hdr) 4rem 5rem; position: relative; overflow: hidden; background: var(--teal-deep); }
+    .hero-video-wrap { position: absolute; top: var(--hdr); left: 0; right: 0; bottom: 0; z-index: 0; }
     .hero-video-wrap video { width: 100%; height: 100%; object-fit: cover; opacity: 0.75; }
-    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(8,40,40,0.85) 0%, rgba(8,40,40,0.2) 50%, rgba(8,40,40,0.15) 100%); z-index: 1; }
+    .hero-overlay { position: absolute; top: var(--hdr); left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(8,40,40,0.85) 0%, rgba(8,40,40,0.2) 50%, rgba(8,40,40,0.15) 100%); z-index: 1; }
     .hero-content { position: relative; z-index: 2; max-width: 760px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; }
     .hero-label { font-family: var(--heading); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 1rem; }
     .hero-risk-strip { font-family: var(--heading); font-size: 0.55rem; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(245,240,232,0.55); margin-bottom: 0; padding-left: 52px; }
@@ -380,6 +385,7 @@
     .mobile-menu a:hover { color: var(--gold); }
     .mobile-menu .mobile-cta { border: 1px solid var(--gold); color: var(--gold) !important; padding: 0.8rem 2rem; margin-top: 1rem; }
     @media (max-width: 960px) {
+      :root { --hdr: 78px; }
       nav { padding: 1rem 1.5rem; } nav.scrolled { padding: 0.8rem 1.5rem; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
@@ -640,7 +646,7 @@
 <!-- ══════ NAV ══════ -->
 <nav id="navbar">
   <a href="#" class="nav-logo">
-    <img src="logo-mark.png" alt="Sagetree Capital Partners" />
+    <img src="logo-mark.svg" alt="Sagetree Capital Partners" />
     <div class="nav-logo-text"><span>SAGETREE</span><span>Capital Partners</span></div>
   </a>
   <ul class="nav-links">
@@ -969,7 +975,7 @@
   <div class="footer-grid">
     <div>
       <a href="#" class="nav-logo" style="margin-bottom:1.2rem;display:inline-flex;">
-        <img src="logo-mark.png" alt="Sagetree" style="height:44px;width:auto;object-fit:contain;" />
+        <img src="logo-mark.svg" alt="Sagetree" style="height:44px;width:auto;object-fit:contain;" />
         <div class="nav-logo-text"><span>SAGETREE</span><span>Capital Partners</span></div>
       </a>
       <p class="footer-tagline">An external asset manager managing multiple family offices, providing independent, conflict-free wealth management for enterprising families.</p>
