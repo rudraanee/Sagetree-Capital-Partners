@@ -12,18 +12,35 @@
     :root {
       --teal-deep:  #082828; --teal-mid: #0e3d3a; --teal-light: #1a5550;
       --gold: #c9a96e; --gold-light: #e2c98a; --gold-glow: rgba(201,169,110,0.25);
-      --cream: #f5f0e8; --white: #ffffff; --muted: rgba(245,240,232,0.52);
+      --cream: #f5f0e8; --white: #ffffff; --muted: rgba(245,240,232,0.74);
       --heading: 'Montserrat', sans-serif; --body: 'DM Sans', sans-serif;
     }
-    html { scroll-behavior: smooth; }
-    body { background: var(--teal-deep); color: var(--cream); font-family: var(--body); font-weight: 300; line-height: 1.75; overflow-x: hidden; }
+    html { scroll-behavior: smooth; background: #05201e; }
+    /* ── AMBIENT BACKGROUND GLOW ──────────────────── */
+    .bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+    .bg .orb { position: absolute; will-change: transform; }
+    .bg .orb i { display: block; width: 100%; height: 100%; border-radius: 50%; will-change: transform, opacity; }
+    .orb.a { width: 46vw; height: 46vw; top: -10vh; left: -8vw; }
+    .orb.a i { background: radial-gradient(circle at center, rgba(201,169,110,0.30) 0%, rgba(201,169,110,0.13) 34%, transparent 62%); animation: breatheA 11s ease-in-out infinite; }
+    .orb.b { width: 44vw; height: 44vw; top: -8vh; right: -10vw; }
+    .orb.b i { background: radial-gradient(circle at center, rgba(26,90,84,0.72) 0%, rgba(26,90,84,0.32) 38%, transparent 64%); animation: breatheB 14s ease-in-out infinite; }
+    .orb.c { width: 48vw; height: 48vw; bottom: -12vh; left: -6vw; }
+    .orb.c i { background: radial-gradient(circle at center, rgba(226,201,138,0.22) 0%, rgba(226,201,138,0.09) 34%, transparent 60%); animation: breatheC 12.5s ease-in-out infinite; }
+    .orb.d { width: 42vw; height: 42vw; bottom: -8vh; right: -6vw; }
+    .orb.d i { background: radial-gradient(circle at center, rgba(32,100,92,0.78) 0%, rgba(32,100,92,0.34) 40%, transparent 64%); animation: breatheD 15.5s ease-in-out infinite; }
+    @keyframes breatheA { 0%,100% { transform: translate(0,0) scale(0.9); opacity: .45 } 50% { transform: translate(3vw,2vh) scale(1.22); opacity: .95 } }
+    @keyframes breatheB { 0%,100% { transform: translate(0,0) scale(1.16); opacity: .92 } 50% { transform: translate(-2vw,-2vh) scale(0.84); opacity: .5 } }
+    @keyframes breatheC { 0%,100% { transform: translate(0,0) scale(0.88); opacity: .5 } 50% { transform: translate(2vw,-3vh) scale(1.18); opacity: .92 } }
+    @keyframes breatheD { 0%,100% { transform: translate(0,0) scale(1.12); opacity: .55 } 50% { transform: translate(-3vw,2vh) scale(0.88); opacity: .95 } }
+    @media (prefers-reduced-motion: reduce) { .bg .orb i { animation: none; } }
+    body { background: transparent; color: var(--cream); font-family: var(--body); font-weight: 300; line-height: 1.75; overflow-x: hidden; }
     ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: var(--teal-deep); } ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
 
     /* ── NAV ───────────────────────────────────────── */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 4rem; background: rgba(8,40,40,0.9); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(201,169,110,0.12); transition: padding 0.4s; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 4rem; background: rgba(8,40,40,0.72); backdrop-filter: blur(18px) saturate(160%); -webkit-backdrop-filter: blur(18px) saturate(160%); border-bottom: 1px solid rgba(201,169,110,0.12); transition: padding 0.4s; }
     nav.scrolled { padding: 0.8rem 4rem; background: rgba(8,40,40,0.97); }
     .nav-logo { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; }
-    .nav-logo img { height: 44px; width: 44px; object-fit: contain; border-radius: 50%; }
+    .nav-logo img { height: 46px; width: auto; object-fit: contain; }
     .nav-logo-text { display: flex; flex-direction: column; line-height: 1.15; }
     .nav-logo-text span:first-child { font-family: var(--heading); font-size: 1rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); }
     .nav-logo-text span:last-child { font-size: 0.58rem; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
@@ -41,7 +58,7 @@
     .hero-video-wrap video { width: 100%; height: 100%; object-fit: cover; opacity: 0.75; }
     .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(8,40,40,0.85) 0%, rgba(8,40,40,0.2) 50%, rgba(8,40,40,0.15) 100%); z-index: 1; }
     .hero-content { position: relative; z-index: 2; max-width: 760px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; }
-    .hero-label { font-family: var(--heading); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.38em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 1rem; }
+    .hero-label { font-family: var(--heading); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 1rem; }
     .hero-risk-strip { font-family: var(--heading); font-size: 0.55rem; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(245,240,232,0.55); margin-bottom: 0; padding-left: 52px; }
     .hero-label::before { content: ''; display: block; width: 36px; height: 1px; background: var(--gold); }
     .hero-title { font-family: var(--heading); font-size: clamp(2.2rem, 4.5vw, 4rem); font-weight: 300; line-height: 1.18; color: var(--white); margin-bottom: 1rem; letter-spacing: -0.01em; text-shadow: 0 2px 20px rgba(6,28,28,0.7); }
@@ -67,26 +84,40 @@
 
     /* ── SECTION COMMONS ───────────────────────────── */
     section { padding: 7rem 4rem; }
-    .section-label { font-family: var(--heading); font-size: 0.58rem; font-weight: 600; letter-spacing: 0.38em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.8rem; }
-    .section-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--gold); }
+    .section-label { font-family: var(--heading); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.4rem; display: flex; align-items: center; gap: 1rem; }
+    .who-sub .section-label { font-size: 0.72rem; font-weight: 600; }
+    .section-label::before { content: ''; display: inline-block; width: 34px; height: 1px; background: var(--gold-light); }
+    .chapter-bar { display: flex; align-items: center; gap: 1.3rem; margin-bottom: 2.4rem; }
+    .cb-num { font-family: var(--heading); font-size: 1.5rem; font-weight: 300; line-height: 1; background: linear-gradient(125deg, var(--gold-light) 0%, var(--gold) 55%, #b0894f 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+    .cb-name { font-family: var(--heading); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold-light); white-space: nowrap; }
+    .cb-rule { flex: 1; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); }
+    .cb-tree { display: inline-flex; align-items: center; }
+    .cb-tree svg { width: 40px; height: 40px; display: block; }
     .section-title { font-family: var(--heading); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; line-height: 1.25; color: var(--white); margin-bottom: 1rem; letter-spacing: -0.01em; }
-    .section-title strong { font-weight: 600; }
+    .section-title strong { font-weight: 600; background: linear-gradient(125deg, var(--gold-light) 0%, var(--gold) 55%, #b0894f 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+    .who-sub .section-title strong { background: none; -webkit-text-fill-color: var(--white); color: var(--white); }
     .section-tagline { font-family: var(--heading); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); opacity: 0.7; margin-bottom: 1rem; }
     .section-desc { font-size: 0.9rem; font-weight: 300; color: var(--muted); line-height: 1.9; max-width: 600px; }
     .gold-line { width: 50px; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); margin: 1.8rem 0; }
 
     /* ── STATS ─────────────────────────────────────── */
-    .stats-section { background: var(--teal-mid); padding: 4rem 4rem; border-top: 1px solid rgba(201,169,110,0.1); border-bottom: 1px solid rgba(201,169,110,0.1); }
-    .stats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; text-align: center; }
-    .stat-item { padding: 1rem; }
-    .stat-item.full-width { grid-column: span 3; border-top: 1px solid rgba(201,169,110,0.12); padding-top: 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.9rem; text-align: center; }
-    .stat-item.full-width .stat-number { font-size: clamp(1.4rem, 2.5vw, 2rem); margin-bottom: 0; }
-    .stat-item.full-width .stat-label { margin-top: 0; }
-    .stat-number { font-family: var(--heading); font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 200; color: var(--gold); line-height: 1; display: block; margin-bottom: 0.6rem; letter-spacing: -0.02em; }
-    .stat-label { font-family: var(--heading); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); line-height: 1.5; }
+    .stats-section { background: rgba(14,61,58,0.5); padding: 5rem 4rem; border-top: 1px solid rgba(201,169,110,0.16); border-bottom: 1px solid rgba(201,169,110,0.1); }
+    .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; perspective: 1200px; }
+    .stat-card { position: relative; background: rgba(6,26,26,0.55); backdrop-filter: blur(18px) saturate(150%); -webkit-backdrop-filter: blur(18px) saturate(150%); border: 1px solid rgba(201,169,110,0.18); border-radius: 16px; padding: 2.4rem 1.8rem; min-height: 190px; display: flex; align-items: flex-start; overflow: hidden; transform-style: preserve-3d; transition: transform 0.2s ease, box-shadow 0.4s ease, border-color 0.4s ease; will-change: transform; box-shadow: inset 0 1px 0 rgba(255,255,255,0.04); }
+    .stat-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(340px circle at var(--mx,50%) var(--my,0%), rgba(201,169,110,0.18), transparent 60%); opacity: 0; transition: opacity 0.4s; pointer-events: none; }
+    .stat-card:hover { border-color: rgba(201,169,110,0.5); box-shadow: 0 26px 55px -22px rgba(0,0,0,0.7), 0 0 34px rgba(201,169,110,0.10); }
+    .stat-card:hover::before { opacity: 1; }
+    .stat-card-inner { transform: translateZ(26px); display: flex; flex-direction: column; position: relative; z-index: 1; }
+    .stat-number { font-family: var(--heading); font-size: clamp(2rem, 3.3vw, 3rem); font-weight: 300; line-height: 1; display: block; margin-bottom: 0.9rem; letter-spacing: -0.02em; background: linear-gradient(125deg, var(--gold-light) 0%, var(--gold) 55%, #b0894f 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+    .stat-number--sm { font-size: clamp(1.25rem, 1.9vw, 1.65rem); line-height: 1.18; }
+    .stat-label { font-family: var(--heading); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); line-height: 1.6; }
 
     /* ── WHO WE ARE ────────────────────────────────── */
-    .who-section { background: var(--teal-deep); }
+    .who-section { background: rgba(8,40,40,0.55); }
+    #serve { scroll-margin-top: 110px; }
+    .who-sub { margin-top: 5rem; padding-top: 5rem; border-top: 1px solid rgba(201,169,110,0.10); scroll-margin-top: 100px; }
+    .serve-section { background: rgba(8,40,40,0.55); }
+    .serve-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 4rem; margin-top: 2.5rem; }
     .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
     .who-left { }
     .who-body { font-size: 0.9rem; font-weight: 300; color: var(--muted); line-height: 1.95; }
@@ -102,7 +133,7 @@
     .cap-note { margin-top: 2rem; padding: 1.2rem 1.5rem; border: 1px solid rgba(201,169,110,0.2); font-size: 0.78rem; font-weight: 300; color: var(--gold); font-style: italic; line-height: 1.7; }
 
     /* ── SERVICES ──────────────────────────────────── */
-    .services-section { background: linear-gradient(160deg, #061e1e 0%, var(--teal-mid) 100%); }
+    .services-section { background: rgba(14,61,58,0.5); }
     .services-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 4rem; }
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(201,169,110,0.08); }
     .service-card { background: rgba(8,40,40,0.95); padding: 2.5rem; position: relative; overflow: hidden; transition: background 0.4s; cursor: default; }
@@ -119,13 +150,19 @@
     /* ── PHILOSOPHY ────────────────────────────────── */
     .philosophy-section { background: var(--teal-deep); }
     .philosophy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; margin-top: 3.5rem; }
-    .philosophy-block + .philosophy-block { margin-top: 2.5rem; }
+    .philosophy-block { background: rgba(6,26,26,0.42); border: 1px solid rgba(201,169,110,0.16); border-radius: 12px; padding: 1.9rem 2rem; position: relative; overflow: hidden; transition: border-color 0.35s, box-shadow 0.35s; will-change: transform; }
+    .philosophy-block:hover { border-color: rgba(201,169,110,0.42); box-shadow: 0 18px 38px -20px rgba(0,0,0,0.65); }
+    .philosophy-block + .philosophy-block { margin-top: 1.6rem; }
+    .philosophy-block::before, .philosophy-right::before { content: ''; position: absolute; inset: 0; z-index: 0; background: radial-gradient(300px circle at var(--mx,50%) var(--my,0%), rgba(201,169,110,0.16), transparent 60%); opacity: 0; transition: opacity 0.4s; pointer-events: none; }
+    .philosophy-block:hover::before, .philosophy-right:hover::before { opacity: 1; }
+    .philosophy-block > *, .philosophy-right > * { position: relative; z-index: 1; }
     .phil-title { font-family: var(--heading); font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 0.6rem; }
     .phil-desc { font-size: 0.85rem; font-weight: 300; color: var(--muted); line-height: 1.9; }
     .phil-points { list-style: none; margin-top: 0.8rem; }
     .phil-points li { font-size: 0.82rem; font-weight: 300; color: var(--muted); padding: 0.28rem 0; display: flex; gap: 0.7rem; }
     .phil-points li::before { content: '·'; color: var(--gold); flex-shrink: 0; font-size: 1.4rem; line-height: 0.5; }
-    .philosophy-right { background: var(--teal-mid); padding: 3rem; border: 1px solid rgba(201,169,110,0.12); }
+    .philosophy-right { background: rgba(14,61,58,0.45); backdrop-filter: blur(16px) saturate(150%); -webkit-backdrop-filter: blur(16px) saturate(150%); padding: 3rem; border: 1px solid rgba(201,169,110,0.12); border-radius: 14px; position: relative; overflow: hidden; transition: border-color 0.35s, box-shadow 0.35s; will-change: transform; }
+    .philosophy-right:hover { border-color: rgba(201,169,110,0.4); box-shadow: 0 26px 55px -22px rgba(0,0,0,0.7); }
     .phil-quote { font-family: var(--heading); font-size: 1.5rem; font-weight: 200; color: var(--white); line-height: 1.45; margin-bottom: 2rem; letter-spacing: -0.01em; }
     .phil-quote em { font-style: italic; color: var(--gold); }
 
@@ -156,9 +193,9 @@
     /* ── CTA ───────────────────────────────────────── */
     .cta-section { background: linear-gradient(160deg, var(--teal-mid) 0%, #061a1a 100%); text-align: center; padding: 8rem 4rem; position: relative; overflow: hidden; }
     .cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(201,169,110,0.05) 0%, transparent 65%); pointer-events: none; }
-    .cta-label { font-family: var(--heading); font-size: 0.58rem; font-weight: 600; letter-spacing: 0.38em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; position: relative; z-index: 1; }
+    .cta-label { font-family: var(--heading); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.5rem; position: relative; z-index: 1; }
     .cta-title { font-family: var(--heading); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; color: var(--white); line-height: 1.2; margin-bottom: 0.8rem; letter-spacing: -0.01em; position: relative; z-index: 1; }
-    .cta-title strong { font-weight: 600; color: var(--gold); }
+    .cta-title strong { font-weight: 600; background: linear-gradient(125deg, var(--gold-light) 0%, var(--gold) 55%, #b0894f 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
     .cta-tagline { font-family: var(--heading); font-size: 0.72rem; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); opacity: 0.65; margin-bottom: 1.5rem; position: relative; z-index: 1; }
     .cta-sub { font-size: 0.9rem; font-weight: 300; color: var(--muted); max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.85; position: relative; z-index: 1; }
     .cta-minimum { font-family: var(--heading); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.15em; color: var(--gold); opacity: 0.5; margin-top: 2rem; position: relative; z-index: 1; }
@@ -196,7 +233,9 @@
     .form-group input, .form-group textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(201,169,110,0.22); padding: 0.7rem 0; color: var(--cream); font-family: var(--body); font-size: 0.85rem; font-weight: 300; outline: none; transition: border-color 0.3s; }
     .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(245,240,232,0.28); font-size: 0.82rem; }
     .form-group input:focus, .form-group textarea:focus { border-bottom-color: var(--gold); }
-    .form-group textarea { resize: none; height: 75px; }
+    .form-group textarea { resize: vertical; height: 160px; }
+    .char-count { font-family: var(--heading); font-size: 0.58rem; color: rgba(245,240,232,0.4); text-align: right; margin-top: 0.45rem; letter-spacing: 0.05em; }
+    .char-count.near { color: var(--gold); }
     .input-error { border-bottom-color: rgba(255,100,100,0.6) !important; }
     .form-submit { width: 100%; padding: 0.9rem; background: var(--gold); color: var(--teal-deep); border: none; cursor: pointer; font-family: var(--heading); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 0.7rem; transition: background 0.3s, box-shadow 0.3s; margin-top: 0.5rem; }
     .form-submit:hover { background: var(--gold-light); box-shadow: 0 0 22px var(--gold-glow); }
@@ -216,19 +255,25 @@
     .mandate-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: start; }
     .mandate-text { }
     .mandate-body { font-size: 0.88rem; font-weight: 300; color: var(--muted); line-height: 1.9; }
-    .mandate-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .mandate-pillar { padding: 2rem; border: 1px solid rgba(201,169,110,0.15); background: rgba(14,61,58,0.35); backdrop-filter: blur(6px); transition: border-color 0.3s, transform 0.3s; }
-    .mandate-pillar:hover { border-color: rgba(201,169,110,0.4); transform: translateY(-3px); }
+    .mandate-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; perspective: 1200px; }
+    .mandate-pillar { padding: 2rem; border: 1px solid rgba(201,169,110,0.15); border-radius: 14px; background: rgba(14,61,58,0.3); backdrop-filter: blur(16px) saturate(150%); -webkit-backdrop-filter: blur(16px) saturate(150%); position: relative; overflow: hidden; will-change: transform; transform-style: preserve-3d; transition: transform 0.2s ease, border-color 0.4s, box-shadow 0.4s; }
+    .mandate-pillar:hover { border-color: rgba(201,169,110,0.5); box-shadow: 0 24px 50px -22px rgba(0,0,0,0.65); }
+    .mandate-pillar::before { content: ''; position: absolute; inset: 0; z-index: 0; background: radial-gradient(320px circle at var(--mx,50%) var(--my,0%), rgba(201,169,110,0.16), transparent 60%); opacity: 0; transition: opacity 0.4s; pointer-events: none; }
+    .mandate-pillar:hover::before { opacity: 1; }
+    .mandate-pillar > * { position: relative; z-index: 1; }
     .mandate-num { font-family: var(--heading); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; color: var(--gold); opacity: 0.45; margin-bottom: 0.9rem; }
     .mandate-title { font-family: var(--heading); font-size: 0.98rem; font-weight: 500; color: var(--white); margin-bottom: 0.7rem; line-height: 1.35; }
     .mandate-desc { font-size: 0.8rem; font-weight: 300; color: var(--muted); line-height: 1.75; }
 
     /* ── KNOWLEDGE BANK ───────────────────────────── */
-    .knowledge-section { background: var(--teal-mid); padding: 7rem 4rem; border-top: 1px solid rgba(201,169,110,0.1); }
+    .knowledge-section { background: rgba(14,61,58,0.5); padding: 7rem 4rem; }
     .knowledge-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 4rem; }
     .knowledge-featured { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-bottom: 4rem; }
-    .knowledge-card { padding: 2rem; background: rgba(8,40,40,0.55); backdrop-filter: blur(8px); border: 1px solid rgba(201,169,110,0.15); transition: border-color 0.3s, transform 0.3s, background 0.3s; cursor: pointer; }
-    .knowledge-card:hover { border-color: rgba(201,169,110,0.4); background: rgba(8,40,40,0.75); transform: translateY(-4px); }
+    .knowledge-card { padding: 2rem; background: rgba(8,40,40,0.45); backdrop-filter: blur(16px) saturate(150%); -webkit-backdrop-filter: blur(16px) saturate(150%); border: 1px solid rgba(201,169,110,0.15); transition: border-color 0.3s, box-shadow 0.4s, background 0.3s; cursor: pointer; position: relative; overflow: hidden; will-change: transform; }
+    .knowledge-card:hover { border-color: rgba(201,169,110,0.4); background: rgba(8,40,40,0.75); box-shadow: 0 22px 48px -22px rgba(0,0,0,0.65); }
+    .knowledge-card::before { content: ''; position: absolute; inset: 0; z-index: 0; background: radial-gradient(320px circle at var(--mx,50%) var(--my,0%), rgba(201,169,110,0.18), transparent 60%); opacity: 0; transition: opacity 0.4s; pointer-events: none; }
+    .knowledge-card:hover::before { opacity: 1; }
+    .knowledge-card > * { position: relative; z-index: 1; }
     .knowledge-tag { font-family: var(--heading); font-size: 0.55rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); opacity: 0.75; margin-bottom: 1rem; }
     .knowledge-title { font-family: var(--heading); font-size: 1.15rem; font-weight: 500; color: var(--white); line-height: 1.3; margin-bottom: 0.8rem; }
     .knowledge-excerpt { font-size: 0.82rem; font-weight: 300; color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem; }
@@ -253,6 +298,70 @@
     .policy-desc { font-size: 0.8rem; font-weight: 300; color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem; }
     .policy-cta { font-family: var(--heading); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); text-decoration: none; opacity: 0.75; transition: opacity 0.3s, gap 0.3s; display: inline-flex; align-items: center; gap: 0.5rem; }
     .policy-cta:hover { opacity: 1; gap: 0.8rem; }
+
+    /* ── SERVICES ACCORDION ──────────────────────── */
+    .services-accordion { margin-top: 3.5rem; }
+    .svc-group { margin-top: 3.5rem; }
+    .svc-group:first-child { margin-top: 0; }
+    .svc-group-label { font-family: var(--heading); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.9rem; }
+    .svc-group-label::before { content: ''; width: 28px; height: 1px; background: var(--gold-light); display: inline-block; }
+    .acc-item { border-top: 1px solid rgba(201,169,110,0.14); }
+    .acc-item:last-child { border-bottom: 1px solid rgba(201,169,110,0.14); }
+    .acc-head { width: 100%; background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.5rem 0; text-align: left; }
+    .acc-title { font-family: var(--heading); font-size: 1.02rem; font-weight: 500; color: var(--white); transition: color 0.3s; }
+    .acc-head:hover .acc-title { color: var(--gold-light); }
+    .acc-icon { color: var(--gold); font-size: 1.05rem; line-height: 1; transition: transform 0.35s; flex-shrink: 0; }
+    .acc-item.open .acc-icon { transform: rotate(180deg); }
+    .acc-body { max-height: 0; overflow: hidden; transition: max-height 0.45s ease; }
+    .acc-item.open .acc-body { max-height: 800px; }
+    .acc-body-inner { padding: 0 0 1.7rem; max-width: 760px; }
+
+    /* ── SERVICES GROUP CARDS ────────────────────── */
+    .svc-groups { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3.5rem; perspective: 1200px; }
+    .svc-card { display: block; text-decoration: none; position: relative; overflow: hidden; background: rgba(6,26,26,0.4); backdrop-filter: blur(16px) saturate(150%); -webkit-backdrop-filter: blur(16px) saturate(150%); border: 1px solid rgba(201,169,110,0.18); border-radius: 16px; padding: 2.4rem 2rem; transition: transform 0.2s ease, box-shadow 0.4s, border-color 0.4s; will-change: transform; transform-style: preserve-3d; }
+    .svc-card::before { content: ''; position: absolute; inset: 0; z-index: 0; background: radial-gradient(340px circle at var(--mx,50%) var(--my,0%), rgba(201,169,110,0.18), transparent 60%); opacity: 0; transition: opacity 0.4s; pointer-events: none; }
+    .svc-card:hover { border-color: rgba(201,169,110,0.5); box-shadow: 0 26px 55px -22px rgba(0,0,0,0.7); }
+    .svc-card:hover::before { opacity: 1; }
+    .svc-card-inner { position: relative; z-index: 1; transform: translateZ(20px); }
+    .svc-card-tag { font-family: var(--heading); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1rem; }
+    .svc-card-title { font-family: var(--heading); font-size: 1.25rem; font-weight: 500; color: var(--white); margin-bottom: 0.9rem; line-height: 1.3; }
+    .svc-card-desc { font-size: 0.82rem; font-weight: 300; color: var(--muted); line-height: 1.8; margin-bottom: 1.4rem; }
+    .svc-card-list { list-style: none; margin-bottom: 1.6rem; }
+    .svc-card-list li { font-size: 0.78rem; font-weight: 300; color: var(--cream); padding: 0.3rem 0; display: flex; gap: 0.6rem; align-items: flex-start; opacity: 0.82; }
+    .svc-card-list li::before { content: '\00B7'; color: var(--gold); }
+    .svc-card-cta { font-family: var(--heading); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: inline-flex; align-items: center; gap: 0.5rem; transition: gap 0.3s; }
+    .svc-card:hover .svc-card-cta { gap: 0.85rem; }
+
+    /* ── PROCESS CASCADE ─────────────────────────── */
+    .process-cascade { display: flex; gap: 1rem; margin-top: 4rem; }
+    .proc-panel { flex: 1; min-width: 0; position: relative; overflow: hidden; background: rgba(6,26,26,0.5); border: 1px solid rgba(201,169,110,0.15); border-radius: 14px; padding: 2.2rem 1.7rem; min-height: 300px; display: flex; flex-direction: column; transition: flex 0.55s cubic-bezier(.4,0,.2,1), border-color 0.4s, box-shadow 0.4s, background 0.4s; }
+    .proc-panel::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.5s ease; }
+    .process-cascade:hover .proc-panel { flex: 0.72; }
+    .proc-panel:hover { flex: 2.7; border-color: rgba(201,169,110,0.45); background: rgba(14,61,58,0.5); box-shadow: 0 26px 55px -22px rgba(0,0,0,0.7); }
+    .proc-panel:hover::after { transform: scaleX(1); }
+    .proc-num2 { font-family: var(--heading); font-size: 2.6rem; font-weight: 200; color: var(--gold); opacity: 0.3; line-height: 1; margin-bottom: 1.3rem; transition: opacity 0.4s; }
+    .proc-panel:hover .proc-num2 { opacity: 0.8; }
+    .proc-title2 { font-family: var(--heading); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); margin-bottom: 1.3rem; line-height: 1.4; }
+    .proc-desc2 { font-size: 0.82rem; font-weight: 300; color: var(--muted); line-height: 1.8; opacity: 0; transform: translateY(8px); transition: opacity 0.45s 0.12s, transform 0.45s 0.12s; }
+    .proc-panel:hover .proc-desc2 { opacity: 1; transform: none; }
+
+    /* ── PROCESS ACCORDION (in philosophy column) ── */
+    .philosophy-right-col { display: flex; flex-direction: column; gap: 1.6rem; }
+    .process-accordion { border: 1px solid rgba(201,169,110,0.15); border-radius: 14px; background: rgba(6,26,26,0.4); overflow: hidden; }
+    .proc-acc-header { padding: 1.5rem 1.7rem 1.1rem; }
+    .proc-acc-label { font-family: var(--heading); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold-light); }
+    .proc-acc-sub { font-size: 0.72rem; font-weight: 300; color: var(--muted); margin-top: 0.35rem; }
+    .proc-acc-item { border-top: 1px solid rgba(201,169,110,0.1); }
+    .proc-acc-head { width: 100%; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 1rem; padding: 1.05rem 1.7rem; text-align: left; }
+    .proc-acc-num { font-family: var(--heading); font-size: 0.82rem; font-weight: 300; color: var(--gold); opacity: 0.55; min-width: 1.4rem; }
+    .proc-acc-title { flex: 1; font-family: var(--heading); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); transition: color 0.3s; }
+    .proc-acc-head:hover .proc-acc-title { color: var(--gold-light); }
+    .proc-acc-ico { color: var(--gold); font-size: 1.05rem; line-height: 1; transition: transform 0.35s; }
+    .proc-acc-item.open .proc-acc-ico { transform: rotate(45deg); }
+    .proc-acc-body { max-height: 0; overflow: hidden; transition: max-height 0.45s ease; }
+    .proc-acc-item.open .proc-acc-body { max-height: 220px; }
+    .proc-acc-inner { padding: 0 1.7rem 1.2rem 4.1rem; }
+    .proc-acc-inner p { font-size: 0.8rem; font-weight: 300; color: var(--muted); line-height: 1.75; }
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
     .hero-content > * { opacity: 0; animation: fadeUp 0.85s ease forwards; }
@@ -284,12 +393,18 @@
       .hero-actions { flex-direction: column; align-items: flex-start; gap: 1rem; }
       .stats-section { padding: 3rem 1.5rem; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
-      .stat-item.full-width { grid-column: span 2; flex-direction: column; gap: 0.5rem; text-align: center; }
+      .stat-card { padding: 1.9rem 1.4rem; min-height: 150px; }
       .who-grid, .philosophy-grid, .custody-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .who-sub { margin-top: 3rem; padding-top: 3rem; }
+      .serve-grid { grid-template-columns: 1fr; }
       .services-header { grid-template-columns: 1fr; gap: 1.5rem; }
       .services-grid { grid-template-columns: 1fr; } .service-card.wide { grid-column: span 1; }
+      .svc-groups { grid-template-columns: 1fr; }
       .process-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
       .process-grid::before { display: none; } .process-step + .process-step { border-left: none; }
+      .process-cascade { flex-direction: column; }
+      .proc-panel, .process-cascade:hover .proc-panel, .proc-panel:hover { flex: none; min-height: auto; }
+      .proc-desc2 { opacity: 1; transform: none; }
       .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
       .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
       .modal { grid-template-columns: 1fr; max-height: 90vh; overflow-y: auto; }
@@ -312,19 +427,228 @@
   </style>
 </head>
 <body>
+<div class="bg" aria-hidden="true"><div class="orb a" data-sx="0.03" data-sy="0.10"><i></i></div><div class="orb b" data-sx="-0.04" data-sy="-0.07"><i></i></div><div class="orb c" data-sx="0.05" data-sy="0.06"><i></i></div><div class="orb d" data-sx="-0.03" data-sy="-0.12"><i></i></div></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="goldgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e2c98a"/><stop offset="0.55" stop-color="#c9a96e"/><stop offset="1" stop-color="#b0894f"/></linearGradient><linearGradient id="treegrad" x1="12" y1="6" x2="108" y2="114" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f0d9a8"/><stop offset="0.5" stop-color="#c9a96e"/><stop offset="1" stop-color="#9c7a44"/></linearGradient><symbol id="tol" viewBox="0 0 120 120"><circle cx="60" cy="60" r="54" fill="none" stroke="url(#treegrad)" stroke-width="2.4"/>
+<path d="M60.0 82.0 Q60.0 73.0 60.0 63.0" fill="none" stroke="url(#treegrad)" stroke-width="5.0" stroke-linecap="round"/>
+<path d="M60.0 63.0 Q62.2 55.5 60.0 48.0" fill="none" stroke="url(#treegrad)" stroke-width="3.4" stroke-linecap="round"/>
+<path d="M60.0 48.0 Q55.6 42.3 55.0 38.8" fill="none" stroke="url(#treegrad)" stroke-width="2.31" stroke-linecap="round"/>
+<path d="M55.0 38.8 Q50.7 34.9 48.8 34.8" fill="none" stroke="url(#treegrad)" stroke-width="1.57" stroke-linecap="round"/>
+<path d="M48.8 34.8 Q46.1 32.4 43.6 34.5" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M48.8 34.8 Q45.6 31.5 46.3 30.3" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M55.0 38.8 Q52.8 35.1 55.0 31.4" fill="none" stroke="url(#treegrad)" stroke-width="1.57" stroke-linecap="round"/>
+<path d="M55.0 31.4 Q51.8 28.1 52.5 26.9" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M55.0 31.4 Q54.3 30.2 57.4 26.9" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M60.0 48.0 Q64.4 44.4 65.0 38.8" fill="none" stroke="url(#treegrad)" stroke-width="2.31" stroke-linecap="round"/>
+<path d="M65.0 38.8 Q67.2 35.1 65.0 31.4" fill="none" stroke="url(#treegrad)" stroke-width="1.57" stroke-linecap="round"/>
+<path d="M65.0 31.4 Q65.7 28.1 62.6 26.9" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M65.0 31.4 Q68.2 30.2 67.5 26.9" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M65.0 38.8 Q69.3 38.7 71.2 34.8" fill="none" stroke="url(#treegrad)" stroke-width="1.57" stroke-linecap="round"/>
+<path d="M71.2 34.8 Q74.4 33.6 73.7 30.3" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M71.2 34.8 Q73.9 36.8 76.4 34.5" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M60.0 63.0 Q53.9 55.6 51.5 50.6" fill="none" stroke="url(#treegrad)" stroke-width="3.4" stroke-linecap="round"/>
+<path d="M51.5 50.6 Q45.9 46.3 42.2 45.9" fill="none" stroke="url(#treegrad)" stroke-width="2.31" stroke-linecap="round"/>
+<path d="M42.2 45.9 Q38.6 43.8 34.8 46.1" fill="none" stroke="url(#treegrad)" stroke-width="1.57" stroke-linecap="round"/>
+<path d="M34.8 46.1 Q33.7 45.5 30.4 48.7" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M34.8 46.1 Q31.5 42.9 30.2 43.7" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M42.2 45.9 Q38.3 41.6 38.0 39.8" fill="none" stroke="url(#treegrad)" stroke-width="1.57" stroke-linecap="round"/>
+<path d="M38.0 39.8 Q34.7 36.7 33.4 37.5" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M38.0 39.8 Q35.6 37.0 37.5 34.7" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M51.5 50.6 Q48.8 45.2 50.5 40.2" fill="none" stroke="url(#treegrad)" stroke-width="2.31" stroke-linecap="round"/>
+<path d="M50.5 40.2 Q46.6 35.9 46.3 34.1" fill="none" stroke="url(#treegrad)" stroke-width="1.57" stroke-linecap="round"/>
+<path d="M46.3 34.1 Q43.0 31.0 41.7 31.8" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M46.3 34.1 Q43.9 31.3 45.8 29.0" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M50.5 40.2 Q49.9 37.6 53.3 33.4" fill="none" stroke="url(#treegrad)" stroke-width="1.57" stroke-linecap="round"/>
+<path d="M53.3 33.4 Q50.9 30.6 52.8 28.3" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M53.3 33.4 Q54.0 33.5 57.4 30.2" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M60.0 63.0 Q66.1 58.1 68.5 50.6" fill="none" stroke="url(#treegrad)" stroke-width="3.4" stroke-linecap="round"/>
+<path d="M68.5 50.6 Q71.2 45.6 69.5 40.2" fill="none" stroke="url(#treegrad)" stroke-width="2.31" stroke-linecap="round"/>
+<path d="M69.5 40.2 Q70.1 35.9 66.7 33.4" fill="none" stroke="url(#treegrad)" stroke-width="1.57" stroke-linecap="round"/>
+<path d="M66.7 33.4 Q66.0 30.1 62.6 30.2" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M66.7 33.4 Q69.1 31.1 67.2 28.3" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M69.5 40.2 Q73.4 38.4 73.7 34.1" fill="none" stroke="url(#treegrad)" stroke-width="1.57" stroke-linecap="round"/>
+<path d="M73.7 34.1 Q76.1 31.8 74.2 29.0" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M73.7 34.1 Q77.0 34.9 78.3 31.8" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M68.5 50.6 Q74.1 50.2 77.8 45.9" fill="none" stroke="url(#treegrad)" stroke-width="2.31" stroke-linecap="round"/>
+<path d="M77.8 45.9 Q81.7 44.1 82.0 39.8" fill="none" stroke="url(#treegrad)" stroke-width="1.57" stroke-linecap="round"/>
+<path d="M82.0 39.8 Q84.4 37.5 82.5 34.7" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M82.0 39.8 Q85.3 40.6 86.6 37.5" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M77.8 45.9 Q81.4 48.2 85.2 46.1" fill="none" stroke="url(#treegrad)" stroke-width="1.57" stroke-linecap="round"/>
+<path d="M85.2 46.1 Q88.5 46.9 89.8 43.7" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M85.2 46.1 Q86.3 49.3 89.6 48.7" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M60.0 63.0 Q52.3 57.6 46.6 56.2" fill="none" stroke="url(#treegrad)" stroke-width="3.4" stroke-linecap="round"/>
+<path d="M46.6 56.2 Q41.4 54.2 36.1 56.5" fill="none" stroke="url(#treegrad)" stroke-width="2.31" stroke-linecap="round"/>
+<path d="M36.1 56.5 Q34.1 56.5 29.8 60.2" fill="none" stroke="url(#treegrad)" stroke-width="1.57" stroke-linecap="round"/>
+<path d="M29.8 60.2 Q30.4 61.3 27.1 64.6" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M29.8 60.2 Q27.3 58.1 24.6 60.4" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M36.1 56.5 Q31.9 52.9 29.6 53.2" fill="none" stroke="url(#treegrad)" stroke-width="1.57" stroke-linecap="round"/>
+<path d="M29.6 53.2 Q27.1 51.0 24.4 53.3" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M29.6 53.2 Q26.3 49.8 26.7 48.9" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M46.6 56.2 Q41.9 50.6 40.7 47.5" fill="none" stroke="url(#treegrad)" stroke-width="2.31" stroke-linecap="round"/>
+<path d="M40.7 47.5 Q36.4 43.9 34.2 44.2" fill="none" stroke="url(#treegrad)" stroke-width="1.57" stroke-linecap="round"/>
+<path d="M34.2 44.2 Q31.6 42.1 29.0 44.3" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M34.2 44.2 Q30.9 40.8 31.2 39.9" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M40.7 47.5 Q38.1 43.7 40.0 40.2" fill="none" stroke="url(#treegrad)" stroke-width="1.57" stroke-linecap="round"/>
+<path d="M40.0 40.2 Q36.7 36.9 37.1 36.0" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M40.0 40.2 Q38.9 38.7 42.0 35.5" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M60.0 63.0 Q67.7 61.6 73.4 56.2" fill="none" stroke="url(#treegrad)" stroke-width="3.4" stroke-linecap="round"/>
+<path d="M73.4 56.2 Q78.1 53.1 79.3 47.5" fill="none" stroke="url(#treegrad)" stroke-width="2.31" stroke-linecap="round"/>
+<path d="M79.3 47.5 Q81.9 44.1 80.0 40.2" fill="none" stroke="url(#treegrad)" stroke-width="1.57" stroke-linecap="round"/>
+<path d="M80.0 40.2 Q81.1 37.0 78.0 35.5" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M80.0 40.2 Q83.3 39.3 82.9 36.0" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M79.3 47.5 Q83.6 47.8 85.8 44.2" fill="none" stroke="url(#treegrad)" stroke-width="1.57" stroke-linecap="round"/>
+<path d="M85.8 44.2 Q89.1 43.3 88.8 39.9" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M85.8 44.2 Q88.4 46.5 91.0 44.3" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M73.4 56.2 Q78.6 58.5 83.9 56.5" fill="none" stroke="url(#treegrad)" stroke-width="2.31" stroke-linecap="round"/>
+<path d="M83.9 56.5 Q88.1 56.8 90.4 53.2" fill="none" stroke="url(#treegrad)" stroke-width="1.57" stroke-linecap="round"/>
+<path d="M90.4 53.2 Q93.7 52.3 93.3 48.9" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M90.4 53.2 Q92.9 55.4 95.6 53.3" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M83.9 56.5 Q85.9 60.3 90.2 60.2" fill="none" stroke="url(#treegrad)" stroke-width="1.57" stroke-linecap="round"/>
+<path d="M90.2 60.2 Q92.7 62.5 95.4 60.4" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M90.2 60.2 Q89.6 63.6 92.9 64.6" fill="none" stroke="url(#treegrad)" stroke-width="1.07" stroke-linecap="round"/>
+<path d="M60.0 82.0 Q66.0 96.0 82.0 104.0" fill="none" stroke="url(#treegrad)" stroke-width="3.2" stroke-linecap="round"/>
+<path d="M60.0 82.0 Q54.0 96.0 38.0 104.0" fill="none" stroke="url(#treegrad)" stroke-width="3.2" stroke-linecap="round"/>
+<path d="M60.0 82.0 Q74.0 98.0 90.0 100.0" fill="none" stroke="url(#treegrad)" stroke-width="3.2" stroke-linecap="round"/>
+<path d="M60.0 82.0 Q46.0 98.0 30.0 100.0" fill="none" stroke="url(#treegrad)" stroke-width="3.2" stroke-linecap="round"/>
+<path d="M60.0 82.0 Q64.0 99.0 72.0 106.0" fill="none" stroke="url(#treegrad)" stroke-width="3.2" stroke-linecap="round"/>
+<path d="M60.0 82.0 Q56.0 99.0 48.0 106.0" fill="none" stroke="url(#treegrad)" stroke-width="3.2" stroke-linecap="round"/>
+<path d="M60.0 82.0 Q60.0 94.0 60.0 103.0" fill="none" stroke="url(#treegrad)" stroke-width="3.0" stroke-linecap="round"/>
+<path d="M80.0 100.0 Q84.0 100.0 86.0 102.0" fill="none" stroke="url(#treegrad)" stroke-width="1.4" stroke-linecap="round"/>
+<path d="M40.0 100.0 Q36.0 100.0 34.0 102.0" fill="none" stroke="url(#treegrad)" stroke-width="1.4" stroke-linecap="round"/>
+<path d="M88.0 96.0 Q92.0 97.0 94.0 98.0" fill="none" stroke="url(#treegrad)" stroke-width="1.4" stroke-linecap="round"/>
+<path d="M32.0 96.0 Q28.0 97.0 26.0 98.0" fill="none" stroke="url(#treegrad)" stroke-width="1.4" stroke-linecap="round"/>
+<ellipse cx="39.9" cy="36.4" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-207.5 39.9 36.4)"/>
+<ellipse cx="39.5" cy="34.2" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-175.9 39.5 34.2)"/>
+<ellipse cx="40.2" cy="32.0" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-144.4 40.2 32.0)"/>
+<ellipse cx="42.7" cy="28.2" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-150.2 42.7 28.2)"/>
+<ellipse cx="44.3" cy="26.6" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-118.6 44.3 26.6)"/>
+<ellipse cx="46.5" cy="26.1" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-87.1 46.5 26.1)"/>
+<ellipse cx="48.9" cy="24.8" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-150.2 48.9 24.8)"/>
+<ellipse cx="50.5" cy="23.2" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-118.6 50.5 23.2)"/>
+<ellipse cx="52.7" cy="22.7" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-87.1 52.7 22.7)"/>
+<ellipse cx="57.2" cy="22.7" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-92.9 57.2 22.7)"/>
+<ellipse cx="59.4" cy="23.2" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-61.4 59.4 23.2)"/>
+<ellipse cx="61.1" cy="24.8" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-29.8 61.1 24.8)"/>
+<ellipse cx="58.9" cy="24.8" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-150.2 58.9 24.8)"/>
+<ellipse cx="60.6" cy="23.2" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-118.6 60.6 23.2)"/>
+<ellipse cx="62.8" cy="22.7" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-87.1 62.8 22.7)"/>
+<ellipse cx="67.3" cy="22.7" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-92.9 67.3 22.7)"/>
+<ellipse cx="69.5" cy="23.2" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-61.4 69.5 23.2)"/>
+<ellipse cx="71.1" cy="24.8" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-29.8 71.1 24.8)"/>
+<ellipse cx="73.5" cy="26.1" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-92.9 73.5 26.1)"/>
+<ellipse cx="75.7" cy="26.6" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-61.4 75.7 26.6)"/>
+<ellipse cx="77.3" cy="28.2" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-29.8 77.3 28.2)"/>
+<ellipse cx="79.8" cy="32.0" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-35.6 79.8 32.0)"/>
+<ellipse cx="80.5" cy="34.2" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-4.1 80.5 34.2)"/>
+<ellipse cx="80.1" cy="36.4" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(27.5 80.1 36.4)"/>
+<ellipse cx="28.4" cy="52.4" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-241.8 28.4 52.4)"/>
+<ellipse cx="26.8" cy="50.8" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-210.3 26.8 50.8)"/>
+<ellipse cx="26.2" cy="48.6" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-178.8 26.2 48.6)"/>
+<ellipse cx="26.1" cy="44.1" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-184.5 26.1 44.1)"/>
+<ellipse cx="26.5" cy="41.8" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-153.0 26.5 41.8)"/>
+<ellipse cx="28.0" cy="40.2" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-121.5 28.0 40.2)"/>
+<ellipse cx="29.3" cy="37.8" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-184.5 29.3 37.8)"/>
+<ellipse cx="29.7" cy="35.6" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-153.0 29.7 35.6)"/>
+<ellipse cx="31.2" cy="33.9" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-121.5 31.2 33.9)"/>
+<ellipse cx="35.0" cy="31.3" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-127.2 35.0 31.3)"/>
+<ellipse cx="37.1" cy="30.5" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-95.7 37.1 30.5)"/>
+<ellipse cx="39.3" cy="30.9" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-64.2 39.3 30.9)"/>
+<ellipse cx="37.6" cy="32.1" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-184.5 37.6 32.1)"/>
+<ellipse cx="38.0" cy="29.9" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-153.0 38.0 29.9)"/>
+<ellipse cx="39.6" cy="28.2" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-121.5 39.6 28.2)"/>
+<ellipse cx="43.3" cy="25.6" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-127.2 43.3 25.6)"/>
+<ellipse cx="45.4" cy="24.8" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-95.7 45.4 24.8)"/>
+<ellipse cx="47.6" cy="25.2" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-64.2 47.6 25.2)"/>
+<ellipse cx="50.3" cy="24.9" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-127.2 50.3 24.9)"/>
+<ellipse cx="52.4" cy="24.1" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-95.7 52.4 24.1)"/>
+<ellipse cx="54.7" cy="24.5" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-64.2 54.7 24.5)"/>
+<ellipse cx="58.8" cy="26.3" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-69.9 58.8 26.3)"/>
+<ellipse cx="60.7" cy="27.6" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-38.4 60.7 27.6)"/>
+<ellipse cx="61.5" cy="29.7" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-6.9 61.5 29.7)"/>
+<ellipse cx="58.5" cy="29.7" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-173.1 58.5 29.7)"/>
+<ellipse cx="59.3" cy="27.6" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-141.6 59.3 27.6)"/>
+<ellipse cx="61.2" cy="26.3" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-110.1 61.2 26.3)"/>
+<ellipse cx="65.3" cy="24.5" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-115.8 65.3 24.5)"/>
+<ellipse cx="67.6" cy="24.1" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-84.3 67.6 24.1)"/>
+<ellipse cx="69.7" cy="24.9" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-52.8 69.7 24.9)"/>
+<ellipse cx="72.4" cy="25.2" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-115.8 72.4 25.2)"/>
+<ellipse cx="74.6" cy="24.8" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-84.3 74.6 24.8)"/>
+<ellipse cx="76.7" cy="25.6" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-52.8 76.7 25.6)"/>
+<ellipse cx="80.4" cy="28.2" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-58.5 80.4 28.2)"/>
+<ellipse cx="82.0" cy="29.9" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-27.0 82.0 29.9)"/>
+<ellipse cx="82.4" cy="32.1" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(4.5 82.4 32.1)"/>
+<ellipse cx="80.7" cy="30.9" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-115.8 80.7 30.9)"/>
+<ellipse cx="82.9" cy="30.5" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-84.3 82.9 30.5)"/>
+<ellipse cx="85.0" cy="31.3" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-52.8 85.0 31.3)"/>
+<ellipse cx="88.8" cy="33.9" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-58.5 88.8 33.9)"/>
+<ellipse cx="90.3" cy="35.6" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-27.0 90.3 35.6)"/>
+<ellipse cx="90.7" cy="37.8" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(4.5 90.7 37.8)"/>
+<ellipse cx="92.0" cy="40.2" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-58.5 92.0 40.2)"/>
+<ellipse cx="93.5" cy="41.8" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-27.0 93.5 41.8)"/>
+<ellipse cx="93.9" cy="44.1" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(4.5 93.9 44.1)"/>
+<ellipse cx="93.8" cy="48.6" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-1.2 93.8 48.6)"/>
+<ellipse cx="93.2" cy="50.8" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(30.3 93.2 50.8)"/>
+<ellipse cx="91.6" cy="52.4" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(61.8 91.6 52.4)"/>
+<ellipse cx="27.2" cy="68.8" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-270.5 27.2 68.8)"/>
+<ellipse cx="25.0" cy="68.2" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-239.0 25.0 68.2)"/>
+<ellipse cx="23.4" cy="66.6" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-207.5 23.4 66.6)"/>
+<ellipse cx="21.1" cy="62.7" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-213.2 21.1 62.7)"/>
+<ellipse cx="20.5" cy="60.5" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-181.7 20.5 60.5)"/>
+<ellipse cx="21.0" cy="58.3" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-150.2 21.0 58.3)"/>
+<ellipse cx="20.9" cy="55.6" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-213.2 20.9 55.6)"/>
+<ellipse cx="20.2" cy="53.4" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-181.7 20.2 53.4)"/>
+<ellipse cx="20.8" cy="51.2" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-150.2 20.8 51.2)"/>
+<ellipse cx="22.8" cy="47.2" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-155.9 22.8 47.2)"/>
+<ellipse cx="24.3" cy="45.5" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-124.4 24.3 45.5)"/>
+<ellipse cx="26.5" cy="44.7" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-92.9 26.5 44.7)"/>
+<ellipse cx="25.5" cy="46.6" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-213.2 25.5 46.6)"/>
+<ellipse cx="24.8" cy="44.5" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-181.7 24.8 44.5)"/>
+<ellipse cx="25.4" cy="42.3" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-150.2 25.4 42.3)"/>
+<ellipse cx="27.4" cy="38.2" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-155.9 27.4 38.2)"/>
+<ellipse cx="28.9" cy="36.5" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-124.4 28.9 36.5)"/>
+<ellipse cx="31.0" cy="35.8" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-92.9 31.0 35.8)"/>
+<ellipse cx="33.2" cy="34.3" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-155.9 33.2 34.3)"/>
+<ellipse cx="34.7" cy="32.5" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-124.4 34.7 32.5)"/>
+<ellipse cx="36.9" cy="31.8" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-92.9 36.9 31.8)"/>
+<ellipse cx="41.3" cy="31.3" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-98.6 41.3 31.3)"/>
+<ellipse cx="43.6" cy="31.6" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-67.1 43.6 31.6)"/>
+<ellipse cx="45.4" cy="33.0" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-35.6 45.4 33.0)"/>
+<ellipse cx="74.6" cy="33.0" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-144.4 74.6 33.0)"/>
+<ellipse cx="76.4" cy="31.6" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-112.9 76.4 31.6)"/>
+<ellipse cx="78.7" cy="31.3" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-81.4 78.7 31.3)"/>
+<ellipse cx="83.1" cy="31.8" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-87.1 83.1 31.8)"/>
+<ellipse cx="85.3" cy="32.5" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-55.6 85.3 32.5)"/>
+<ellipse cx="86.8" cy="34.3" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-24.1 86.8 34.3)"/>
+<ellipse cx="89.0" cy="35.8" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-87.1 89.0 35.8)"/>
+<ellipse cx="91.1" cy="36.5" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-55.6 91.1 36.5)"/>
+<ellipse cx="92.6" cy="38.2" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-24.1 92.6 38.2)"/>
+<ellipse cx="94.6" cy="42.3" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-29.8 94.6 42.3)"/>
+<ellipse cx="95.2" cy="44.5" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(1.7 95.2 44.5)"/>
+<ellipse cx="94.5" cy="46.6" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(33.2 94.5 46.6)"/>
+<ellipse cx="93.5" cy="44.7" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-87.1 93.5 44.7)"/>
+<ellipse cx="95.7" cy="45.5" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-55.6 95.7 45.5)"/>
+<ellipse cx="97.2" cy="47.2" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-24.1 97.2 47.2)"/>
+<ellipse cx="99.2" cy="51.2" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-29.8 99.2 51.2)"/>
+<ellipse cx="99.8" cy="53.4" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(1.7 99.8 53.4)"/>
+<ellipse cx="99.1" cy="55.6" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(33.2 99.1 55.6)"/>
+<ellipse cx="99.0" cy="58.3" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(-29.8 99.0 58.3)"/>
+<ellipse cx="99.5" cy="60.5" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(1.7 99.5 60.5)"/>
+<ellipse cx="98.9" cy="62.7" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(33.2 98.9 62.7)"/>
+<ellipse cx="96.6" cy="66.6" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(27.5 96.6 66.6)"/>
+<ellipse cx="95.0" cy="68.2" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(59.0 95.0 68.2)"/>
+<ellipse cx="92.8" cy="68.8" rx="3.2" ry="1.5" fill="url(#treegrad)" transform="rotate(90.5 92.8 68.8)"/></symbol></defs></svg>
 
 <!-- ══════ NAV ══════ -->
 <nav id="navbar">
   <a href="#" class="nav-logo">
-    <img src="00_Sage_Tree_Logo.jpeg" alt="Sagetree Capital Partners" />
+    <img src="logo-mark.png" alt="Sagetree Capital Partners" />
     <div class="nav-logo-text"><span>SAGETREE</span><span>Capital Partners</span></div>
   </a>
   <ul class="nav-links">
     <li><a href="#who">Who We Are</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#mandate">Our Mandate</a></li>
+    <li><a href="#services">Our Services</a></li>
+    <li><a href="#serve">Who We Serve</a></li>
     <li><a href="#knowledge">Knowledge Bank</a></li>
-    <li><a href="#" class="nav-cta open-modal">Get in Touch</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -334,18 +658,17 @@
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#who" class="mobile-nav-link">Who We Are</a>
-  <a href="#services" class="mobile-nav-link">Services</a>
-  <a href="#mandate" class="mobile-nav-link">Our Mandate</a>
+  <a href="#services" class="mobile-nav-link">Our Services</a>
+  <a href="#serve" class="mobile-nav-link">Who We Serve</a>
   <a href="#knowledge" class="mobile-nav-link">Knowledge Bank</a>
-  <a href="#governance" class="mobile-nav-link">Governance</a>
-  <a href="#" class="mobile-cta open-modal">Get in Touch</a>
+  <a href="#contact" class="mobile-nav-link mobile-cta">Contact</a>
 </div>
 
 <!-- ══════ HERO ══════ -->
 <section class="hero" id="home">
   <div class="hero-video-wrap">
     <video autoplay muted loop playsinline preload="auto" webkit-playsinline x5-playsinline>
-      <source src="hero-video.mp4" type="video/mp4" />
+      <source src="hero-video.mp4?v=2" type="video/mp4" />
     </video>
   </div>
   <div class="hero-overlay"></div>
@@ -373,129 +696,29 @@
 <!-- ══════ STATS ══════ -->
 <div class="stats-section reveal">
   <div class="stats-grid">
-    <div class="stat-item"><span class="stat-number">20+</span><span class="stat-label">Years of Global Private Banking Experience</span></div>
-    <div class="stat-item"><span class="stat-number">DIFC</span><span class="stat-label">Category 3C Authorised &amp; Regulated</span></div>
-    <div class="stat-item"><span class="stat-number">USD 3M+</span><span class="stat-label">Minimum Investable Assets for Partnership</span></div>
-    <div class="stat-item full-width">
-      <span class="stat-number">Managing Multi-Family Offices</span>
-      <span class="stat-label">Boutique Model. Institutional Capability.</span>
-    </div>
+    <div class="stat-card"><div class="stat-card-inner"><span class="stat-number">20+</span><span class="stat-label">Years of Global Private Banking Experience</span></div></div>
+    <div class="stat-card"><div class="stat-card-inner"><span class="stat-number">DIFC</span><span class="stat-label">Category 3C Authorised &amp; Regulated</span></div></div>
+    <div class="stat-card"><div class="stat-card-inner"><span class="stat-number">USD 3M+</span><span class="stat-label">Minimum Investable Assets for Partnership</span></div></div>
+    <div class="stat-card"><div class="stat-card-inner"><span class="stat-number stat-number--sm">Multi-Family Offices</span><span class="stat-label">Boutique Model. Institutional Capability.</span></div></div>
   </div>
 </div>
 
 <!-- ══════ WHO WE ARE ══════ -->
 <section class="who-section" id="who">
-  <div class="who-grid">
-    <div class="who-left reveal">
-      <div class="section-label">Our Firm</div>
+  <div class="chapter-bar reveal"><span class="cb-tree"><svg viewBox="0 0 120 120" aria-hidden="true"><use href="#tol"/></svg></span><span class="cb-name">Who We Are</span><span class="cb-rule"></span></div>
+  <div class="who-left reveal" style="max-width:760px;">
       <h2 class="section-title">We sit exclusively on<br /><strong>your side of the table.</strong></h2>
       <p class="section-tagline">Built on principle. Grown with purpose.</p>
       <div class="gold-line"></div>
       <div class="who-body">
-        <p>Sagetree Capital is a regulated external asset manager managing multi-family offices, providing independent, conflict-free wealth management for enterprising families, entrepreneurs and their holding structures. We work exclusively with family offices, serving a limited number of clients with the depth and continuity of a single-family office while sharing infrastructure and investment capabilities across families.</p>
+        <p>Sagetree Capital is a regulated external asset manager managing multiple family offices, providing independent, conflict-free wealth management for enterprising families, entrepreneurs and their holding structures. We work exclusively with family offices, serving a limited number of clients with the depth and continuity of a single-family office while sharing infrastructure and investment capabilities across families.</p>
         <p>We do not manufacture products. Our role is to design and oversee the family's total investment architecture, coordinate best-in-class specialists, and ensure consistent implementation of the agreed strategy across banks, custodians and jurisdictions.</p>
       </div>
       <div class="cap-note">We work with clients from approximately USD 3 million upwards who value independent, conflict-free advice and direct access to senior decision-makers.</div>
     </div>
-    <div class="who-right reveal">
-      <div class="clients-title">Who We Serve</div>
-      <div class="client-type">
-        <div class="client-type-icon">◆</div>
-        <div class="client-type-text"><strong>First-Generation Founders</strong>After a liquidity event, requiring a clear, conflict-free framework for newly crystallised wealth.</div>
-      </div>
-      <div class="client-type">
-        <div class="client-type-icon">◆</div>
-        <div class="client-type-text"><strong>Business-Owning Families</strong>Professionalising their wealth management with institutional-grade oversight and governance.</div>
-      </div>
-      <div class="client-type">
-        <div class="client-type-icon">◆</div>
-        <div class="client-type-text"><strong>Multi-Jurisdiction Families</strong>Seeking coordination across banks, advisors and legal structures in multiple countries.</div>
-      </div>
-      <div class="client-type">
-        <div class="client-type-icon">◆</div>
-        <div class="client-type-text"><strong>Family Offices</strong>Looking to outsource CIO functions, manager selection or consolidated reporting to a trusted partner.</div>
-      </div>
-      <div class="client-type">
-        <div class="client-type-icon">◆</div>
-        <div class="client-type-text"><strong>Institutional &amp; Sovereign Funds</strong>Requiring independent investment oversight and bespoke portfolio construction aligned to their mandate.</div>
-      </div>
-      <div class="client-type">
-        <div class="client-type-icon">◆</div>
-        <div class="client-type-text"><strong>Corporates &amp; Treasuries</strong>Managing corporate reserves and treasury operations with institutional discipline and risk-first governance.</div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ══════ SERVICES ══════ -->
-<section class="services-section" id="services">
-  <div class="services-header reveal">
-    <div>
-      <div class="section-label">What We Do</div>
-      <h2 class="section-title">Five capabilities.<br /><strong>One unified framework.</strong></h2>
-    </div>
-    <p class="section-desc"><em style="color:var(--gold);">Our systems are coordinated disciplines, designed around the entirety of your family's financial life, now and for the generations that follow.</em></p>
-  </div>
-  <div class="services-grid">
-    <div class="service-card reveal">
-      <div class="service-num">01</div>
-      <div class="service-title">Investment Governance &amp; Strategy</div>
-      <p class="service-desc">We help families move from ad-hoc decisions to a clear, documented framework.</p>
-      <ul class="service-bullets">
-        <li>Definition of investment objectives, risk budget and liquidity needs</li>
-        <li>Written Investment Policy Statement (IPS)</li>
-        <li>Strategic and dynamic asset allocation across public and private markets</li>
-        <li>Scenario analysis and stress-testing around key risks</li>
-      </ul>
-    </div>
-    <div class="service-card reveal">
-      <div class="service-num">02</div>
-      <div class="service-title">Discretionary &amp; Advisory Portfolio Management</div>
-      <p class="service-desc">Managed on a fully discretionary basis or with you at every key decision.</p>
-      <ul class="service-bullets">
-        <li>Multi-asset portfolios across equities, fixed income, alternatives and cash</li>
-        <li>Open-architecture manager selection and ETF/active fund implementation</li>
-        <li>Direct equity and bond portfolios where appropriate</li>
-        <li>Currency and interest-rate risk management</li>
-      </ul>
-    </div>
-    <div class="service-card reveal">
-      <div class="service-num">03</div>
-      <div class="service-title">Reporting &amp; Independent Risk Oversight</div>
-      <p class="service-desc">A single, independent view of your total wealth, across all banks and entities, with risk monitored against your parameters, not a bank's product targets.</p>
-      <ul class="service-bullets">
-        <li>Aggregated reporting across custodians, currencies and legal structures</li>
-        <li>Performance attribution by asset class, manager and strategy</li>
-        <li>Independent risk monitoring against client-set parameters</li>
-        <li>Escalation frameworks free from product-selling incentives</li>
-      </ul>
-    </div>
-    <div class="service-card wide reveal">
-      <div class="service-num">04</div>
-      <div class="service-title">Coordination with Your Existing Advisors</div>
-      <p class="service-desc">We do not replace your trusted advisors. We ensure they work together effectively, acting as the CIO function your family has never had.</p>
-      <ul class="service-bullets">
-        <li>Collaboration with your tax, legal and estate-planning counsel</li>
-        <li>Support on holding-company and trust structures from an investment perspective</li>
-        <li>Input on liquidity planning for distributions, philanthropy and major projects</li>
-        <li>Participation in family council or investment committee meetings</li>
-      </ul>
-    </div>
-    <div class="service-card reveal">
-      <div class="service-num">05</div>
-      <div class="service-title">Family Governance &amp; Education</div>
-      <p class="service-desc">For multi-generational families, we support the human side of capital.</p>
-      <ul class="service-bullets">
-        <li>Design of family investment principles and governance forums</li>
-        <li>Next-generation education on investing, risk and capital allocation</li>
-        <li>Neutral facilitation between generations on objectives and risk appetite</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ══════ INVESTMENT PHILOSOPHY ══════ -->
-<section class="philosophy-section" id="philosophy">
+  <!-- Our Philosophy -->
+  <div class="who-sub" id="philosophy">
   <div class="reveal" style="max-width:600px;">
     <div class="section-label">Our Philosophy</div>
     <h2 class="section-title">Client-aligned.<br /><strong>Independently risk-aware.</strong></h2>
@@ -514,7 +737,7 @@
           <li>Avoiding concentration, excessive leverage and illiquidity without premium</li>
         </ul>
       </div>
-      <div class="philosophy-block reveal" style="margin-top:2.5rem;">
+      <div class="philosophy-block reveal">
         <div class="phil-title">Independent Risk Oversight</div>
         <p class="phil-desc">Our independence extends to our risk function. Portfolios are reviewed against risk parameters set with the client, not sold against product targets set by a bank.</p>
         <ul class="phil-points">
@@ -523,7 +746,7 @@
           <li>Transparent risk reporting, free from product-selling incentives</li>
         </ul>
       </div>
-      <div class="philosophy-block reveal" style="margin-top:2.5rem;">
+      <div class="philosophy-block reveal">
         <div class="phil-title">Bespoke by Risk Appetite</div>
         <p class="phil-desc">Every mandate is designed around your specific risk tolerance, liquidity needs and generational horizon. No model portfolios. No house-view templates.</p>
         <ul class="phil-points">
@@ -533,55 +756,43 @@
         </ul>
       </div>
     </div>
+    <div class="philosophy-right-col">
     <div class="philosophy-right reveal">
       <div class="phil-quote">We believe long-term wealth creation comes from a clear plan, <em>structured risk management</em> and the prudence to avoid permanent capital loss.</div>
       <p style="font-size:0.82rem;font-weight:300;color:var(--muted);line-height:1.9;margin-bottom:1.5rem;">Our investment philosophy is not theoretical. It is the distillation of decades managing wealth through every kind of market cycle, for families whose financial security and legacy depended on getting it right.</p>
       <p style="font-family:var(--heading);font-size:0.65rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);opacity:0.7;">Rooted in values, invested in your legacy</p>
     </div>
+    <div class="process-accordion reveal" id="process">
+      <div class="proc-acc-header"><div class="proc-acc-label">Our Process</div><div class="proc-acc-sub">Five steps to a complete framework</div></div>
+      <div class="proc-acc-item open">
+        <button class="proc-acc-head"><span class="proc-acc-num">01</span><span class="proc-acc-title">Discovery</span><span class="proc-acc-ico">+</span></button>
+        <div class="proc-acc-body"><div class="proc-acc-inner"><p>Deep understanding of your family's balance sheet, objectives, constraints, governance and preferences.</p></div></div>
+      </div>
+      <div class="proc-acc-item">
+        <button class="proc-acc-head"><span class="proc-acc-num">02</span><span class="proc-acc-title">Design</span><span class="proc-acc-ico">+</span></button>
+        <div class="proc-acc-body"><div class="proc-acc-inner"><p>Development of an Investment Policy Statement and target asset allocation including liquidity and risk parameters.</p></div></div>
+      </div>
+      <div class="proc-acc-item">
+        <button class="proc-acc-head"><span class="proc-acc-num">03</span><span class="proc-acc-title">Implementation</span><span class="proc-acc-ico">+</span></button>
+        <div class="proc-acc-body"><div class="proc-acc-inner"><p>Selection of custodians, managers and instruments. Portfolio construction across public and private markets.</p></div></div>
+      </div>
+      <div class="proc-acc-item">
+        <button class="proc-acc-head"><span class="proc-acc-num">04</span><span class="proc-acc-title">Monitoring</span><span class="proc-acc-ico">+</span></button>
+        <div class="proc-acc-body"><div class="proc-acc-inner"><p>Ongoing risk and performance monitoring, rebalancing and opportunistic adjustments within the agreed framework.</p></div></div>
+      </div>
+      <div class="proc-acc-item">
+        <button class="proc-acc-head"><span class="proc-acc-num">05</span><span class="proc-acc-title">Review</span><span class="proc-acc-ico">+</span></button>
+        <div class="proc-acc-body"><div class="proc-acc-inner"><p>Periodic strategic reviews, including life-event updates, changes in objectives and shifts in market environment.</p></div></div>
+      </div>
+    </div>
+    </div>
   </div>
-</section>
+</div>
 
-<!-- ══════ PROCESS ══════ -->
-<section class="process-section" id="process">
-  <div class="reveal" style="max-width:560px;margin:0 auto;text-align:center;">
-    <div class="section-label" style="justify-content:center;">Our Process</div>
-    <h2 class="section-title">Five steps to a <strong>complete framework.</strong></h2>
-    <p class="section-desc" style="margin:0 auto;">Every client relationship begins with deep understanding and ends with a structure built to last, adapting over time as your life and goals evolve.</p>
-  </div>
-  <div class="process-grid">
-    <div class="process-step reveal">
-      <span class="process-num">01</span>
-      <div class="process-title">Discovery</div>
-      <p class="process-desc">Deep understanding of your family's balance sheet, objectives, constraints, governance and preferences.</p>
-    </div>
-    <div class="process-step reveal">
-      <span class="process-num">02</span>
-      <div class="process-title">Design</div>
-      <p class="process-desc">Development of an Investment Policy Statement and target asset allocation including liquidity and risk parameters.</p>
-    </div>
-    <div class="process-step reveal">
-      <span class="process-num">03</span>
-      <div class="process-title">Implementation</div>
-      <p class="process-desc">Selection of custodians, managers and instruments. Portfolio construction across public and private markets.</p>
-    </div>
-    <div class="process-step reveal">
-      <span class="process-num">04</span>
-      <div class="process-title">Monitoring</div>
-      <p class="process-desc">Ongoing risk and performance monitoring, rebalancing and opportunistic adjustments within the agreed framework.</p>
-    </div>
-    <div class="process-step reveal">
-      <span class="process-num">05</span>
-      <div class="process-title">Review</div>
-      <p class="process-desc">Periodic strategic reviews, including life-event updates, changes in objectives and shifts in market environment.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ══════ OUR MANDATE ══════ -->
-<section class="mandate-section" id="mandate">
+  <!-- Our Mandate -->
+  <div class="who-sub" id="mandate">
   <div class="mandate-inner">
     <div class="mandate-text reveal">
-      <div class="custody-badge"><div class="custody-badge-dot"></div><div class="custody-badge-text">DFSA Regulated · DIFC Category 3C</div></div>
       <div class="section-label">Our Mandate as Your Investment Manager</div>
       <h2 class="section-title">Your assets. Your name.<br /><strong>Our duty to carry.</strong></h2>
       <div class="gold-line"></div>
@@ -612,13 +823,89 @@
       </div>
     </div>
   </div>
+</div>
+</section>
+
+<!-- ══════ SERVICES ══════ -->
+<section class="services-section" id="services">
+  <div class="chapter-bar reveal"><span class="cb-tree"><svg viewBox="0 0 120 120" aria-hidden="true"><use href="#tol"/></svg></span><span class="cb-name">Our Services</span><span class="cb-rule"></span></div>
+  <div class="services-header reveal">
+    <div>
+      <h2 class="section-title">Five capabilities.<br /><strong>One unified framework.</strong></h2>
+    </div>
+    <p class="section-desc"><em style="color:var(--gold);">Our systems are coordinated disciplines, designed around the entirety of your family's financial life, now and for the generations that follow.</em></p>
+  </div>
+  <div class="svc-groups">
+    <a class="svc-card" href="services-investment-advisory.html">
+      <div class="svc-card-inner">
+        <div class="svc-card-tag">Advisory</div>
+        <h3 class="svc-card-title">Investment Advisory</h3>
+        <p class="svc-card-desc">Portfolio strategy, discretionary and advisory management, and independent reporting and risk oversight, built around your family's objectives rather than a bank's product targets.</p>
+        <ul class="svc-card-list"><li>Investment Governance &amp; Strategy</li><li>Discretionary &amp; Advisory Portfolio Management</li><li>Reporting &amp; Independent Risk Oversight</li></ul>
+        <span class="svc-card-cta">Explore &nbsp;&#8594;</span>
+      </div>
+    </a>
+    <a class="svc-card" href="services-wealth-planning.html">
+      <div class="svc-card-inner">
+        <div class="svc-card-tag">Planning</div>
+        <h3 class="svc-card-title">Wealth Planning</h3>
+        <p class="svc-card-desc">Coordination across your existing tax, legal and estate-planning advisors, acting as the CIO function your family has never had.</p>
+        <ul class="svc-card-list"><li>Holistic Planning Across Every Dimension of Wealth</li></ul>
+        <span class="svc-card-cta">Explore &nbsp;&#8594;</span>
+      </div>
+    </a>
+    <a class="svc-card" href="services-bespoke-services.html">
+      <div class="svc-card-inner">
+        <div class="svc-card-tag">Bespoke</div>
+        <h3 class="svc-card-title">Bespoke Services</h3>
+        <p class="svc-card-desc">Support for the human side of capital: family governance and next-generation education for multi-generational families.</p>
+        <ul class="svc-card-list"><li>Family Governance &amp; Education</li></ul>
+        <span class="svc-card-cta">Explore &nbsp;&#8594;</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ══════ WHO WE SERVE ══════ -->
+<section class="serve-section" id="serve">
+  <div class="chapter-bar reveal"><span class="cb-tree"><svg viewBox="0 0 120 120" aria-hidden="true"><use href="#tol"/></svg></span><span class="cb-name">Who We Serve</span><span class="cb-rule"></span></div>
+  <div class="reveal" style="max-width:660px;">
+    <h2 class="section-title">The families and institutions <strong>we are built for.</strong></h2>
+    <p class="section-desc">A deliberately limited number of relationships, each given the depth and continuity of a single-family office.</p>
+  </div>
+  <div class="serve-grid">
+    <div class="client-type reveal">
+      <div class="client-type-icon">◆</div>
+      <div class="client-type-text"><strong>First-Generation Founders</strong>After a liquidity event, requiring a clear, conflict-free framework for newly crystallised wealth.</div>
+    </div>
+    <div class="client-type reveal">
+      <div class="client-type-icon">◆</div>
+      <div class="client-type-text"><strong>Business-Owning Families</strong>Professionalising their wealth management with institutional-grade oversight and governance.</div>
+    </div>
+    <div class="client-type reveal">
+      <div class="client-type-icon">◆</div>
+      <div class="client-type-text"><strong>Multi-Jurisdiction Families</strong>Seeking coordination across banks, advisors and legal structures in multiple countries.</div>
+    </div>
+    <div class="client-type reveal">
+      <div class="client-type-icon">◆</div>
+      <div class="client-type-text"><strong>Family Offices</strong>Looking to outsource CIO functions, manager selection or consolidated reporting to a trusted partner.</div>
+    </div>
+    <div class="client-type reveal">
+      <div class="client-type-icon">◆</div>
+      <div class="client-type-text"><strong>Institutional &amp; Sovereign Funds</strong>Requiring independent investment oversight and bespoke portfolio construction aligned to their mandate.</div>
+    </div>
+    <div class="client-type reveal">
+      <div class="client-type-icon">◆</div>
+      <div class="client-type-text"><strong>Corporates &amp; Treasuries</strong>Managing corporate reserves and treasury operations with institutional discipline and risk-first governance.</div>
+    </div>
+  </div>
 </section>
 
 <!-- ══════ STCP KNOWLEDGE BANK ══════ -->
 <section class="knowledge-section" id="knowledge">
+  <div class="chapter-bar reveal"><span class="cb-tree"><svg viewBox="0 0 120 120" aria-hidden="true"><use href="#tol"/></svg></span><span class="cb-name">Knowledge Bank</span><span class="cb-rule"></span></div>
   <div class="knowledge-header reveal">
     <div>
-      <div class="section-label">STCP Knowledge Bank</div>
       <h2 class="section-title">Perspectives from<br /><strong>our investment desk.</strong></h2>
     </div>
     <p class="section-desc">Published views on markets, wealth structuring, risk, and family legacy. Written by the team that manages your capital, not by an outsourced content studio.</p>
@@ -664,50 +951,9 @@
   </div>
 </section>
 
-<!-- ══════ GOVERNANCE & POLICIES ══════ -->
-<section class="governance-section" id="governance">
-  <div class="reveal" style="max-width:640px;">
-    <div class="section-label">Governance &amp; Policies</div>
-    <h2 class="section-title">Documented frameworks.<br /><strong>Available on request.</strong></h2>
-    <p class="section-desc">Institutional-grade governance is embedded in every part of the firm. Our six documented policies are available in full to prospective and existing clients.</p>
-  </div>
-
-  <div class="policy-grid">
-    <div class="policy-card reveal">
-      <div class="policy-title">Investment Policy Statement (IPS)</div>
-      <p class="policy-desc">How client mandates are documented, governed, and reviewed across the lifecycle of the relationship.</p>
-      <a href="#" class="policy-cta open-modal" data-policy="IPS">Available on Request &nbsp;→</a>
-    </div>
-    <div class="policy-card reveal">
-      <div class="policy-title">Risk Management Framework</div>
-      <p class="policy-desc">Our independent risk methodology, covering how portfolios are monitored, escalated, and recalibrated against client-set parameters.</p>
-      <a href="#" class="policy-cta open-modal" data-policy="Risk Management Framework">Available on Request &nbsp;→</a>
-    </div>
-    <div class="policy-card reveal">
-      <div class="policy-title">Conflicts of Interest Policy</div>
-      <p class="policy-desc">How conflicts are identified, disclosed, and managed. A foundation of the firm's independence.</p>
-      <a href="#" class="policy-cta open-modal" data-policy="Conflicts of Interest">Available on Request &nbsp;→</a>
-    </div>
-    <div class="policy-card reveal">
-      <div class="policy-title">Best Execution Policy</div>
-      <p class="policy-desc">How trades are executed to obtain the best possible result for clients across venues and counterparties.</p>
-      <a href="#" class="policy-cta open-modal" data-policy="Best Execution">Available on Request &nbsp;→</a>
-    </div>
-    <div class="policy-card reveal">
-      <div class="policy-title">Client Classification &amp; Suitability</div>
-      <p class="policy-desc">How clients are categorised under DFSA rules and how suitability is assessed for each mandate.</p>
-      <a href="#" class="policy-cta open-modal" data-policy="Client Classification &amp; Suitability">Available on Request &nbsp;→</a>
-    </div>
-    <div class="policy-card reveal">
-      <div class="policy-title">Data Privacy Policy</div>
-      <p class="policy-desc">How client data is collected, handled, and protected across our systems and third-party custodians.</p>
-      <a href="#" class="policy-cta open-modal" data-policy="Data Privacy">Available on Request &nbsp;→</a>
-    </div>
-  </div>
-</section>
-
 <!-- ══════ CTA ══════ -->
 <section class="cta-section" id="contact">
+  <div class="chapter-bar reveal" style="text-align:left;"><span class="cb-tree"><svg viewBox="0 0 120 120" aria-hidden="true"><use href="#tol"/></svg></span><span class="cb-name">Contact</span><span class="cb-rule"></span></div>
   <p class="cta-label reveal">Begin the Conversation</p>
   <h2 class="cta-title reveal">The clarity your family<br /><strong>has always deserved.</strong></h2>
   <p class="cta-tagline reveal">Thinking in generations, not quarters</p>
@@ -723,10 +969,10 @@
   <div class="footer-grid">
     <div>
       <a href="#" class="nav-logo" style="margin-bottom:1.2rem;display:inline-flex;">
-        <img src="00_Sage_Tree_Logo.jpeg" alt="Sagetree" style="height:40px;width:40px;object-fit:contain;border-radius:50%;" />
+        <img src="logo-mark.png" alt="Sagetree" style="height:44px;width:auto;object-fit:contain;" />
         <div class="nav-logo-text"><span>SAGETREE</span><span>Capital Partners</span></div>
       </a>
-      <p class="footer-tagline">An external asset manager managing multi-family offices, providing independent, conflict-free wealth management for enterprising families.</p>
+      <p class="footer-tagline">An external asset manager managing multiple family offices, providing independent, conflict-free wealth management for enterprising families.</p>
       <p class="footer-regulatory">Sagetree Capital Partners is authorised and regulated by the Dubai Financial Services Authority (DFSA) under DIFC Category 3C. Client assets are held in segregated accounts at leading international custodian banks in the client's own name.</p>
     </div>
     <div>
@@ -753,14 +999,13 @@
         <li><a href="#who">Who We Are</a></li>
         <li><a href="#mandate">Our Mandate</a></li>
         <li><a href="#philosophy">Our Philosophy</a></li>
-        <li><a href="#governance">Governance &amp; Policies</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title">Contact</div>
       <ul class="footer-links">
         <li><a href="#">Dubai International Financial Centre</a></li>
-        <li><a href="/cdn-cgi/l/email-protection#c2abaca4ad82b1a3a5a7b6b0a7a7b2a3b0b6aca7b0b1eca1adaf"><span class="__cf_email__" data-cfemail="7c15121a133c0f1d1b19080e19190c1d0e0812190e0f521f1311">[email&#160;protected]</span></a></li>
+        <li><a href="mailto:prateek.tosniwal@sagetreepartners.com">info@sagetreepartners.com</a></li>
         <li><a href="#">LinkedIn</a></li>
       </ul>
     </div>
@@ -792,7 +1037,7 @@
         <div class="form-group"><input type="text" placeholder="Full Name" id="f-name" /></div>
         <div class="form-group"><input type="email" placeholder="Email Address" id="f-email" /></div>
         <div class="form-group"><input type="tel" placeholder="Phone Number (optional)" id="f-phone" /></div>
-        <div class="form-group"><textarea placeholder="How can we help you? (optional)" id="f-message"></textarea></div>
+        <div class="form-group"><textarea placeholder="How can we help you? (optional)" id="f-message" maxlength="1200"></textarea><div class="char-count"><span id="charNow">0</span> / 1200 characters</div></div>
         <button class="form-submit" id="formSubmit">Discover Sagetree &nbsp;&#8594;</button>
         <p class="form-note">Your details are treated with complete discretion in accordance with our privacy policy and DFSA regulations.</p>
       </div>
@@ -829,6 +1074,11 @@
   // All sections visible
   document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
 
+  // Services accordion
+  document.querySelectorAll('.acc-head').forEach(h => h.addEventListener('click', () => {
+    h.parentElement.classList.toggle('open');
+  }));
+
   // Counter
   function animateCounter(el, target, suffix) {
     let n = 0; const step = Math.max(1800 / target, 30);
@@ -861,6 +1111,8 @@
     ['f-name','f-email','f-phone','f-message'].forEach(id => {
       const el = document.getElementById(id); if (el) el.value = '';
     });
+    const cn0 = document.getElementById('charNow'); if (cn0) cn0.textContent = '0';
+    const cc0 = document.querySelector('.char-count'); if (cc0) cc0.classList.remove('near');
     // Pre-fill message when a policy is requested
     if (e && e.currentTarget && e.currentTarget.dataset && e.currentTarget.dataset.policy) {
       const msg = document.getElementById('f-message');
@@ -879,19 +1131,95 @@
   modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
+  // Message character counter
+  const msgEl = document.getElementById('f-message');
+  const charNow = document.getElementById('charNow');
+  if (msgEl && charNow) {
+    msgEl.addEventListener('input', () => {
+      charNow.textContent = msgEl.value.length;
+      const cc = document.querySelector('.char-count');
+      if (cc) cc.classList.toggle('near', msgEl.value.length > 1080);
+    });
+  }
+
   document.getElementById('formSubmit').addEventListener('click', () => {
     const name = document.getElementById('f-name');
     const email = document.getElementById('f-email');
+    const phone = document.getElementById('f-phone');
+    const message = document.getElementById('f-message');
     let valid = true;
     [name, email].forEach(el => {
       el.classList.remove('input-error');
       if (!el.value.trim()) { el.classList.add('input-error'); valid = false; }
     });
     if (!valid) return;
+    const subject = encodeURIComponent('Website Enquiry \u2014 ' + name.value.trim());
+    const body = encodeURIComponent(
+      'Name: ' + name.value.trim() + '\n' +
+      'Email: ' + email.value.trim() + '\n' +
+      'Phone: ' + (phone ? phone.value.trim() : '') + '\n\n' +
+      (message && message.value.trim() ? message.value.trim() : 'I would like to arrange a conversation.')
+    );
+    window.location.href = 'mailto:prateek.tosniwal@sagetreepartners.com?subject=' + subject + '&body=' + body;
     formArea.style.display = 'none';
     successArea.classList.add('show');
     setTimeout(closeModal, 3500);
   });
+  // Stat cards: 3D tilt + pointer glow
+  document.querySelectorAll('.stat-card, .svc-card, .mandate-pillar').forEach(card => {
+    const MAX = 9;
+    card.addEventListener('mousemove', e => {
+      const b = card.getBoundingClientRect();
+      const px = (e.clientX - b.left) / b.width, py = (e.clientY - b.top) / b.height;
+      card.style.transform = `rotateX(${(0.5 - py) * MAX}deg) rotateY(${(px - 0.5) * MAX}deg) translateZ(4px)`;
+      card.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+      card.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
+
+  // Philosophy cards: subtle 3D tilt + glow
+  document.querySelectorAll('.philosophy-block, .philosophy-right, .knowledge-card').forEach(card => {
+    const MAX = 6;
+    card.addEventListener('mousemove', e => {
+      const b = card.getBoundingClientRect();
+      const px = (e.clientX - b.left) / b.width, py = (e.clientY - b.top) / b.height;
+      card.style.transform = `perspective(900px) rotateX(${(0.5 - py) * MAX}deg) rotateY(${(px - 0.5) * MAX}deg) translateY(-3px)`;
+      card.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+      card.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
+
+  // Process accordion (single-open, cascades downward)
+  document.querySelectorAll('.proc-acc-head').forEach(head => {
+    head.addEventListener('click', () => {
+      const item = head.parentElement;
+      const open = item.classList.contains('open');
+      item.parentElement.querySelectorAll('.proc-acc-item').forEach(i => i.classList.remove('open'));
+      if (!open) item.classList.add('open');
+    });
+  });
+
+  // Scroll-linked orb parallax (the background shifts as you scroll)
+  (function () {
+    var orbs = Array.prototype.slice.call(document.querySelectorAll('.bg .orb'));
+    if (!orbs.length) return;
+    var ticking = false;
+    function upd() {
+      var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+      for (var i = 0; i < orbs.length; i++) {
+        var o = orbs[i];
+        var sx = parseFloat(o.getAttribute('data-sx')) || 0;
+        var sy = parseFloat(o.getAttribute('data-sy')) || 0;
+        o.style.transform = 'translate3d(' + (y * sx).toFixed(1) + 'px,' + (y * sy).toFixed(1) + 'px,0)';
+      }
+      ticking = false;
+    }
+    window.addEventListener('scroll', function () { if (!ticking) { requestAnimationFrame(upd); ticking = true; } }, { passive: true });
+    upd();
+  })();
+
 </script>
 </body>
 </html>
