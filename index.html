@@ -149,7 +149,12 @@
     .client-type-icon { color: var(--gold); font-size: 0.7rem; margin-top: 0.2rem; flex-shrink: 0; }
     .client-type-text { font-size: 0.85rem; font-weight: 300; color: var(--muted); line-height: 1.7; }
     .client-type-text strong { font-weight: 500; color: var(--cream); display: block; margin-bottom: 0.2rem; font-size: 0.88rem; }
-    .cap-note { margin-top: 2rem; padding: 1.2rem 1.5rem; border: 1px solid rgba(201,169,110,0.2); font-size: 0.78rem; font-weight: 300; color: var(--gold); font-style: italic; line-height: 1.7; }
+    .who-intro-grid { display: grid; grid-template-columns: 1.25fr 0.9fr; gap: 5rem; align-items: center; }
+    .who-pull { position: relative; padding-left: 2rem; }
+    .who-pull::before { content: '\201C'; position: absolute; top: -3rem; left: -1rem; font-family: var(--heading); font-size: 8rem; line-height: 1; color: var(--gold); opacity: 0.22; pointer-events: none; }
+    .who-pull blockquote { margin: 0; }
+    .who-pull blockquote p { font-family: var(--heading); font-weight: 300; font-size: 1.5rem; line-height: 1.62; color: var(--cream); }
+    .who-pull-rule { width: 56px; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); margin-top: 1.8rem; }
 
     /* ── SERVICES ──────────────────────────────────── */
     .services-section { background: rgba(14,61,58,0.5); }
@@ -409,6 +414,9 @@
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .stat-card { padding: 1.9rem 1.4rem; min-height: 150px; }
       .who-grid, .philosophy-grid, .custody-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .who-intro-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .who-pull { padding-left: 1.4rem; margin-top: 0.5rem; }
+      .who-pull blockquote p { font-size: 1.2rem; }
       .who-sub { margin-top: 3rem; padding-top: 3rem; }
       .serve-grid { grid-template-columns: 1fr; }
       .services-header { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -717,7 +725,8 @@
 <!-- ══════ WHO WE ARE ══════ -->
 <section class="who-section" id="who">
   <div class="chapter-bar reveal"><span class="cb-tree"><svg viewBox="0 0 120 120" aria-hidden="true"><use href="#tol"/></svg></span><span class="cb-name">Who We Are</span><span class="cb-rule"></span></div>
-  <div class="who-left reveal" style="max-width:760px;">
+  <div class="who-intro-grid reveal">
+    <div class="who-left">
       <h2 class="section-title">We sit exclusively on<br /><strong>your side of the table.</strong></h2>
       <p class="section-tagline">Built on principle. Grown with purpose.</p>
       <div class="gold-line"></div>
@@ -725,8 +734,12 @@
         <p>Sagetree Capital is a regulated external asset manager managing multiple family offices, providing independent, conflict-free wealth management for enterprising families, entrepreneurs and their holding structures. We work exclusively with family offices, serving a limited number of clients with the depth and continuity of a single-family office while sharing infrastructure and investment capabilities across families.</p>
         <p>We do not manufacture products. Our role is to design and oversee the family's total investment architecture, coordinate best-in-class specialists, and ensure consistent implementation of the agreed strategy across banks, custodians and jurisdictions.</p>
       </div>
-      <div class="cap-note">We work with clients from approximately USD 3 million upwards who value independent, conflict-free advice and direct access to senior decision-makers.</div>
     </div>
+    <figure class="who-pull">
+      <blockquote><p>We work with clients from approximately USD 3 million upwards who value independent, conflict-free advice and direct access to senior decision-makers.</p></blockquote>
+      <div class="who-pull-rule"></div>
+    </figure>
+  </div>
 
   <!-- Our Philosophy -->
   <div class="who-sub" id="philosophy">
@@ -842,9 +855,9 @@
   <div class="chapter-bar reveal"><span class="cb-tree"><svg viewBox="0 0 120 120" aria-hidden="true"><use href="#tol"/></svg></span><span class="cb-name">Our Services</span><span class="cb-rule"></span></div>
   <div class="services-header reveal">
     <div>
-      <h2 class="section-title">Five capabilities.<br /><strong>One unified framework.</strong></h2>
+      <h2 class="section-title">One connected<br /><strong>ecosystem of solutions.</strong></h2>
     </div>
-    <p class="section-desc"><em style="color:var(--gold);">Our systems are coordinated disciplines, designed around the entirety of your family's financial life, now and for the generations that follow.</em></p>
+    <p class="section-desc"><em style="color:var(--gold);">Distinct disciplines, engineered to work as one, spanning every dimension of your family's financial life, now and for the generations that follow.</em></p>
   </div>
   <div class="svc-groups">
     <a class="svc-card" href="services-investment-advisory.html">
