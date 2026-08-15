@@ -1,0 +1,6 @@
+.DS_Store
+*.mov
+hero-video (1).mp4
+_to_delete/
+CLAUDE.md
+deploy-to-github.sh
