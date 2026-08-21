@@ -8,6 +8,13 @@
     /* The card ends the light band, so cancel the parent section's bottom
        padding rather than leaving a tall empty strip beneath it. */
     .light-band.flush-bottom { margin-bottom: -7rem; }
+    /* Cancel the parent section's top padding too, so the cream band meets
+       the band above it instead of leaving a redundant dark strip. */
+    .light-band.flush-top { margin-top: -7rem; }
+    @media (max-width: 960px) {
+      .light-band.flush-top { margin-top: -4rem; }
+      .light-band.flush-bottom { margin-bottom: -4rem; }
+    }
 
     /* ═══ LIGHT READING BAND ═══════════════════════════════════════ */
     .light-band {
@@ -161,7 +168,12 @@
       filter: drop-shadow(0 0 5px rgba(240,220,165,0.85));
     }
     .deck-link.on .deck-link-tip { opacity: 1; }
-    @media (max-width: 960px) { .deck-link { display: none; } }
+    /* On mobile the trunk sits below the copy, so the connector runs
+       downward instead of across. Kept, not hidden. */
+    @media (max-width: 960px) {
+      .deck-link-path { stroke-width: 1.4; stroke-opacity: 0.85; }
+      .deck-link-tip { r: 6; }
+    }
 
     /* ---- trunk, anchored into the bottom-right corner ---- */
     .trunk {
@@ -228,8 +240,8 @@
       /* trunk moves below the copy and sits into the corner at a size that fits */
       .trunk {
         position: relative; right: auto; bottom: auto;
-        width: min(78vw, 320px); height: min(78vw, 320px);
-        margin: 1.6rem -1.5rem -1rem auto;
+        width: min(74vw, 300px); height: min(74vw, 300px);
+        margin: 2.2rem auto 0.5rem;      /* centred */
       }
       .deck { grid-template-columns: 2.2rem 1fr; min-height: 48px; }
       .deck-num { font-size: 0.78rem; }

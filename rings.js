@@ -44,19 +44,36 @@
     var g = ringGeom(i);
     if (!g) return null;
 
-    // land on the ring's left flank, slightly above centre so the line reads
-    var ex = g.cx - g.rx * 0.94 - sb.left;
-    var ey = g.cy - g.ry * 0.22 - sb.top;
-    var sx = db.right - sb.left + 10;
-    var sy = db.top - sb.top + 22;
+    // Stacked layout: the trunk sits below the copy, so the line runs down to
+    // the top of the ring rather than across to its flank.
+    var stacked = g.cy - sb.top > db.bottom - sb.top;
 
-    var midX = sx + Math.max(40, (ex - sx) * 0.40);
-    return { d: 'M' + sx.toFixed(1) + ' ' + sy.toFixed(1) +
-                'H' + midX.toFixed(1) +
-                'C' + (midX + (ex - midX) * 0.5).toFixed(1) + ' ' + sy.toFixed(1) + ',' +
-                      (midX + (ex - midX) * 0.6).toFixed(1) + ' ' + ey.toFixed(1) + ',' +
-                      ex.toFixed(1) + ' ' + ey.toFixed(1),
-             ex: ex, ey: ey, w: sb.width, h: sb.height };
+    var ex, ey, sx, sy, d;
+    if (stacked) {
+      ex = g.cx - sb.left;
+      ey = g.cy - g.ry - sb.top;                 // top of the ring
+      sx = db.left - sb.left + 26;               // just under the number column
+      sy = db.bottom - sb.top - 2;
+      var midY = sy + Math.max(24, (ey - sy) * 0.42);
+      d = 'M' + sx.toFixed(1) + ' ' + sy.toFixed(1) +
+          'V' + midY.toFixed(1) +
+          'C' + sx.toFixed(1) + ' ' + (midY + (ey - midY) * 0.55).toFixed(1) + ',' +
+                ex.toFixed(1) + ' ' + (midY + (ey - midY) * 0.45).toFixed(1) + ',' +
+                ex.toFixed(1) + ' ' + ey.toFixed(1);
+    } else {
+      // land on the ring's left flank, slightly above centre so the line reads
+      ex = g.cx - g.rx * 0.94 - sb.left;
+      ey = g.cy - g.ry * 0.22 - sb.top;
+      sx = db.right - sb.left + 10;
+      sy = db.top - sb.top + 22;
+      var midX = sx + Math.max(40, (ex - sx) * 0.40);
+      d = 'M' + sx.toFixed(1) + ' ' + sy.toFixed(1) +
+          'H' + midX.toFixed(1) +
+          'C' + (midX + (ex - midX) * 0.5).toFixed(1) + ' ' + sy.toFixed(1) + ',' +
+                (midX + (ex - midX) * 0.6).toFixed(1) + ' ' + ey.toFixed(1) + ',' +
+                ex.toFixed(1) + ' ' + ey.toFixed(1);
+    }
+    return { d: d, ex: ex, ey: ey, w: sb.width, h: sb.height };
   }
 
   function drawLink(i, animate) {
