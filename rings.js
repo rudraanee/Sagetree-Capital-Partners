@@ -64,10 +64,9 @@
   }
 
   function jumpTo(i) {
-    var total = scroll.offsetHeight - window.innerHeight;
-    if (total <= 0) return;
-    var top = scroll.getBoundingClientRect().top + window.pageYOffset;
-    window.scrollTo({ top: top + total * ((i + 0.5) / N), behavior: 'smooth' });
+    // With no pinned scroller there is nowhere to scroll to per step, so a click
+    // simply activates that principle directly.
+    setLive(i);
   }
 
   // The wood turns clockwise as the section scrolls. Kept modest so the
@@ -78,9 +77,13 @@
   var ticking = false;
   function update() {
     ticking = false;
-    var r = scroll.getBoundingClientRect();
-    var total = r.height - window.innerHeight;
-    var p = total <= 0 ? 0 : Math.min(1, Math.max(0, (-r.top) / total));
+    // Scroll-triggered, not scroll-jacked. The section is a normal height block,
+    // so progress is measured by how far it has crossed the viewport rather than
+    // by a tall scroll container holding the reader in place.
+    var r = band.getBoundingClientRect();
+    var vh = window.innerHeight || 1;
+    var span = r.height || 1;
+    var p = Math.min(1, Math.max(0, (vh * 0.78 - r.top) / span));
     setLive(Math.min(N - 1, Math.floor(p * N * 0.999)));
     if (rotor) rotor.style.transform = 'rotate(' + (p * SWEEP).toFixed(2) + 'deg)';
   }

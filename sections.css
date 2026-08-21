@@ -46,37 +46,38 @@
         radial-gradient(120% 80% at 18% 42%, rgba(26,85,80,0.34) 0%, rgba(14,61,58,0.12) 45%, transparent 72%),
         linear-gradient(180deg, #0a2f2d 0%, #082828 100%);
       border: 1px solid rgba(201,169,110,0.16);
-      border-radius: 22px;
+      border-radius: 24px;
       position: relative;
       /* The card is a direct child of .light-band, which already spans the full
          page width, so a plain inset is all that is needed. It can never end
          up wider than the ground it sits on. */
       margin-top: 4.5rem; margin-bottom: 0;
-      margin-left: 1.6rem; margin-right: 1.6rem;
+      margin-left: 3.5rem; margin-right: 3.5rem;
       box-shadow: 0 34px 90px rgba(3,18,18,0.30), inset 0 1px 0 rgba(255,255,255,0.05);
     }
     /* Base state = no JavaScript: a plain, fully readable stacked section.
        The .js-on class (added by script) opts in to the pinned scroll effect. */
+    /* No pinning. The reference site pins nothing, and holding the reader in
+       place for several viewports reads as being stuck. The card is a normal
+       height block; the active principle advances as it crosses the viewport,
+       so the animation is scroll-triggered rather than scroll-jacked. */
     .rings-scroll { position: relative; }
-    .rings-pin { padding: 5rem 0; }
-    .rings-band.js-on .rings-scroll { height: 440vh; }
-    .rings-band.js-on .rings-pin {
-      position: sticky; top: var(--hdr); min-height: calc(100vh - var(--hdr));
-      display: flex; align-items: center; padding: 3rem 0;
-    }
+    .rings-pin { padding: 5rem 0; display: flex; align-items: center; }
     .rings-stage {
       width: 100%; max-width: 1220px; margin: 0 auto;
       padding: 0 clamp(1.25rem, 4vw, 3rem); text-align: center;
     }
-    .rings-head { max-width: 62ch; margin: 0 auto; }
-    .rings-head .section-title { font-size: clamp(1.5rem, 2.6vw, 2.1rem); margin-bottom: 0.6rem; }
+    .rings-head { max-width: 74ch; margin: 0 auto; }
+    .rings-head .section-title { font-size: clamp(2rem, 3.4vw, 3.25rem); font-weight: 200;
+      line-height: 1.14; margin-bottom: 0.7rem; }
     .rings-head .gold-line { margin-top: 1rem; margin-bottom: 1rem; }
     .rings-head .section-label { justify-content: center; }
     .rings-head .gold-line {
       margin-left: auto; margin-right: auto;
       background: linear-gradient(90deg, transparent, var(--gold), transparent);
     }
-    .rings-intro { color: var(--muted); font-size: 0.95rem; max-width: 58ch; margin: 0 auto; }
+    .rings-intro { color: var(--muted); font-size: 1.15rem; line-height: 1.55;
+      max-width: 62ch; margin: 0 auto; }
 
 
     /* The dark card is nested inside the light band, so the light-ground text
@@ -100,7 +101,7 @@
     /* Margins leave room for the rim labels, which sit outside the disc. */
     .trunk {
       position: relative; width: min(36vh, 380px); aspect-ratio: 1/1;
-      margin: 3.4rem auto 3.8rem; max-height: none;
+      margin: 3.8rem auto 4.2rem; max-height: none;
     }
     .trunk-rotor { position: absolute; inset: 0; transform-origin: 50% 50%; will-change: transform; }
     .trunk-photo { position: absolute; inset: 0; display: block; }
@@ -186,22 +187,22 @@
     .rim-label[data-pos="left"]   { transform: translate(-100%, -50%); text-align: right; }
     .rim-label:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
     .rim-num {
-      display: block; font-family: var(--heading); font-size: 0.6rem; font-weight: 600;
-      letter-spacing: 0.2em; color: rgba(245,240,232,0.34); margin-bottom: 0.18rem;
+      display: block; font-family: var(--heading); font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.2em; color: rgba(245,240,232,0.34); margin-bottom: 0.22rem;
       transition: color 0.8s var(--r-ease);
     }
     .rim-ttl {
       display: block; font-family: var(--heading); font-weight: 400;
-      font-size: 0.82rem; letter-spacing: 0.01em; line-height: 1.3;
+      font-size: 1rem; letter-spacing: 0.01em; line-height: 1.35;
       color: var(--muted);
       transition: font-size 0.8s var(--r-ease), color 0.8s var(--r-ease), font-weight 0.8s var(--r-ease);
     }
     .rim-label.live .rim-num { color: var(--gold); }
-    .rim-label.live .rim-ttl { font-size: 1.28rem; font-weight: 500; color: var(--gold-light); }
+    .rim-label.live .rim-ttl { font-size: 1.55rem; font-weight: 500; color: var(--gold-light); }
 
     /* ---- active description, centred under the trunk ---- */
-    .rings-desc { position: relative; min-height: 5.2rem; max-width: 56ch; margin: 0 auto; }
-    .rims-desc { color: var(--muted); font-size: 0.98rem; line-height: 1.7; }
+    .rings-desc { position: relative; min-height: 5.6rem; max-width: 62ch; margin: 0 auto; }
+    .rims-desc { color: var(--muted); font-size: 1.15rem; line-height: 1.6; }
     .r-rail { display: flex; gap: 0.45rem; margin: 1.4rem auto 0; justify-content: center; }
     .r-rail i { width: 30px; height: 2px; background: rgba(201,169,110,0.30); transition: background 0.5s ease; }
     .r-rail i.on { background: var(--gold); }
@@ -226,7 +227,6 @@
       .rim-ttl { font-size: 0.72rem; white-space: normal; max-width: 8.5rem; }
       .rim-label.live .rim-ttl { font-size: 0.95rem; }
       .trunk { max-height: 34vh; max-width: 68vw; }
-      .rings-band.js-on .rings-scroll { height: 400vh; }
       .rim-label { min-height: 44px; }
       .rings-desc { min-height: 7rem; }
     }
