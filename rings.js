@@ -28,47 +28,62 @@
   var linkPath = document.getElementById('deckLinkPath');
   var linkTip = document.getElementById('deckLinkTip');
 
-  function drawLink(i) {
-    if (!linkSvg || !stage || !trunk || !rings[i]) return;
+  function ringGeom(i) {
+    // Measure the ring as rendered. getBoundingClientRect on the <use> element
+    // reflects the live rotation, so the endpoint stays on the ring while the
+    // trunk turns, rather than being computed from an assumed radius.
+    var rr = rings[i].getBoundingClientRect();
+    if (!rr.width) return null;
+    return { cx: rr.left + rr.width / 2, cy: rr.top + rr.height / 2,
+             rx: rr.width / 2, ry: rr.height / 2 };
+  }
+
+  function linkPathFor(i) {
     var sb = stage.getBoundingClientRect();
     var db = decks[i].getBoundingClientRect();
-    var tb = trunk.getBoundingClientRect();
+    var g = ringGeom(i);
+    if (!g) return null;
 
-    // radius of this ring, measured from the rendered path so it always matches
-    var bb;
-    try { bb = rings[i].getBBox(); } catch (e) { return; }
-    var overlay = band.querySelector('.trunk-overlay');
-    var scale = tb.width / (overlay ? overlay.viewBox.baseVal.width || 460 : 460);
-    var rPx = (bb.width / 2) * scale;
-
-    var cx = tb.left + tb.width / 2 - sb.left;
-    var cy = tb.top + tb.height / 2 - sb.top;
-    // the point on the ring nearest the copy column
-    var ex = cx - rPx;
-    var ey = cy;
-
+    // land on the ring's left flank, slightly above centre so the line reads
+    var ex = g.cx - g.rx * 0.94 - sb.left;
+    var ey = g.cy - g.ry * 0.22 - sb.top;
     var sx = db.right - sb.left + 10;
-    var sy = db.top - sb.top + 22;          // beside the title line, not the block centre
+    var sy = db.top - sb.top + 22;
 
-    // horizontal run, then an eased bend down to the ring
-    var midX = sx + Math.max(40, (ex - sx) * 0.42);
-    var d = 'M' + sx.toFixed(1) + ' ' + sy.toFixed(1) +
-            'H' + midX.toFixed(1) +
-            'C' + (midX + (ex - midX) * 0.45).toFixed(1) + ' ' + sy.toFixed(1) + ',' +
-                  (midX + (ex - midX) * 0.55).toFixed(1) + ' ' + ey.toFixed(1) + ',' +
-                  ex.toFixed(1) + ' ' + ey.toFixed(1);
+    var midX = sx + Math.max(40, (ex - sx) * 0.40);
+    return { d: 'M' + sx.toFixed(1) + ' ' + sy.toFixed(1) +
+                'H' + midX.toFixed(1) +
+                'C' + (midX + (ex - midX) * 0.5).toFixed(1) + ' ' + sy.toFixed(1) + ',' +
+                      (midX + (ex - midX) * 0.6).toFixed(1) + ' ' + ey.toFixed(1) + ',' +
+                      ex.toFixed(1) + ' ' + ey.toFixed(1),
+             ex: ex, ey: ey, w: sb.width, h: sb.height };
+  }
 
-    linkSvg.setAttribute('viewBox', '0 0 ' + Math.round(sb.width) + ' ' + Math.round(sb.height));
-    linkPath.setAttribute('d', d);
-    linkTip.setAttribute('cx', ex.toFixed(1));
-    linkTip.setAttribute('cy', ey.toFixed(1));
-
-    var len = linkPath.getTotalLength ? linkPath.getTotalLength() : 400;
-    linkPath.style.strokeDasharray = len;
-    linkPath.style.strokeDashoffset = len;
-    void linkPath.getBoundingClientRect();   // force the reset to take
-    linkPath.style.strokeDashoffset = 0;
+  function drawLink(i, animate) {
+    if (!linkSvg || !stage || !trunk || !rings[i]) return;
+    var g = linkPathFor(i);
+    if (!g) return;
+    linkSvg.setAttribute('viewBox', '0 0 ' + Math.round(g.w) + ' ' + Math.round(g.h));
+    linkPath.setAttribute('d', g.d);
+    linkTip.setAttribute('cx', g.ex.toFixed(1));
+    linkTip.setAttribute('cy', g.ey.toFixed(1));
+    if (animate) {
+      var len = linkPath.getTotalLength ? linkPath.getTotalLength() : 400;
+      linkPath.style.strokeDasharray = len;
+      linkPath.style.strokeDashoffset = len;
+      void linkPath.getBoundingClientRect();
+      linkPath.style.strokeDashoffset = 0;
+    }
     linkSvg.classList.add('on');
+  }
+
+  // Keep the endpoint on the ring while the trunk rotates. Only the path data
+  // is touched here, so the draw-in animation is not restarted.
+  var tracking = false;
+  function track() {
+    if (!tracking) return;
+    if (cur >= 0) drawLink(cur, false);
+    requestAnimationFrame(track);
   }
 
   band.classList.add('js-on');
@@ -84,7 +99,7 @@
       });
     });
     decks.forEach(function (d, k) { d.setAttribute('aria-current', String(k === i)); });
-    drawLink(i);
+    drawLink(i, true);
     if (glow && !reduce) {
       glow.classList.remove('glint');
       void glow.offsetWidth;           // restart the flare
@@ -112,15 +127,21 @@
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        if (en.isIntersecting && !held) { start(); } else { stop(); }
+        if (en.isIntersecting) {
+          if (!held) start();
+          if (!tracking && !reduce) { tracking = true; requestAnimationFrame(track); }
+        } else {
+          stop();
+          tracking = false;
+        }
       });
     }, { threshold: 0.25 }).observe(band);
   } else {
     start();
   }
 
-  window.addEventListener('resize', function () { if (cur >= 0) drawLink(cur); }, { passive: true });
-  window.addEventListener('scroll', function () { if (cur >= 0) drawLink(cur); }, { passive: true });
+  window.addEventListener('resize', function () { if (cur >= 0) drawLink(cur, false); }, { passive: true });
+  window.addEventListener('scroll', function () { if (cur >= 0) drawLink(cur, false); }, { passive: true });
 
   setLive(0);
 })();
