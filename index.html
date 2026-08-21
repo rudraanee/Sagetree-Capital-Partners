@@ -9,6 +9,7 @@
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="preload" as="image" href="hero-poster.jpg?v=2" fetchpriority="high" />
+  <link rel="stylesheet" href="sections.css" />
   <meta name="description" content="Sagetree Capital Partners is an independent external asset manager in the DIFC, Dubai, delivering conflict-free investment advisory, wealth planning and bespoke services for families and institutions." />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Sagetree Capital Partners" />
@@ -300,9 +301,6 @@
     .knowledge-title { font-family: var(--heading); font-size: 1.15rem; font-weight: 500; color: var(--white); line-height: 1.3; margin-bottom: 0.8rem; }
     .knowledge-excerpt { font-size: 0.82rem; font-weight: 300; color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem; }
     .knowledge-cta { font-family: var(--heading); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); opacity: 0.65; }
-    .knowledge-pillars { padding: 2rem 0; border-top: 1px solid rgba(201,169,110,0.12); border-bottom: 1px solid rgba(201,169,110,0.12); margin-bottom: 3rem; }
-    .knowledge-pillars-label { font-family: var(--heading); font-size: 0.58rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; opacity: 0.7; }
-    .knowledge-pillars-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; }
     .knowledge-pillar { font-family: var(--heading); font-size: 0.75rem; font-weight: 400; letter-spacing: 0.1em; color: var(--cream); padding: 0.5rem 0; }
     .knowledge-subscribe { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 2rem 0 0; flex-wrap: wrap; }
     .knowledge-subscribe-text { flex: 1; min-width: 260px; }
@@ -441,7 +439,6 @@
       .custody-right[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
       .knowledge-header { grid-template-columns: 1fr; gap: 1.5rem; }
       .knowledge-featured { grid-template-columns: 1fr; }
-      .knowledge-pillars-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
       .knowledge-subscribe { flex-direction: column; align-items: flex-start; }
       .policy-grid { grid-template-columns: 1fr; }
       .hero-risk-strip { padding-left: 0; font-size: 0.5rem; letter-spacing: 0.2em; }
@@ -783,6 +780,8 @@
 <!-- WHO WE ARE (teaser) -->
 <section class="who-section" id="who">
   <div class="chapter-bar reveal"><span class="cb-tree"><svg viewBox="0 0 120 120" aria-hidden="true"><use href="#tol"/></svg></span><span class="cb-name">Who We Are</span><span class="cb-rule"></span></div>
+  <!-- LIGHT READING BAND: dense copy on a warm ground -->
+  <div class="light-band bleed"><div class="bleed-in">
   <div class="who-intro-grid reveal">
     <div class="who-left">
       <h2 class="section-title">We sit exclusively on<br /><strong>your side of the table.</strong></h2>
@@ -799,6 +798,101 @@
       <div class="who-pull-rule"></div>
     </figure>
   </div>
+
+  <div class="rings-band">
+    <div class="rings-scroll" id="ringsScroll">
+      <div class="rings-pin">
+        <div class="rings-stage">
+
+          <div class="rings-head">
+            <div class="section-label">Our Mandate as Your Investment Manager</div>
+            <h2 class="section-title">Your assets. Your name.<br /><strong>Our duty to carry.</strong></h2>
+            <div class="gold-line"></div>
+            <p class="rings-intro">Sagetree Capital operates under DIFC Category 3C authorisation. Our mandate as your investment manager is defined by four principles that structurally align us with you.</p>
+          </div>
+
+          <div class="trunk">
+            <div class="rings-glow" aria-hidden="true"></div>
+            <div class="trunk-rotor">
+              <picture class="trunk-photo">
+                <source srcset="trunk-rings.webp" type="image/webp" />
+                <img src="trunk-rings.jpg" alt="" aria-hidden="true"
+                     width="960" height="960" decoding="async" fetchpriority="low" />
+              </picture>
+              <svg class="trunk-overlay" viewBox="0 0 460 460" aria-hidden="true" focusable="false">
+              <defs>
+                <path id="ringPath0" d="M266.6 231.6C266.4 232.6 266.1 233.5 265.6 234.4C265.2 235.4 264.6 236.2 264.1 237.1C263.6 237.9 262.9 238.7 262.6 239.5C262.2 240.3 262.0 241.2 262.0 242.1C261.9 243.0 262.1 244.0 262.2 245.1C262.3 246.1 262.6 247.3 262.6 248.3C262.5 249.4 262.4 250.5 262.1 251.4C261.8 252.4 261.2 253.2 260.6 254.0C260.0 254.8 259.3 255.5 258.6 256.2C257.9 256.9 257.0 257.5 256.2 258.1C255.4 258.7 254.7 259.2 253.9 259.8C253.1 260.4 252.3 260.9 251.5 261.5C250.7 262.0 249.9 262.6 249.2 263.3C248.4 263.9 247.7 264.7 246.9 265.3C246.1 265.8 245.3 266.4 244.4 266.8C243.5 267.2 242.6 267.7 241.6 267.8C240.6 268.0 239.5 267.8 238.5 267.8C237.5 267.7 236.5 267.5 235.5 267.6C234.5 267.7 233.6 267.9 232.7 268.1C231.7 268.4 230.8 268.7 229.8 268.9C228.8 269.2 227.8 269.5 226.8 269.5C225.8 269.4 224.9 269.1 223.9 268.8C223.0 268.4 222.1 267.9 221.2 267.5C220.3 267.1 219.4 266.8 218.5 266.4C217.6 266.0 216.8 265.6 215.9 265.1C215.1 264.6 214.3 264.1 213.6 263.5C212.8 262.9 212.2 262.2 211.5 261.5C210.8 260.9 210.2 260.2 209.5 259.5C208.9 258.9 208.3 258.2 207.6 257.6C206.9 257.0 206.1 256.6 205.4 256.0C204.7 255.5 204.0 254.9 203.4 254.2C202.8 253.5 202.1 252.8 201.7 252.1C201.2 251.3 200.8 250.5 200.4 249.6C200.1 248.8 199.8 247.9 199.4 247.1C199.1 246.3 198.6 245.5 198.2 244.7C197.9 243.9 197.6 243.0 197.3 242.2C197.1 241.3 196.9 240.5 196.6 239.6C196.4 238.7 196.1 237.9 195.7 237.0C195.3 236.2 194.7 235.3 194.2 234.4C193.8 233.5 193.2 232.6 192.8 231.6C192.5 230.7 192.2 229.7 192.0 228.6C191.7 227.6 191.5 226.6 191.5 225.6C191.6 224.6 191.9 223.6 192.0 222.6C192.2 221.6 192.3 220.5 192.6 219.5C192.8 218.5 193.2 217.6 193.7 216.7C194.1 215.7 194.7 214.9 195.2 214.0C195.7 213.1 196.1 212.2 196.7 211.3C197.3 210.5 197.9 209.7 198.5 208.9C199.1 208.1 199.7 207.2 200.3 206.4C200.9 205.6 201.5 204.7 202.1 203.9C202.8 203.1 203.4 202.4 204.2 201.6C204.9 200.9 205.6 200.1 206.4 199.4C207.2 198.8 208.0 198.1 208.9 197.5C209.8 197.0 210.7 196.5 211.6 196.0C212.6 195.5 213.5 194.9 214.4 194.5C215.4 194.1 216.5 193.9 217.5 193.7C218.5 193.5 219.6 193.4 220.6 193.3C221.7 193.3 222.7 193.3 223.8 193.4C224.8 193.4 225.8 193.5 226.8 193.5C227.8 193.5 228.8 193.3 229.8 193.3C230.8 193.4 231.8 193.5 232.8 193.8C233.8 194.1 234.7 194.6 235.6 195.2C236.5 195.7 237.3 196.6 238.1 197.1C238.9 197.7 239.7 198.2 240.6 198.5C241.4 198.9 242.3 199.0 243.3 199.2C244.2 199.3 245.2 199.3 246.2 199.5C247.1 199.7 248.1 199.9 249.1 200.2C250.1 200.4 251.0 200.8 252.0 201.1C252.9 201.5 254.0 201.8 254.8 202.3C255.7 202.9 256.5 203.6 257.2 204.3C257.9 205.0 258.5 205.8 259.1 206.6C259.8 207.4 260.4 208.2 261.0 209.0C261.6 209.8 262.2 210.6 262.8 211.4C263.4 212.2 264.0 213.1 264.5 213.9C265.1 214.8 265.6 215.7 266.0 216.7C266.4 217.6 266.7 218.6 266.9 219.6C267.1 220.6 267.3 221.6 267.3 222.6C267.4 223.6 267.3 224.7 267.3 225.7C267.2 226.7 267.1 227.7 267.0 228.7C266.9 229.7 266.8 230.7 266.6 231.6Z" />
+                <path id="ringPath1" d="M304.0 231.6C304.2 233.6 304.3 235.5 304.2 237.5C304.2 239.4 304.1 241.4 303.9 243.4C303.7 245.3 303.4 247.3 303.0 249.2C302.6 251.1 302.2 253.1 301.5 254.9C300.9 256.8 300.1 258.6 299.2 260.4C298.4 262.2 297.5 263.9 296.6 265.7C295.7 267.4 294.7 269.1 293.7 270.8C292.7 272.5 291.7 274.2 290.5 275.7C289.4 277.3 288.2 278.9 286.7 280.3C285.3 281.6 283.7 282.8 282.1 283.9C280.4 285.0 278.8 286.0 277.1 287.0C275.4 288.0 273.7 288.8 272.0 289.7C270.3 290.6 268.7 291.5 267.0 292.3C265.3 293.1 263.6 294.0 261.9 294.7C260.2 295.4 258.5 296.1 256.8 296.7C255.1 297.4 253.3 298.1 251.6 298.6C249.8 299.1 248.0 299.6 246.2 299.9C244.4 300.2 242.6 300.4 240.7 300.6C238.9 300.7 237.1 300.7 235.2 300.7C233.4 300.7 231.6 300.7 229.8 300.6C228.0 300.6 226.2 300.6 224.4 300.5C222.6 300.3 220.8 300.2 219.0 300.0C217.2 299.8 215.4 299.6 213.5 299.4C211.7 299.1 209.9 298.8 208.0 298.6C206.1 298.5 204.2 298.5 202.1 298.4C200.1 298.3 198.0 298.3 196.0 298.0C194.0 297.7 192.0 297.2 190.1 296.4C188.2 295.7 186.4 294.8 184.8 293.6C183.2 292.4 181.8 290.9 180.5 289.4C179.1 287.9 177.9 286.3 176.8 284.7C175.7 283.0 174.7 281.2 173.8 279.5C172.8 277.8 172.1 275.9 171.1 274.3C170.0 272.7 168.8 271.2 167.6 269.7C166.4 268.2 165.1 266.8 163.8 265.3C162.5 263.7 161.0 262.3 159.9 260.6C158.9 258.9 158.0 257.0 157.4 255.2C156.7 253.3 156.4 251.3 156.0 249.3C155.6 247.4 155.4 245.4 155.2 243.4C155.0 241.5 154.8 239.5 154.8 237.5C154.7 235.6 154.7 233.6 154.8 231.6C154.9 229.7 155.1 227.7 155.4 225.8C155.8 223.8 156.4 222.0 156.9 220.1C157.4 218.2 158.0 216.4 158.7 214.5C159.3 212.7 159.9 210.9 160.6 209.1C161.2 207.3 161.9 205.5 162.6 203.8C163.4 202.1 164.2 200.3 165.1 198.7C166.1 197.0 167.2 195.5 168.2 193.9C169.2 192.3 170.2 190.7 171.3 189.1C172.3 187.5 173.3 185.8 174.3 184.3C175.4 182.7 176.6 181.1 177.8 179.6C179.0 178.1 180.2 176.6 181.6 175.2C183.0 173.9 184.6 172.6 186.1 171.5C187.7 170.4 189.4 169.4 191.1 168.5C192.8 167.5 194.6 166.7 196.3 165.9C198.1 165.2 200.0 164.6 201.8 164.0C203.6 163.3 205.4 162.6 207.2 161.9C209.0 161.3 210.8 160.6 212.6 159.9C214.4 159.3 216.3 158.5 218.1 158.0C220.0 157.5 222.0 157.0 223.9 156.7C225.9 156.4 227.9 156.3 229.8 156.4C231.8 156.5 233.8 156.8 235.7 157.4C237.5 157.9 239.4 158.9 241.2 159.7C243.0 160.6 244.7 161.6 246.4 162.5C248.1 163.4 249.7 164.5 251.4 165.2C253.1 166.0 254.8 166.5 256.5 167.1C258.3 167.7 260.0 168.2 261.8 168.8C263.6 169.5 265.3 170.1 267.0 170.9C268.8 171.6 270.5 172.4 272.2 173.3C273.9 174.1 275.6 175.0 277.3 176.0C278.9 177.1 280.6 178.1 282.1 179.4C283.5 180.6 284.8 182.1 286.1 183.6C287.3 185.1 288.3 186.7 289.4 188.3C290.5 189.9 291.6 191.5 292.6 193.2C293.6 194.8 294.6 196.5 295.4 198.2C296.3 199.9 297.1 201.7 297.7 203.5C298.3 205.3 298.8 207.2 299.3 209.0C299.8 210.9 300.1 212.8 300.6 214.6C301.1 216.5 301.6 218.3 302.1 220.2C302.6 222.0 303.1 223.9 303.4 225.8C303.7 227.7 303.9 229.7 304.0 231.6Z" />
+                <path id="ringPath2" d="M353.1 231.6C353.0 234.8 352.6 238.1 352.1 241.3C351.6 244.4 350.7 247.5 350.0 250.7C349.2 253.8 348.5 256.9 347.7 259.9C346.9 263.0 346.2 266.1 345.2 269.1C344.2 272.1 343.1 275.1 341.9 278.0C340.6 281.0 339.3 283.9 337.9 286.7C336.5 289.6 335.0 292.4 333.5 295.2C332.0 298.0 330.5 300.8 328.8 303.5C327.1 306.3 325.2 308.9 323.3 311.4C321.3 314.0 319.3 316.5 317.1 318.9C314.9 321.3 312.6 323.6 310.2 325.7C307.8 327.9 305.2 329.9 302.6 331.8C300.0 333.7 297.3 335.5 294.5 337.3C291.8 339.0 289.0 340.6 286.1 342.1C283.3 343.7 280.4 345.3 277.4 346.6C274.5 348.0 271.5 349.4 268.4 350.4C265.3 351.3 262.1 352.0 258.8 352.6C255.6 353.1 252.4 353.4 249.1 353.5C245.9 353.6 242.6 353.5 239.4 353.3C236.2 353.2 233.0 353.0 229.8 352.7C226.6 352.4 223.5 351.9 220.4 351.5C217.2 351.1 214.1 350.6 211.0 350.2C207.9 349.7 204.8 349.3 201.7 348.7C198.6 348.1 195.5 347.4 192.5 346.5C189.4 345.7 186.4 344.6 183.4 343.6C180.4 342.6 177.3 341.7 174.4 340.4C171.4 339.2 168.6 337.6 165.8 336.1C163.0 334.6 160.1 333.0 157.4 331.3C154.7 329.5 152.1 327.6 149.6 325.5C147.1 323.5 144.7 321.3 142.4 319.0C140.2 316.7 137.9 314.4 135.9 311.8C134.0 309.2 132.3 306.4 130.7 303.6C129.1 300.8 127.9 297.8 126.5 295.0C125.1 292.1 123.6 289.3 122.2 286.5C120.7 283.6 119.2 280.9 117.7 278.0C116.3 275.2 114.9 272.3 113.7 269.4C112.5 266.4 111.5 263.3 110.8 260.2C110.1 257.1 109.8 253.9 109.4 250.7C109.0 247.5 108.7 244.4 108.4 241.2C108.1 238.0 107.7 234.8 107.4 231.6C107.0 228.4 106.4 225.2 106.1 221.9C105.8 218.6 105.5 215.2 105.7 212.0C105.9 208.7 106.5 205.4 107.4 202.2C108.3 199.1 109.7 196.0 111.1 193.0C112.4 190.1 114.1 187.2 115.6 184.3C117.1 181.4 118.6 178.6 120.1 175.7C121.5 172.8 122.9 169.9 124.5 167.1C126.2 164.3 127.9 161.6 129.8 159.0C131.7 156.3 133.8 153.9 136.0 151.5C138.1 149.1 140.5 146.8 142.8 144.6C145.1 142.4 147.5 140.2 149.9 138.1C152.3 136.0 154.8 133.9 157.4 132.0C160.0 130.1 162.7 128.2 165.5 126.6C168.3 125.1 171.2 123.8 174.2 122.5C177.1 121.2 180.1 120.0 183.1 118.9C186.1 117.7 189.1 116.6 192.1 115.5C195.1 114.4 198.1 113.3 201.2 112.3C204.2 111.2 207.3 110.0 210.4 109.3C213.6 108.5 216.8 108.0 220.1 107.8C223.3 107.6 226.6 107.8 229.8 108.1C233.0 108.4 236.2 109.0 239.4 109.5C242.6 110.1 245.7 110.8 248.8 111.5C252.0 112.1 255.1 112.6 258.2 113.2C261.4 113.8 264.5 114.3 267.7 115.0C270.9 115.7 274.1 116.3 277.2 117.2C280.3 118.1 283.4 119.2 286.5 120.4C289.5 121.6 292.6 122.9 295.4 124.5C298.3 126.1 301.1 128.0 303.6 130.0C306.2 132.0 308.6 134.4 310.9 136.7C313.2 139.1 315.3 141.5 317.3 144.1C319.3 146.7 321.1 149.4 323.0 152.1C324.8 154.7 326.6 157.4 328.3 160.0C330.1 162.7 331.7 165.4 333.3 168.2C334.9 171.0 336.4 173.8 337.8 176.6C339.2 179.4 340.7 182.3 341.9 185.2C343.2 188.1 344.2 191.1 345.3 194.1C346.4 197.1 347.5 200.1 348.4 203.2C349.4 206.2 350.3 209.3 351.0 212.4C351.7 215.6 352.5 218.7 352.8 221.9C353.2 225.1 353.3 228.4 353.1 231.6Z" />
+                <path id="ringPath3" d="M398.6 231.6C398.9 236.0 398.9 240.5 398.6 244.9C398.4 249.3 397.8 253.8 397.1 258.1C396.4 262.5 395.4 266.8 394.3 271.1C393.2 275.4 392.0 279.7 390.6 283.9C389.2 288.1 387.6 292.2 385.9 296.3C384.3 300.4 382.4 304.4 380.5 308.4C378.6 312.4 376.5 316.3 374.3 320.2C372.1 324.0 369.7 327.8 367.2 331.4C364.7 335.1 362.0 338.7 359.2 342.1C356.3 345.5 353.2 348.8 350.1 351.9C347.0 355.1 343.8 358.2 340.5 361.2C337.2 364.2 333.7 367.1 330.2 369.7C326.6 372.4 322.9 375.0 319.1 377.3C315.2 379.6 311.3 381.7 307.2 383.5C303.2 385.4 298.9 386.9 294.8 388.4C290.6 390.0 286.4 391.4 282.2 392.8C278.0 394.3 273.8 395.8 269.5 397.1C265.3 398.3 260.9 399.6 256.6 400.5C252.2 401.4 247.7 402.0 243.2 402.4C238.8 402.7 234.3 402.6 229.8 402.4C225.3 402.2 220.9 401.6 216.5 400.9C212.1 400.3 207.7 399.4 203.4 398.4C199.1 397.5 194.8 396.3 190.6 395.1C186.3 393.9 182.2 392.5 178.0 391.2C173.8 389.8 169.6 388.4 165.5 387.0C161.3 385.5 157.1 384.1 153.0 382.4C148.9 380.7 144.8 378.8 140.9 376.8C136.9 374.7 133.0 372.4 129.3 369.9C125.6 367.5 121.9 364.8 118.5 362.0C115.0 359.2 111.6 356.1 108.4 353.0C105.2 349.9 102.1 346.6 99.1 343.2C96.2 339.8 93.4 336.3 90.8 332.7C88.2 329.0 85.8 325.2 83.5 321.3C81.3 317.4 79.3 313.3 77.5 309.2C75.6 305.2 74.0 301.0 72.5 296.8C71.0 292.6 69.6 288.3 68.5 284.0C67.3 279.8 66.4 275.4 65.6 271.0C64.9 266.7 64.3 262.3 63.8 257.9C63.4 253.5 63.2 249.1 63.0 244.8C62.9 240.4 63.0 236.0 63.1 231.6C63.3 227.3 63.5 222.9 63.9 218.6C64.3 214.2 64.8 209.9 65.4 205.6C66.0 201.3 66.7 197.0 67.5 192.7C68.3 188.4 69.1 184.0 70.2 179.8C71.4 175.5 72.8 171.3 74.3 167.2C75.9 163.1 77.6 159.0 79.5 155.1C81.5 151.1 83.8 147.3 86.2 143.6C88.6 139.9 91.2 136.4 94.0 133.0C96.8 129.5 99.7 126.3 102.8 123.1C105.8 120.0 109.1 117.0 112.3 114.1C115.5 111.2 118.9 108.4 122.3 105.7C125.7 103.0 129.2 100.5 132.7 98.0C136.2 95.4 139.8 93.0 143.4 90.6C147.0 88.2 150.6 85.8 154.4 83.7C158.2 81.5 162.1 79.5 166.1 77.8C170.1 76.0 174.2 74.5 178.3 73.2C182.5 71.9 186.7 70.8 191.0 69.8C195.2 68.7 199.4 67.7 203.7 66.8C208.0 65.8 212.3 64.6 216.6 63.9C221.0 63.2 225.4 62.7 229.8 62.6C234.2 62.5 238.7 62.7 243.1 63.1C247.5 63.5 251.9 64.3 256.2 65.2C260.5 66.1 264.7 67.3 269.0 68.5C273.2 69.6 277.5 70.8 281.6 72.2C285.7 73.6 289.8 75.3 293.8 77.0C297.9 78.7 301.9 80.5 305.8 82.5C309.7 84.5 313.6 86.6 317.3 88.8C321.1 91.1 324.7 93.5 328.3 96.0C331.9 98.6 335.5 101.2 338.8 104.0C342.2 106.8 345.4 109.8 348.4 113.0C351.4 116.2 354.2 119.6 356.9 123.1C359.6 126.5 362.1 130.1 364.4 133.8C366.8 137.5 369.0 141.2 371.1 145.0C373.3 148.8 375.4 152.6 377.5 156.4C379.5 160.2 381.5 164.1 383.3 168.1C385.1 172.0 386.8 176.0 388.3 180.1C389.7 184.2 390.9 188.5 392.0 192.7C393.1 196.9 394.0 201.2 394.9 205.5C395.7 209.8 396.5 214.1 397.2 218.5C397.8 222.8 398.4 227.2 398.6 231.6Z" />
+              </defs>
+              <g id="rRingsDark">
+                <use class="r-ring-dark" data-i="0" href="#ringPath0" />
+                <use class="r-ring-dark" data-i="1" href="#ringPath1" />
+                <use class="r-ring-dark" data-i="2" href="#ringPath2" />
+                <use class="r-ring-dark" data-i="3" href="#ringPath3" />
+              </g>
+              <g id="rRings">
+                <use class="r-ring" data-i="0" href="#ringPath0" />
+                <use class="r-ring" data-i="1" href="#ringPath1" />
+                <use class="r-ring" data-i="2" href="#ringPath2" />
+                <use class="r-ring" data-i="3" href="#ringPath3" />
+              </g>
+              </svg>
+            </div>
+            <svg class="trunk-needles" viewBox="0 0 460 460" aria-hidden="true" focusable="false">
+              <g id="rNeedles">
+                <g class="r-needle" data-i="0">
+                  <line class="r-needle-line" x1="229.8" y1="35.9" x2="229.8" y2="193.3" />
+                  <circle class="r-needle-tip" cx="229.8" cy="193.3" r="4.5" />
+                </g>
+                <g class="r-needle" data-i="1">
+                  <line class="r-needle-line" x1="423.6" y1="231.6" x2="304.0" y2="231.6" />
+                  <circle class="r-needle-tip" cx="304.0" cy="231.6" r="4.5" />
+                </g>
+                <g class="r-needle" data-i="2">
+                  <line class="r-needle-line" x1="229.8" y1="421.6" x2="229.8" y2="352.7" />
+                  <circle class="r-needle-tip" cx="229.8" cy="352.7" r="4.5" />
+                </g>
+                <g class="r-needle" data-i="3">
+                  <line class="r-needle-line" x1="36.0" y1="231.6" x2="63.1" y2="231.6" />
+                  <circle class="r-needle-tip" cx="63.1" cy="231.6" r="4.5" />
+                </g>
+              </g>
+            </svg>
+            <div class="rim-labels" id="ringsList">
+              <button type="button" class="rim-label live" data-i="0" data-pos="top" style="--x:50%;--y:3%">
+                <span class="rim-num">01</span>
+                <span class="rim-ttl">Segregated Custody</span>
+              </button>
+              <button type="button" class="rim-label" data-i="1" data-pos="right" style="--x:96.9%;--y:50.4%">
+                <span class="rim-num">02</span>
+                <span class="rim-ttl">Limited Power of Attorney</span>
+              </button>
+              <button type="button" class="rim-label" data-i="2" data-pos="bottom" style="--x:50%;--y:96.4%">
+                <span class="rim-num">03</span>
+                <span class="rim-ttl">No Withdrawal Rights</span>
+              </button>
+              <button type="button" class="rim-label" data-i="3" data-pos="left" style="--x:3%;--y:50.4%">
+                <span class="rim-num">04</span>
+                <span class="rim-ttl">Dismiss Without Disruption</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="rings-desc" id="ringsDesc">
+            <p class="rims-desc on" data-i="0">Client assets remain in segregated accounts at leading international custodian banks, held in the client&#39;s own name.</p>
+            <p class="rims-desc" data-i="1">We operate under a strictly limited power of attorney, with management and viewing rights only, defined by the mandate you set.</p>
+            <p class="rims-desc" data-i="2">We have no ability to move funds out of your account for non-investment purposes. Withdrawals are exclusively your right.</p>
+            <p class="rims-desc" data-i="3">Your custody relationship is with your bank, not with us. If you choose to end our engagement, no assets move. Only the mandate ends.</p>
+          </div>
+
+          <div class="r-rail" id="ringsRail"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div></div><!-- /light-band -->
 </section>
 
 <!-- SERVICES (teaser) -->
@@ -900,15 +994,6 @@
     </div>
   </div>
 
-  <div class="knowledge-pillars reveal">
-    <div class="knowledge-pillars-label">Content Pillars</div>
-    <div class="knowledge-pillars-grid">
-      <div class="knowledge-pillar">Markets &amp; Outlook</div>
-      <div class="knowledge-pillar">Wealth Planning &amp; Structuring</div>
-      <div class="knowledge-pillar">Risk &amp; Governance</div>
-      <div class="knowledge-pillar">Family Legacy</div>
-    </div>
-  </div>
 
   <div class="knowledge-subscribe reveal">
     <div class="knowledge-subscribe-text">
@@ -1187,5 +1272,7 @@
   })();
 
 </script>
+<script src="rings.js" defer></script>
+<script src="hero.js" defer></script>
 </body>
 </html>
