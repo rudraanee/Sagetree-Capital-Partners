@@ -4,6 +4,11 @@
 .bleed { margin-left: -4rem; margin-right: -4rem; }
     .bleed-in { max-width: 1240px; margin: 0 auto; padding: 0 4rem; }
 
+
+    /* The card ends the light band, so cancel the parent section's bottom
+       padding rather than leaving a tall empty strip beneath it. */
+    .light-band.flush-bottom { margin-bottom: -7rem; }
+
     /* ═══ LIGHT READING BAND ═══════════════════════════════════════ */
     .light-band {
       background: linear-gradient(180deg, #f6f2e8 0%, #efe9db 100%);

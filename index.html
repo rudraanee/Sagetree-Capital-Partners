@@ -9,7 +9,7 @@
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="preload" as="image" href="hero-poster.jpg?v=2" fetchpriority="high" />
-  <link rel="stylesheet" href="sections.css?v=3" />
+  <link rel="stylesheet" href="sections.css?v=4" />
   <meta name="description" content="Sagetree Capital Partners is an independent external asset manager in the DIFC, Dubai, delivering conflict-free investment advisory, wealth planning and bespoke services for families and institutions." />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Sagetree Capital Partners" />
@@ -135,10 +135,8 @@
     .stat-label { font-family: var(--heading); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); line-height: 1.6; }
 
     /* ── WHO WE ARE ────────────────────────────────── */
-    .who-section { background: rgba(8,40,40,0.55); }
     #serve { scroll-margin-top: 110px; }
     .who-sub { margin-top: 5rem; padding-top: 5rem; border-top: 1px solid rgba(201,169,110,0.10); scroll-margin-top: 100px; }
-    .serve-section { background: rgba(8,40,40,0.55); }
     .serve-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 4rem; margin-top: 2.5rem; }
     .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
     .who-left { }
@@ -160,7 +158,6 @@
     .who-pull-rule { width: 56px; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); margin-top: 1.8rem; }
 
     /* ── SERVICES ──────────────────────────────────── */
-    .services-section { background: rgba(14,61,58,0.5); }
     .services-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 4rem; }
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(201,169,110,0.08); }
     .service-card { background: rgba(8,40,40,0.95); padding: 2.5rem; position: relative; overflow: hidden; transition: background 0.4s; cursor: default; }
@@ -289,7 +286,7 @@
     .mandate-desc { font-size: 0.8rem; font-weight: 300; color: var(--muted); line-height: 1.75; }
 
     /* ── KNOWLEDGE BANK ───────────────────────────── */
-    .knowledge-section { background: rgba(14,61,58,0.5); padding: 7rem 4rem; }
+    .knowledge-section { padding: 7rem 4rem; }
     .knowledge-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 4rem; }
     .knowledge-featured { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-bottom: 4rem; }
     .knowledge-card { padding: 2rem; background: rgba(8,40,40,0.45); backdrop-filter: blur(16px) saturate(150%); -webkit-backdrop-filter: blur(16px) saturate(150%); border: 1px solid rgba(201,169,110,0.15); transition: border-color 0.3s, box-shadow 0.4s, background 0.3s; cursor: pointer; position: relative; overflow: hidden; will-change: transform; }
@@ -781,7 +778,7 @@
 <section class="who-section" id="who">
   <div class="chapter-bar reveal"><span class="cb-tree"><svg viewBox="0 0 120 120" aria-hidden="true"><use href="#tol"/></svg></span><span class="cb-name">Who We Are</span><span class="cb-rule"></span></div>
   <!-- LIGHT READING BAND: dense copy on a warm ground -->
-  <div class="light-band bleed"><div class="bleed-in">
+  <div class="light-band bleed flush-bottom"><div class="bleed-in">
   <div class="who-intro-grid reveal">
     <div class="who-left">
       <h2 class="section-title">We sit exclusively on<br /><strong>your side of the table.</strong></h2>
@@ -1274,7 +1271,7 @@
   })();
 
 </script>
-<script src="rings.js?v=3" defer></script>
-<script src="hero.js?v=3" defer></script>
+<script src="rings.js?v=4" defer></script>
+<script src="hero.js?v=4" defer></script>
 </body>
 </html>
