@@ -253,3 +253,8 @@
       .rings-glow, .trunk-rotor { animation: none; }
       .r-ring, .r-ring-dark, .deck-num, .deck-ttl, .deck-desc, .deck::before { transition: none; }
     }
+
+    /* The stats grid is driven from script as the hero docks; give it a
+       transition so it still settles smoothly if a frame is dropped, and a
+       sensible resting state when script does not run. */
+    .stats-grid { will-change: transform, opacity; }

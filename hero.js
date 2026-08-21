@@ -25,6 +25,14 @@
   var hero = document.querySelector('.hero');
   var content = document.querySelector('.hero-content');
   var pillars = document.querySelector('.hero-pillars');
+  // The stat cards take over as the hero yields: they rise and grow into place
+  // on exactly the ground the hero is resolving to, so the two motions read as
+  // one handover rather than two unrelated effects.
+  // The grid is scaled, not the cards, because the cards carry their own
+  // pointer-tilt transform and the two would fight.
+  var statsGrid = document.querySelector('.stats-grid');
+  var CARD_FROM = 0.90;   // scale at the top of the page
+  var CARD_RISE = 26;     // px the cards travel upward into place
   // The hero's own horizontal padding at desktop, which the copy sits against.
   var BASE_PAD = 64;
   var hdr = parseInt(getComputedStyle(document.documentElement)
@@ -56,6 +64,12 @@
       el.style.paddingRight = INSET_X * p ? (INSET_X * p).toFixed(1) + 'px' : '';
       el.style.paddingBottom = (INSET_B * p).toFixed(1) + 'px';
     });
+    if (statsGrid) {
+      var sc = CARD_FROM + (1 - CARD_FROM) * p;
+      statsGrid.style.transformOrigin = '50% 0%';
+      statsGrid.style.transform = 'translateY(' + ((1 - p) * CARD_RISE).toFixed(1) + 'px) scale(' + sc.toFixed(4) + ')';
+      statsGrid.style.opacity = (0.55 + 0.45 * p).toFixed(3);
+    }
     if (hero) {
       hero.style.backgroundColor = 'rgb(' +
         Math.round(FROM[0] + (TO[0] - FROM[0]) * p) + ',' +
