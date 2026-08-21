@@ -168,12 +168,9 @@
       filter: drop-shadow(0 0 5px rgba(240,220,165,0.85));
     }
     .deck-link.on .deck-link-tip { opacity: 1; }
-    /* On mobile the trunk sits below the copy, so the connector runs
-       downward instead of across. Kept, not hidden. */
-    @media (max-width: 960px) {
-      .deck-link-path { stroke-width: 1.4; stroke-opacity: 0.85; }
-      .deck-link-tip { r: 6; }
-    }
+    /* Desktop only. With the trunk stacked under the copy on mobile there is
+       no sensible line to draw, and the attempt read badly. */
+    @media (max-width: 960px) { .deck-link { display: none; } }
 
     /* ---- trunk, anchored into the bottom-right corner ---- */
     .trunk {
