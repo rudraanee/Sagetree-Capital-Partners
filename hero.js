@@ -9,9 +9,13 @@
   if (!wrap) return;
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  var INSET_X = 68;   // px the panel pulls in from each side when fully zoomed out
-  var INSET_B = 52;   // px it lifts from the bottom
-  var RADIUS  = 26;   // px corner radius at full zoom-out
+  // Scaled to the viewport: a fixed 68px inset is a sixth of a phone screen.
+  function insetX() { return Math.min(68, Math.round(window.innerWidth * 0.045)); }
+  function insetB() { return Math.min(52, Math.round(window.innerWidth * 0.035)); }
+  function radius()  { return Math.min(26, Math.round(window.innerWidth * 0.018)); }
+  var INSET_X = insetX();
+  var INSET_B = insetB();
+  var RADIUS  = radius();
 
   // The gutter revealed around the docked hero resolves to the same surface the
   // stat cards sit on, so the hero reads as resting on that band rather than
@@ -74,6 +78,9 @@
   window.addEventListener('scroll', function () {
     if (!ticking) { requestAnimationFrame(update); ticking = true; }
   }, { passive: true });
-  window.addEventListener('resize', update, { passive: true });
+  window.addEventListener('resize', function () {
+    INSET_X = insetX(); INSET_B = insetB(); RADIUS = radius();
+    update();
+  }, { passive: true });
   update();
 })();

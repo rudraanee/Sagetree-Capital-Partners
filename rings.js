@@ -28,11 +28,19 @@
     var b = document.createElement('i');
     if (i === 0) b.className = 'on';
     rail.appendChild(b);
-    label.addEventListener('click', function () { jumpTo(i); });
+    label.addEventListener('click', function () { setLive(i); });
+    // Pointer is the primary control. Hovering a principle lights its ring.
+    label.addEventListener('mouseenter', function () { pointerHeld = true; setLive(i); });
+    label.addEventListener('focus', function () { pointerHeld = true; setLive(i); });
     return b;
   });
 
   band.classList.add('js-on');
+
+  // While the pointer is over the card the reader is driving, so scroll must not
+  // fight them for control. Scroll takes over again once the pointer leaves.
+  var pointerHeld = false;
+  band.addEventListener('mouseleave', function () { pointerHeld = false; });
 
   // Halo offset per principle, matching the compass position of its label.
   var glow = band.querySelector('.rings-glow');
@@ -63,12 +71,6 @@
     bars.forEach(function (b, k) { b.classList.toggle('on', k <= i); });
   }
 
-  function jumpTo(i) {
-    // With no pinned scroller there is nowhere to scroll to per step, so a click
-    // simply activates that principle directly.
-    setLive(i);
-  }
-
   // The wood turns clockwise as the section scrolls. Kept modest so the
   // fixed needles stay close to the ring they point at.
   var rotor = band.querySelector('.trunk-rotor');
@@ -84,7 +86,7 @@
     var vh = window.innerHeight || 1;
     var span = r.height || 1;
     var p = Math.min(1, Math.max(0, (vh * 0.78 - r.top) / span));
-    setLive(Math.min(N - 1, Math.floor(p * N * 0.999)));
+    if (!pointerHeld) setLive(Math.min(N - 1, Math.floor(p * N * 0.999)));
     if (rotor) rotor.style.transform = 'rotate(' + (p * SWEEP).toFixed(2) + 'deg)';
   }
 

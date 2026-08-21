@@ -118,15 +118,20 @@
        beneath rather than painting a line over it. */
     #rRingsDark { mix-blend-mode: multiply; }
     .r-ring-dark {
-      fill: none; stroke: #33200e; stroke-width: 3; stroke-opacity: 0.42;
-      transition: stroke-width 1s var(--r-ease), stroke-opacity 1s var(--r-ease);
+      fill: none; stroke: #2a1a0a; stroke-width: 2.6; stroke-opacity: 0.38;
+      transition: stroke-width .45s var(--r-ease), stroke-opacity .45s var(--r-ease);
     }
-    .r-ring-dark.seen { stroke-opacity: 0.62; stroke-width: 4.4; }
-    .r-ring-dark.live { stroke-opacity: 0.95; stroke-width: 7; }
+    .r-ring-dark.seen { stroke-opacity: 0.5; stroke-width: 3.4; }
+    /* the pointed-at ring reads as a genuinely thicker band of bark */
+    .r-ring-dark.live { stroke-opacity: 1; stroke-width: 13; }
     .r-ring { fill: none; stroke: rgba(201,169,110,0); stroke-width: 1.2;
-              transition: stroke 1s var(--r-ease), stroke-width 1s var(--r-ease); }
-    .r-ring.seen { stroke: rgba(201,169,110,0.26); }
-    .r-ring.live { stroke: rgba(212,176,108,0.85); stroke-width: 1.8; }
+              transition: stroke .45s var(--r-ease), stroke-width .45s var(--r-ease),
+                          filter .45s var(--r-ease); }
+    .r-ring.seen { stroke: rgba(201,169,110,0.22); }
+    .r-ring.live {
+      stroke: rgba(246,226,168,0.95); stroke-width: 3;
+      filter: drop-shadow(0 0 7px rgba(226,201,138,0.75));
+    }
 
     /* the needle marks which layer is live; it stays put while the wood turns */
     .r-needle { opacity: 0; transition: opacity 0.7s var(--r-ease); }
@@ -189,13 +194,13 @@
     .rim-num {
       display: block; font-family: var(--heading); font-size: 0.68rem; font-weight: 600;
       letter-spacing: 0.2em; color: rgba(245,240,232,0.34); margin-bottom: 0.22rem;
-      transition: color 0.8s var(--r-ease);
+      transition: color .4s var(--r-ease);
     }
     .rim-ttl {
       display: block; font-family: var(--heading); font-weight: 400;
       font-size: 1rem; letter-spacing: 0.01em; line-height: 1.35;
       color: var(--muted);
-      transition: font-size 0.8s var(--r-ease), color 0.8s var(--r-ease), font-weight 0.8s var(--r-ease);
+      transition: font-size .4s var(--r-ease), color .4s var(--r-ease), font-weight .4s var(--r-ease);
     }
     .rim-label.live .rim-num { color: var(--gold); }
     .rim-label.live .rim-ttl { font-size: 1.55rem; font-weight: 500; color: var(--gold-light); }
@@ -223,9 +228,34 @@
       .rings-band { border-radius: 14px;
         margin-top: 2.5rem; margin-bottom: 0;
         margin-left: 0.75rem; margin-right: 0.75rem; }
-      .trunk { width: min(38vh, 300px); }
-      .rim-ttl { font-size: 0.72rem; white-space: normal; max-width: 8.5rem; }
-      .rim-label.live .rim-ttl { font-size: 0.95rem; }
+      /* Labels cannot ring the trunk on a narrow screen: each one extends well
+         past the disc, so at 390px the left label lands off the viewport.
+         Below 960px they become a plain stacked list under the trunk. */
+      .trunk { width: min(52vw, 260px); margin: 2.2rem auto 2rem; }
+      .rim-labels { position: static; display: grid; gap: 0; }
+      /* The [data-pos] rules are more specific than .rim-label, so the desktop
+         transforms must be undone at matching specificity or they keep shifting
+         the stacked labels off the left edge. */
+      .rim-label[data-pos="top"],
+      .rim-label[data-pos="right"],
+      .rim-label[data-pos="bottom"],
+      .rim-label[data-pos="left"] { transform: none; text-align: left; }
+      .rim-label {
+        position: static; transform: none; text-align: left;
+        display: grid; grid-template-columns: 2.4rem 1fr; align-items: baseline;
+        padding: 0.85rem 0; white-space: normal;
+        border-top: 1px solid rgba(201,169,110,0.14);
+      }
+      .rim-label:last-child { border-bottom: 1px solid rgba(201,169,110,0.14); }
+      /* project rule: nothing below ~11.5px on mobile */
+      .rim-num { margin-bottom: 0; font-size: 0.78rem; }
+      .rim-ttl { font-size: 0.95rem; max-width: none; }
+      .rim-label.live .rim-ttl { font-size: 1.05rem; }
+      /* the needles point at rim positions that no longer exist here */
+      .trunk-needles { display: none; }
+      .rings-head .section-title { font-size: clamp(1.6rem, 7vw, 2.1rem); }
+      .rings-intro, .rims-desc { font-size: 1rem; }
+      .rings-desc { min-height: 7.5rem; }
       .trunk { max-height: 34vh; max-width: 68vw; }
       .rim-label { min-height: 44px; }
       .rings-desc { min-height: 7rem; }
@@ -233,3 +263,9 @@
     @media (prefers-reduced-motion: reduce) {
       .r-ring, .r-ring-dark, .r-needle, .rim-num, .rim-ttl, .rims-desc { transition: none; }
     }
+
+    /* Pointer-driven: the labels are the control, so they must look it. */
+    .rings-band.js-on .rim-label { cursor: pointer; }
+    .rings-band.js-on .rim-label:hover .rim-ttl { color: var(--gold-light); }
+    .r-needle { transition: opacity .35s var(--r-ease); }
+    .rings-glow { transition: transform .8s var(--r-ease); }
