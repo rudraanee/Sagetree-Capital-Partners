@@ -36,236 +36,207 @@
     .light-band .btn-ghost { color: rgba(18,54,52,0.70); }
     .light-band .btn-ghost:hover { color: #8a6a33; }
 
+
+    /* The section label now lives on the cream ground with the copy it
+       introduces, so it must be recoloured for that ground. */
+    .light-band .chapter-bar { margin-bottom: 2.6rem; }
+    .light-band .cb-name { color: #7a6437; }
+    .light-band .cb-rule { background: linear-gradient(90deg, rgba(138,106,51,0.45), transparent); }
+    .light-band .cb-tree svg { opacity: 0.85; }
+    .light-band .back-link { color: rgba(18,54,52,0.62); }
+    .light-band .back-link:hover { color: #8a6a33; }
+
     /* ═══ MANDATE: RING CROSS-SECTION ══════════════════════════════ */
-    /* An inset dark card sitting on the light ground, rather than a full-bleed
-       band. No overflow:hidden here: that would break position:sticky on the
-       pinned content inside. The glow is sized to stay within the card. */
+    /* A narrower card than the page, so its width itself is a contrast.
+       Copy sits top-left; the trunk is anchored into the bottom-right corner
+       and bleeds past it, the way a large object should meet a frame. */
     .rings-band {
       --r-ease: cubic-bezier(.22,.68,.24,1);
       background:
-        radial-gradient(120% 80% at 18% 42%, rgba(26,85,80,0.34) 0%, rgba(14,61,58,0.12) 45%, transparent 72%),
+        radial-gradient(115% 90% at 78% 88%, rgba(26,85,80,0.34) 0%, rgba(14,61,58,0.12) 46%, transparent 74%),
         linear-gradient(180deg, #0a2f2d 0%, #082828 100%);
       border: 1px solid rgba(201,169,110,0.16);
       border-radius: 24px;
       position: relative;
-      /* The card is a direct child of .light-band, which already spans the full
-         page width, so a plain inset is all that is needed. It can never end
-         up wider than the ground it sits on. */
-      margin-top: 4.5rem; margin-bottom: 0;
-      margin-left: 3.5rem; margin-right: 3.5rem;
+      overflow: hidden;                 /* the trunk bleeds into the corner */
+      max-width: 1520px;
+      margin: 4.5rem auto 0;
       box-shadow: 0 34px 90px rgba(3,18,18,0.30), inset 0 1px 0 rgba(255,255,255,0.05);
     }
-    /* Base state = no JavaScript: a plain, fully readable stacked section.
-       The .js-on class (added by script) opts in to the pinned scroll effect. */
-    /* No pinning. The reference site pins nothing, and holding the reader in
-       place for several viewports reads as being stuck. The card is a normal
-       height block; the active principle advances as it crosses the viewport,
-       so the animation is scroll-triggered rather than scroll-jacked. */
     .rings-scroll { position: relative; }
-    .rings-pin { padding: 5rem 0; display: flex; align-items: center; }
+    .rings-pin { padding: 0; }
     .rings-stage {
-      width: 100%; max-width: 1220px; margin: 0 auto;
-      padding: 0 clamp(1.25rem, 4vw, 3rem); text-align: center;
+      position: relative; width: 100%;
+      min-height: 520px;                /* long and low, not square */
+      padding: 2.8rem 3.2rem 2.6rem;
     }
-    .rings-head { max-width: 74ch; margin: 0 auto; }
-    .rings-head .section-title { font-size: clamp(2rem, 3.4vw, 3.25rem); font-weight: 200;
-      line-height: 1.14; margin-bottom: 0.7rem; }
-    .rings-head .gold-line { margin-top: 1rem; margin-bottom: 1rem; }
-    .rings-head .section-label { justify-content: center; }
-    .rings-head .gold-line {
-      margin-left: auto; margin-right: auto;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+
+    /* ---- copy, top left ---- */
+    .rings-copy { position: relative; z-index: 2; max-width: 50%; }
+    .rings-copy .section-label { justify-content: flex-start; }
+    .rings-band .section-title {
+      font-size: clamp(1.7rem, 2.6vw, 2.5rem); font-weight: 200;
+      line-height: 1.14; margin-bottom: 0.6rem; text-align: left;
     }
-    .rings-intro { color: var(--muted); font-size: 1.15rem; line-height: 1.55;
-      max-width: 62ch; margin: 0 auto; }
+    .rings-band .gold-line { margin: 0.8rem 0 0.9rem; }
+    .rings-intro {
+      color: var(--muted); font-size: 0.95rem; line-height: 1.55;
+      max-width: 52ch; margin: 0 0 1.2rem;
+    }
+
+    /* ---- the four decks ---- */
+    .decks { display: grid; gap: 0; border-top: 1px solid rgba(201,169,110,0.14); }
+    .deck {
+      display: grid; grid-template-columns: 2.6rem 1fr; align-items: start;
+      gap: 0 0.6rem; padding: 0.62rem 0; text-align: left;
+      background: none; border: 0; border-bottom: 1px solid rgba(201,169,110,0.14);
+      font: inherit; color: inherit; width: 100%; cursor: default; position: relative;
+    }
+    .deck::before {
+      content: ''; position: absolute; left: -1.4rem; top: 0; bottom: 0; width: 2px;
+      background: var(--gold); transform: scaleY(0); transform-origin: top;
+      transition: transform .5s var(--r-ease);
+    }
+    .deck.live::before { transform: scaleY(1); }
+    .deck:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+    .deck-num {
+      font-family: var(--heading); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em;
+      color: rgba(245,240,232,0.34); padding-top: 0.35rem; transition: color .45s var(--r-ease);
+    }
+    .deck.live .deck-num { color: var(--gold); text-shadow: 0 0 12px rgba(201,169,110,0.5); }
+    .deck-ttl {
+      display: block; font-family: var(--heading); font-weight: 400;
+      font-size: 1.02rem; line-height: 1.35; color: var(--muted);
+      transition: font-size .5s var(--r-ease), color .45s var(--r-ease), font-weight .45s var(--r-ease);
+    }
+    /* the glow enlarges the text, as asked */
+    .deck.live .deck-ttl {
+      font-size: 1.32rem; font-weight: 500; color: var(--gold-light);
+      text-shadow: 0 0 16px rgba(226,201,138,0.5), 0 0 42px rgba(201,169,110,0.26);
+    }
+    .deck-desc {
+      display: grid; grid-template-rows: 1fr; opacity: 1; margin-top: 0.45rem;
+      transition: grid-template-rows .5s var(--r-ease), opacity .4s ease, margin-top .5s var(--r-ease);
+    }
+    .deck-desc > span { overflow: hidden; display: block; }
+    .deck-p { display: block; color: var(--muted); font-size: 0.95rem; line-height: 1.65; max-width: 44ch; }
+    .rings-band.js-on .deck { cursor: pointer; }
+    .rings-band.js-on .deck-desc { grid-template-rows: 0fr; opacity: 0; margin-top: 0; }
+    .rings-band.js-on .deck.live .deck-desc { grid-template-rows: 1fr; opacity: 1; margin-top: 0.45rem; }
+    .rings-band.js-on .deck:hover .deck-ttl { color: var(--gold-light); }
 
 
     /* The dark card is nested inside the light band, so the light-ground text
-       overrides above would otherwise apply to it. Undo them within the card. */
+       overrides further up would otherwise apply inside it. Undo them here. */
     .light-band .rings-band .section-title { color: var(--white); }
     .light-band .rings-band .section-title strong {
       color: var(--gold); -webkit-text-fill-color: var(--gold); background: none;
     }
     .light-band .rings-band .section-label { color: var(--gold-light); }
     .light-band .rings-band .rings-intro,
-    .light-band .rings-band .rims-desc { color: var(--muted); }
+    .light-band .rings-band .deck-p { color: var(--muted); }
+    .light-band .rings-band .deck-ttl { color: var(--muted); }
+    .light-band .rings-band .deck.live .deck-ttl { color: var(--gold-light); }
+    .light-band .rings-band .deck-num { color: rgba(245,240,232,0.34); }
+    .light-band .rings-band .deck.live .deck-num { color: var(--gold); }
     .light-band .rings-band .gold-line {
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      background: linear-gradient(90deg, var(--gold), transparent);
     }
-    .light-band .rings-band .rim-ttl { color: var(--muted); }
-    .light-band .rings-band .rim-label.live .rim-ttl { color: var(--gold-light); }
-    .light-band .rings-band .rim-num { color: rgba(245,240,232,0.34); }
-    .light-band .rings-band .rim-label.live .rim-num { color: var(--gold); }
 
-    /* ---- centred trunk with labels around the rim ---- */
-    /* Margins leave room for the rim labels, which sit outside the disc. */
-    .trunk {
-      position: relative; width: min(36vh, 380px); aspect-ratio: 1/1;
-      margin: 3.8rem auto 4.2rem; max-height: none;
+
+    /* ---- connector: joins the live deck to the ring it names ---- */
+    .deck-link {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 1; overflow: visible;
     }
-    .trunk-rotor { position: absolute; inset: 0; transform-origin: 50% 50%; will-change: transform; }
+    .deck-link-path {
+      fill: none; stroke: var(--gold); stroke-width: 1.1; stroke-opacity: 0.75;
+      stroke-linecap: round; stroke-linejoin: round;
+      transition: stroke-dashoffset .75s var(--r-ease), stroke-opacity .4s ease;
+    }
+    .deck-link-tip {
+      fill: #f0dca5; opacity: 0;
+      transition: opacity .4s ease .25s;
+      filter: drop-shadow(0 0 5px rgba(240,220,165,0.85));
+    }
+    .deck-link.on .deck-link-tip { opacity: 1; }
+    @media (max-width: 960px) { .deck-link { display: none; } }
+
+    /* ---- trunk, anchored into the bottom-right corner ---- */
+    .trunk {
+      position: absolute; z-index: 1;
+      width: 620px; height: 620px;
+      right: -150px; bottom: -190px;
+      pointer-events: none;
+    }
+    .rings-glow {
+      position: absolute; inset: -40%; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(closest-side, rgba(201,169,110,0.20) 0%, rgba(201,169,110,0.08) 42%, transparent 70%),
+        radial-gradient(closest-side, rgba(26,90,84,0.30) 0%, transparent 62%);
+      opacity: 0.85; will-change: opacity;
+      animation: glowBreathe 13s ease-in-out infinite;
+    }
+    @keyframes glowBreathe { 0%,100% { opacity: 0.55; } 50% { opacity: 0.95; } }
+    .rings-glow.glint { animation: glowBreathe 13s ease-in-out infinite, glintFlare 1.15s ease-out; }
+    @keyframes glintFlare {
+      0% { filter: brightness(1) saturate(1); }
+      28% { filter: brightness(2.1) saturate(1.3); }
+      100% { filter: brightness(1) saturate(1); }
+    }
+
+    /* a full, continuous 360 turn */
+    .trunk-rotor {
+      position: absolute; inset: 0; transform-origin: 50% 50%;
+      will-change: transform;
+      animation: trunkSpin 48s linear infinite;
+    }
+    @keyframes trunkSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
     .trunk-photo { position: absolute; inset: 0; display: block; }
-    .trunk-overlay, .trunk-needles { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
     .trunk-photo img {
       width: 100%; height: 100%; object-fit: contain; display: block;
       filter: saturate(0.92) contrast(1.04);
-      /* White, not black: this mask is read as luminance, where black hides. */
       -webkit-mask-image: radial-gradient(circle at 50% 50%, #fff 56%, rgba(255,255,255,0.45) 66%, transparent 74%);
       mask-image: radial-gradient(circle at 50% 50%, #fff 56%, rgba(255,255,255,0.45) 66%, transparent 74%);
     }
+    .trunk-overlay { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 
-    /* Our four rings, darkened into the wood. Multiply deepens the grain
-       beneath rather than painting a line over it. */
     #rRingsDark { mix-blend-mode: multiply; }
     .r-ring-dark {
       fill: none; stroke: #2a1a0a; stroke-width: 2.6; stroke-opacity: 0.38;
       transition: stroke-width .45s var(--r-ease), stroke-opacity .45s var(--r-ease);
     }
     .r-ring-dark.seen { stroke-opacity: 0.5; stroke-width: 3.4; }
-    /* the pointed-at ring reads as a genuinely thicker band of bark */
     .r-ring-dark.live { stroke-opacity: 1; stroke-width: 13; }
     .r-ring { fill: none; stroke: rgba(201,169,110,0); stroke-width: 1.2;
-              transition: stroke .45s var(--r-ease), stroke-width .45s var(--r-ease),
-                          filter .45s var(--r-ease); }
+              transition: stroke .45s var(--r-ease), stroke-width .45s var(--r-ease), filter .45s var(--r-ease); }
     .r-ring.seen { stroke: rgba(201,169,110,0.22); }
     .r-ring.live {
       stroke: rgba(246,226,168,0.95); stroke-width: 3;
       filter: drop-shadow(0 0 7px rgba(226,201,138,0.75));
     }
 
-    /* the needle marks which layer is live; it stays put while the wood turns */
-    .r-needle { opacity: 0; transition: opacity 0.7s var(--r-ease); }
-    .r-needle.live { opacity: 1; }
-    .r-needle-line { stroke: var(--gold); stroke-width: 1.1; stroke-opacity: 0.85; }
-    .r-needle-tip { fill: #f0dca5; }
-
-
-    /* ---- section glint: an ambient halo that drifts to whichever principle
-       is live and flares briefly each time it changes. Sits behind the wood
-       and echoes the breathing orbs used elsewhere on the site. ---- */
-    .rings-glow {
-      position: absolute; inset: -46%; z-index: 0; pointer-events: none;
-      background:
-        radial-gradient(closest-side, rgba(201,169,110,0.20) 0%, rgba(201,169,110,0.08) 42%, transparent 70%),
-        radial-gradient(closest-side, rgba(26,90,84,0.30) 0%, transparent 62%);
-      /* transform is set from script: a var()-based transform computes to
-         none if any substitution is invalid, which silently killed the drift. */
-      transition: transform 1.5s var(--r-ease);
-      opacity: 0.85;
-      will-change: transform;
-      animation: glowBreathe 13s ease-in-out infinite;
-    }
-    @keyframes glowBreathe {
-      0%, 100% { opacity: 0.62; }
-      50%      { opacity: 0.95; }
-    }
-    /* the flare, retriggered on every change of active ring */
-    .rings-glow.glint { animation: glowBreathe 13s ease-in-out infinite, glintFlare 1.15s ease-out; }
-    @keyframes glintFlare {
-      0%   { filter: brightness(1) saturate(1); }
-      28%  { filter: brightness(2.1) saturate(1.25); }
-      100% { filter: brightness(1) saturate(1); }
-    }
-    .trunk-rotor, .trunk-needles, .rim-labels { z-index: 1; }
-
-    /* the live label glows rather than only changing size and colour */
-    .rim-label.live .rim-ttl {
-      text-shadow: 0 0 16px rgba(226,201,138,0.50), 0 0 40px rgba(201,169,110,0.26);
-    }
-    .rim-label.live .rim-num { text-shadow: 0 0 12px rgba(201,169,110,0.45); }
-    .r-needle.live .r-needle-tip { filter: drop-shadow(0 0 5px rgba(240,220,165,0.85)); }
-
-    @media (prefers-reduced-motion: reduce) {
-      .rings-glow { animation: none; transition: none; }
-      .rings-glow.glint { animation: none; }
-    }
-    .rim-labels { position: absolute; inset: 0; pointer-events: none; }
-    .rim-label {
-      position: absolute; left: var(--x); top: var(--y);
-      display: block; background: none; border: 0; padding: 0.4rem 0.5rem;
-      cursor: default; pointer-events: auto; white-space: nowrap;
-      font: inherit; color: inherit;
-    }
-    .rim-label[data-pos="top"]    { transform: translate(-50%, -100%); }
-    .rim-label[data-pos="bottom"] { transform: translate(-50%, 0); }
-    .rim-label[data-pos="right"]  { transform: translate(0, -50%); text-align: left; }
-    .rim-label[data-pos="left"]   { transform: translate(-100%, -50%); text-align: right; }
-    .rim-label:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
-    .rim-num {
-      display: block; font-family: var(--heading); font-size: 0.68rem; font-weight: 600;
-      letter-spacing: 0.2em; color: rgba(245,240,232,0.34); margin-bottom: 0.22rem;
-      transition: color .4s var(--r-ease);
-    }
-    .rim-ttl {
-      display: block; font-family: var(--heading); font-weight: 400;
-      font-size: 1rem; letter-spacing: 0.01em; line-height: 1.35;
-      color: var(--muted);
-      transition: font-size .4s var(--r-ease), color .4s var(--r-ease), font-weight .4s var(--r-ease);
-    }
-    .rim-label.live .rim-num { color: var(--gold); }
-    .rim-label.live .rim-ttl { font-size: 1.55rem; font-weight: 500; color: var(--gold-light); }
-
-    /* ---- active description, centred under the trunk ---- */
-    .rings-desc { position: relative; min-height: 5.6rem; max-width: 62ch; margin: 0 auto; }
-    .rims-desc { color: var(--muted); font-size: 1.15rem; line-height: 1.6; }
-    .r-rail { display: flex; gap: 0.45rem; margin: 1.4rem auto 0; justify-content: center; }
-    .r-rail i { width: 30px; height: 2px; background: rgba(201,169,110,0.30); transition: background 0.5s ease; }
-    .r-rail i.on { background: var(--gold); }
-
-    /* With JavaScript on, only the live description shows and it cross-fades. */
-    .rings-band.js-on .rims-desc {
-      position: absolute; left: 0; right: 0; top: 0;
-      opacity: 0; transform: translateY(10px); pointer-events: none;
-      transition: opacity 0.6s ease, transform 0.6s var(--r-ease);
-    }
-    .rings-band.js-on .rims-desc.on { opacity: 1; transform: none; pointer-events: auto; }
-    .rings-band.js-on .rim-label { cursor: pointer; }
-
     @media (max-width: 960px) {
-      .bleed-in, .rings-stage { padding: 0 1.5rem; }
-      .light-band { padding: 3.5rem 0 0; margin-top: 2.5rem; }
       .bleed { margin-left: -1.5rem; margin-right: -1.5rem; }
-      .rings-band { border-radius: 14px;
-        margin-top: 2.5rem; margin-bottom: 0;
-        margin-left: 0.75rem; margin-right: 0.75rem; }
-      /* Labels cannot ring the trunk on a narrow screen: each one extends well
-         past the disc, so at 390px the left label lands off the viewport.
-         Below 960px they become a plain stacked list under the trunk. */
-      .trunk { width: min(52vw, 260px); margin: 2.2rem auto 2rem; }
-      .rim-labels { position: static; display: grid; gap: 0; }
-      /* The [data-pos] rules are more specific than .rim-label, so the desktop
-         transforms must be undone at matching specificity or they keep shifting
-         the stacked labels off the left edge. */
-      .rim-label[data-pos="top"],
-      .rim-label[data-pos="right"],
-      .rim-label[data-pos="bottom"],
-      .rim-label[data-pos="left"] { transform: none; text-align: left; }
-      .rim-label {
-        position: static; transform: none; text-align: left;
-        display: grid; grid-template-columns: 2.4rem 1fr; align-items: baseline;
-        padding: 0.85rem 0; white-space: normal;
-        border-top: 1px solid rgba(201,169,110,0.14);
+      .light-band { padding: 3.5rem 0 0; margin-top: 2.5rem; }
+      .rings-band { border-radius: 14px; margin: 2.5rem 0.75rem 0; overflow: hidden; }
+      .rings-stage { padding: 2.4rem 1.5rem 2rem; min-height: 0; }
+      .rings-copy { max-width: none; }
+      .rings-band .section-title { font-size: clamp(1.6rem, 7vw, 2.1rem); }
+      .rings-intro { font-size: 1rem; }
+      /* trunk moves below the copy and sits into the corner at a size that fits */
+      .trunk {
+        position: relative; right: auto; bottom: auto;
+        width: min(78vw, 320px); height: min(78vw, 320px);
+        margin: 1.6rem -1.5rem -1rem auto;
       }
-      .rim-label:last-child { border-bottom: 1px solid rgba(201,169,110,0.14); }
-      /* project rule: nothing below ~11.5px on mobile */
-      .rim-num { margin-bottom: 0; font-size: 0.78rem; }
-      .rim-ttl { font-size: 0.95rem; max-width: none; }
-      .rim-label.live .rim-ttl { font-size: 1.05rem; }
-      /* the needles point at rim positions that no longer exist here */
-      .trunk-needles { display: none; }
-      .rings-head .section-title { font-size: clamp(1.6rem, 7vw, 2.1rem); }
-      .rings-intro, .rims-desc { font-size: 1rem; }
-      .rings-desc { min-height: 7.5rem; }
-      .trunk { max-height: 34vh; max-width: 68vw; }
-      .rim-label { min-height: 44px; }
-      .rings-desc { min-height: 7rem; }
+      .deck { grid-template-columns: 2.2rem 1fr; min-height: 48px; }
+      .deck-num { font-size: 0.78rem; }
+      .deck.live .deck-ttl { font-size: 1.2rem; }
+      .deck-p { font-size: 0.95rem; }
+      .deck::before { left: -0.7rem; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .r-ring, .r-ring-dark, .r-needle, .rim-num, .rim-ttl, .rims-desc { transition: none; }
+      .rings-glow, .trunk-rotor { animation: none; }
+      .r-ring, .r-ring-dark, .deck-num, .deck-ttl, .deck-desc, .deck::before { transition: none; }
     }
-
-    /* Pointer-driven: the labels are the control, so they must look it. */
-    .rings-band.js-on .rim-label { cursor: pointer; }
-    .rings-band.js-on .rim-label:hover .rim-ttl { color: var(--gold-light); }
-    .r-needle { transition: opacity .35s var(--r-ease); }
-    .rings-glow { transition: transform .8s var(--r-ease); }
