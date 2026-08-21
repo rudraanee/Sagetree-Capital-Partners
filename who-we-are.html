@@ -57,8 +57,8 @@
     ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: var(--teal-deep); } ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
 
     /* ── NAV ───────────────────────────────────────── */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 4rem; background: linear-gradient(180deg, rgba(14,54,52,0.55) 0%, rgba(8,40,40,0.42) 100%); backdrop-filter: blur(22px) saturate(180%); -webkit-backdrop-filter: blur(22px) saturate(180%); border-bottom: 1px solid rgba(255,255,255,0.09); box-shadow: 0 8px 30px rgba(3,18,18,0.28), inset 0 1px 0 rgba(255,255,255,0.14); transition: padding 0.4s ease, background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease; }
-    nav.scrolled { padding: 0.8rem 4rem; background: linear-gradient(180deg, rgba(12,48,46,0.68) 0%, rgba(7,34,34,0.58) 100%); backdrop-filter: blur(30px) saturate(190%); -webkit-backdrop-filter: blur(30px) saturate(190%); box-shadow: 0 10px 38px rgba(3,18,18,0.40), inset 0 1px 0 rgba(255,255,255,0.16); }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 4rem; background: linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.05) 100%), linear-gradient(180deg, rgba(6,28,28,0.30) 0%, rgba(6,28,28,0.20) 100%); backdrop-filter: blur(22px) saturate(180%); -webkit-backdrop-filter: blur(22px) saturate(180%); border-bottom: 1px solid rgba(255,255,255,0.09); box-shadow: 0 8px 30px rgba(3,18,18,0.28), inset 0 1px 0 rgba(255,255,255,0.14); transition: padding 0.4s ease, background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease; }
+    nav.scrolled { padding: 0.8rem 4rem; background: linear-gradient(180deg, rgba(255,255,255,0.20) 0%, rgba(255,255,255,0.07) 100%), linear-gradient(180deg, rgba(6,28,28,0.42) 0%, rgba(6,28,28,0.32) 100%); backdrop-filter: blur(30px) saturate(190%); -webkit-backdrop-filter: blur(30px) saturate(190%); box-shadow: 0 10px 38px rgba(3,18,18,0.40), inset 0 1px 0 rgba(255,255,255,0.16); }
     .nav-logo { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; }
     .nav-logo img { height: 46px; width: auto; object-fit: contain; }
     .nav-logo-text { display: flex; flex-direction: column; line-height: 1.15; }
@@ -500,7 +500,7 @@
     }
   </style>
 
-  <link rel="stylesheet" href="sections.css" />
+  <link rel="stylesheet" href="sections.css?v=3" />
 </head>
 <body>
 <div class="bg" aria-hidden="true"><div class="orb a" data-sx="0.03" data-sy="0.10"><i></i></div><div class="orb b" data-sx="-0.04" data-sy="-0.07"><i></i></div><div class="orb c" data-sx="0.05" data-sy="0.06"><i></i></div><div class="orb d" data-sx="-0.03" data-sy="-0.12"><i></i></div></div>
@@ -1133,6 +1133,6 @@
 
 </script>
 
-<script src="rings.js" defer></script>
+<script src="rings.js?v=3" defer></script>
 </body>
 </html>

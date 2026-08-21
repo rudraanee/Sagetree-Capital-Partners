@@ -1,16 +1,7 @@
-/* Sagetree: shared section styles (light reading band + mandate ring section).
-   Kept out of the per-page <style> blocks, which must stay byte-identical
+/* Sagetree: shared section styles (light reading band + mandate ring card).
+   Kept out of the per-page style blocks, which must stay byte-identical
    across all 8 pages. Linked by index.html and who-we-are.html. */
-block above, which must
-       stay byte-identical across all 8 pages. Nothing here leaks to
-       another page.
-       ══════════════════════════════════════════════════════════════ -->
-  <style>
-    /* ---- full-bleed break-out helper ---- */
-    /* Break out of the section's horizontal padding to the full page width.
-       No width:100vw here: that double-counts against the negative margins
-       and shifts the band sideways once a scrollbar is present. */
-    .bleed { margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
+.bleed { margin-left: -4rem; margin-right: -4rem; }
     .bleed-in { max-width: 1240px; margin: 0 auto; padding: 0 4rem; }
 
     /* ═══ LIGHT READING BAND ═══════════════════════════════════════ */
@@ -18,7 +9,7 @@ block above, which must
       background: linear-gradient(180deg, #f6f2e8 0%, #efe9db 100%);
       border-top: 1px solid rgba(138,106,51,0.18);
       border-bottom: 1px solid rgba(138,106,51,0.18);
-      padding: 6rem 0;
+      padding: 6rem 0 0;
       /* margin-top only: a margin shorthand here would reset the negative
          inline margins .bleed uses to break out to full width. */
       margin-top: 3.5rem;
@@ -52,12 +43,11 @@ block above, which must
       border: 1px solid rgba(201,169,110,0.16);
       border-radius: 22px;
       position: relative;
-      /* Widen past the reading column so the card spans nearly the full page,
-         with a small gutter, the way the reference panel does. Inner content
-         stays centred and capped by .rings-stage. */
-      margin-top: 4.5rem; margin-bottom: 1rem;
-      margin-left: calc(50% - 50vw + 1.6rem);
-      margin-right: calc(50% - 50vw + 1.6rem);
+      /* The card is a direct child of .light-band, which already spans the full
+         page width, so a plain inset is all that is needed. It can never end
+         up wider than the ground it sits on. */
+      margin-top: 4.5rem; margin-bottom: 0;
+      margin-left: 1.6rem; margin-right: 1.6rem;
       box-shadow: 0 34px 90px rgba(3,18,18,0.30), inset 0 1px 0 rgba(255,255,255,0.05);
     }
     /* Base state = no JavaScript: a plain, fully readable stacked section.
@@ -222,11 +212,11 @@ block above, which must
 
     @media (max-width: 960px) {
       .bleed-in, .rings-stage { padding: 0 1.5rem; }
-      .light-band { padding: 3.5rem 0; margin-top: 2.5rem; }
+      .light-band { padding: 3.5rem 0 0; margin-top: 2.5rem; }
+      .bleed { margin-left: -1.5rem; margin-right: -1.5rem; }
       .rings-band { border-radius: 14px;
-        margin-top: 2.5rem; margin-bottom: 0.5rem;
-        margin-left: calc(50% - 50vw + 0.75rem);
-        margin-right: calc(50% - 50vw + 0.75rem); }
+        margin-top: 2.5rem; margin-bottom: 0;
+        margin-left: 0.75rem; margin-right: 0.75rem; }
       .trunk { width: min(38vh, 300px); }
       .rim-ttl { font-size: 0.72rem; white-space: normal; max-width: 8.5rem; }
       .rim-label.live .rim-ttl { font-size: 0.95rem; }

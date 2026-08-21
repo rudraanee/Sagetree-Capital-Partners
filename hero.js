@@ -19,6 +19,10 @@
   var FROM = [8, 40, 40];      // --teal-deep #082828, the hero's own ground
   var TO   = [10, 47, 44];     // the stats band surface, rgba(14,61,58,.5) over #05201e
   var hero = document.querySelector('.hero');
+  var content = document.querySelector('.hero-content');
+  var pillars = document.querySelector('.hero-pillars');
+  // The hero's own horizontal padding at desktop, which the copy sits against.
+  var BASE_PAD = 64;
   var hdr = parseInt(getComputedStyle(document.documentElement)
               .getPropertyValue('--hdr'), 10) || 90;
 
@@ -38,6 +42,15 @@
       el.style.bottom = b;
       el.style.top = t;
       el.style.borderRadius = r;
+    });
+    // Pull the copy inward with the panel so it stays framed by the video
+    // rather than drifting off its left edge as the panel narrows.
+    var pad = (BASE_PAD + INSET_X * p).toFixed(1) + 'px';
+    [content, pillars].forEach(function (el) {
+      if (!el) return;
+      el.style.paddingLeft = INSET_X * p ? (INSET_X * p).toFixed(1) + 'px' : '';
+      el.style.paddingRight = INSET_X * p ? (INSET_X * p).toFixed(1) + 'px' : '';
+      el.style.paddingBottom = (INSET_B * p).toFixed(1) + 'px';
     });
     if (hero) {
       hero.style.backgroundColor = 'rgb(' +
