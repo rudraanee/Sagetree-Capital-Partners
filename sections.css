@@ -317,6 +317,14 @@
     .services-section .light-band { padding-bottom: 5rem; }
     @media (max-width: 960px) { .services-section .light-band { padding-bottom: 3rem; } }
 
-    /* Adjacent cream bands should read as one sheet of paper, not two. */
-    .light-band + .light-band,
-    .services-section .light-band { margin-top: 0; }
+    /* Adjacent cream bands should read as one sheet of paper, not two.
+       Deliberately does NOT set margin-top: it has the same specificity as
+       .light-band.flush-top and would cancel the flush, leaving a block of
+       section padding showing as a dark strip between the two bands. */
+
+    /* The hero must not paint its own ground. Any colour it paints, animated or
+       not, is a second surface composited over the same orbs as the section
+       below, and two surfaces can always be told apart. With none, the gutter
+       revealed as the hero docks IS the page ground, identical by construction
+       to the stats section and everything after it. */
+    .hero { background: transparent !important; }
