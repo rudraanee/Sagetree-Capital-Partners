@@ -20,8 +20,13 @@
   // The gutter revealed around the docked hero resolves to the same surface the
   // stat cards sit on, so the hero reads as resting on that band rather than
   // floating on an unrelated colour. This is what carries the eye downward.
-  var FROM = [8, 40, 40];      // --teal-deep #082828, the hero's own ground
-  var TO   = [10, 47, 44];     // the stats band surface, rgba(14,61,58,.5) over #05201e
+  // Resolve to the stat band's EXACT declared value, alpha included, not just a
+  // matching flat colour. The band is translucent, so the fixed breathing orbs
+  // show through it; a solid hero would still read as a different surface even
+  // at the same average colour. Matching the alpha lets the same orbs show
+  // through both, so there is nothing left to divide them.
+  var FROM = [8, 40, 40, 1];        // --teal-deep, solid, at the top of the page
+  var TO   = [14, 61, 58, 0.5];     // identical to .stats-section
   var hero = document.querySelector('.hero');
   var content = document.querySelector('.hero-content');
   var pillars = document.querySelector('.hero-pillars');
@@ -71,10 +76,11 @@
       statsGrid.style.opacity = (0.55 + 0.45 * p).toFixed(3);
     }
     if (hero) {
-      hero.style.backgroundColor = 'rgb(' +
+      hero.style.backgroundColor = 'rgba(' +
         Math.round(FROM[0] + (TO[0] - FROM[0]) * p) + ',' +
         Math.round(FROM[1] + (TO[1] - FROM[1]) * p) + ',' +
-        Math.round(FROM[2] + (TO[2] - FROM[2]) * p) + ')';
+        Math.round(FROM[2] + (TO[2] - FROM[2]) * p) + ',' +
+        (FROM[3] + (TO[3] - FROM[3]) * p).toFixed(3) + ')';
     }
   }
 
