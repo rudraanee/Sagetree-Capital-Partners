@@ -94,11 +94,13 @@
     }
 
     /* ---- the four decks ---- */
-    .decks { display: grid; gap: 0; border-top: 1px solid rgba(201,169,110,0.14); }
+    /* No rules between the principles. Spacing and the live state separate
+       them; hairlines only added noise. */
+    .decks { display: grid; gap: 0.15rem; }
     .deck {
       display: grid; grid-template-columns: 2.6rem 1fr; align-items: start;
-      gap: 0 0.6rem; padding: 0.62rem 0; text-align: left;
-      background: none; border: 0; border-bottom: 1px solid rgba(201,169,110,0.14);
+      gap: 0 0.6rem; padding: 0.72rem 0; text-align: left;
+      background: none; border: 0;
       font: inherit; color: inherit; width: 100%; cursor: default; position: relative;
     }
     .deck::before {
