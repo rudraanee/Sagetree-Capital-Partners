@@ -25,8 +25,13 @@
   // show through it; a solid hero would still read as a different surface even
   // at the same average colour. Matching the alpha lets the same orbs show
   // through both, so there is nothing left to divide them.
+  // The hero fades its own ground away entirely rather than trying to match the
+  // section below. Two translucent surfaces over a fixed, spatially varying orb
+  // layer never composite identically; one shared surface always does. At full
+  // dock the gutter is the page ground plus orbs, which is exactly what the
+  // stats section is, so there is nothing to match.
   var FROM = [8, 40, 40, 1];        // --teal-deep, solid, at the top of the page
-  var TO   = [14, 61, 58, 0.5];     // identical to .stats-section
+  var TO   = [8, 40, 40, 0];        // fully transparent: the page ground shows
   var hero = document.querySelector('.hero');
   var content = document.querySelector('.hero-content');
   var pillars = document.querySelector('.hero-pillars');
