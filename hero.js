@@ -34,8 +34,9 @@
   // The grid is scaled, not the cards, because the cards carry their own
   // pointer-tilt transform and the two would fight.
   var statsGrid = document.querySelector('.stats-grid');
-  var CARD_FROM = 0.90;   // scale at the top of the page
-  var CARD_RISE = 26;     // px the cards travel upward into place
+  var CARD_FROM = 0.72;   // scale at the top of the page: a real arrival, not a nudge
+  var CARD_RISE = 68;     // px the cards travel upward into place
+  var CARD_FADE = 0.22;   // opacity at the top of the page
   // The hero's own horizontal padding at desktop, which the copy sits against.
   var BASE_PAD = 64;
   var hdr = parseInt(getComputedStyle(document.documentElement)
@@ -71,7 +72,7 @@
       var sc = CARD_FROM + (1 - CARD_FROM) * p;
       statsGrid.style.transformOrigin = '50% 0%';
       statsGrid.style.transform = 'translateY(' + ((1 - p) * CARD_RISE).toFixed(1) + 'px) scale(' + sc.toFixed(4) + ')';
-      statsGrid.style.opacity = (0.55 + 0.45 * p).toFixed(3);
+      statsGrid.style.opacity = (CARD_FADE + (1 - CARD_FADE) * p).toFixed(3);
     }
     // The hero paints no ground at all, so there is nothing to animate here.
 
